@@ -147,3 +147,34 @@ VALUES
     ('2023-09-28', 4, 2, 4, 1, '2023-10-02'),
     ('2023-09-29', 4, 3, 5, 1, '2023-10-03'),
     ('2023-09-30', 4, 3, 1, 1, '2023-10-04');
+
+
+-- Insertar vehículos para sucursal Quetzaltenango
+INSERT INTO vehiculos (tipo, tonelaje, sucursal)
+VALUES
+    ('Camión', 5.0, 1),
+    ('Furgoneta', 2.5, 1),
+    ('Camión Grande', 10.0, 1);
+
+-- Insertar vehículos para sucursal  Guatemala
+INSERT INTO vehiculos (tipo, tonelaje, sucursal)
+VALUES
+    ('Camión', 6.0, 2),
+    ('Furgoneta', 3.0, 2),
+    ('Camión Grande', 12.0, 2);
+
+-- Insertar vehículos para sucursal  Peten
+INSERT INTO vehiculos (tipo, tonelaje, sucursal)
+VALUES
+    ('Camión', 4.0, 3),
+    ('Furgoneta', 2.0, 3),
+    ('Camioneta', 1.5, 3);
+
+
+-- Insertar vehículos para sucursal  Escuintla
+INSERT INTO vehiculos (tipo, tonelaje, sucursal)
+VALUES
+    ('Camión', 5.3, 4),
+    ('Furgoneta', 3.0, 4),
+    ('Camioneta', 1.0, 4);
+
