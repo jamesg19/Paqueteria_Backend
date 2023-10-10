@@ -6,17 +6,19 @@ USE `paqueteria` ;
 -- Tabla de departamentos
 CREATE TABLE departamentos (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(255) NOT NULL
+    nombre VARCHAR(255) NOT NULL,
+    map_id VARCHAR (50) NOT NULL
 )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
 -- Tabla de Sucursales
 CREATE TABLE sucursales (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
+    municipio VARCHAR(255) NOT NULL,
     direccion VARCHAR(255) NOT NULL,
     departamento_id INT NOT NULL,
     FOREIGN KEY (departamento_id) REFERENCES departamentos(id)
-)ENGINE=InnoDB AUTO_INCREMENT = 1;
+)ENGINE=InnoDB AUTO_INCREMENT = 100;
 
 
 
@@ -50,13 +52,14 @@ CREATE TABLE tarifa_envio (
 CREATE TABLE envios (
     envio_id INT PRIMARY KEY AUTO_INCREMENT,
     fecha_envio DATE NOT NULL,
-    sucurlar_origen_id INT NOT NULL,
-    sucurlar_destino_id INT NOT NULL,
+    sucursal_origen_id INT NOT NULL,
+    sucursal_destino_id INT NOT NULL,
     cantidad_paquetes INT NOT NULL,
     tarifa_id INT NOT NULL,
     fecha_entrega DATE NOT NULL,
-    FOREIGN KEY (sucurlar_origen_id) REFERENCES sucursales(id),
-    FOREIGN KEY (sucurlar_destino_id) REFERENCES sucursales(id),
+    peso DECIMAL(5, 2) NOT NULL DEFAULT 1,
+    FOREIGN KEY (sucursal_origen_id) REFERENCES sucursales(id),
+    FOREIGN KEY (sucursal_destino_id) REFERENCES sucursales(id),
     FOREIGN KEY (tarifa_id) REFERENCES tarifa_envio(id)
 )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
@@ -64,7 +67,10 @@ CREATE TABLE envios (
 CREATE TABLE vehiculos (
     vehiculo_id INT PRIMARY KEY AUTO_INCREMENT,
     tipo VARCHAR(100) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    placas VARCHAR(50) UNIQUE NOT NULL ,
     tonelaje DECIMAL(5, 2) NOT NULL,
+    color VARCHAR(50)  ,
     sucursal INT NOT NULL, -- A la sucursal que pertenece el vehiculo
     FOREIGN KEY (sucursal) REFERENCES sucursales(id)
 )ENGINE=InnoDB AUTO_INCREMENT = 1;

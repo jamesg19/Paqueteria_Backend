@@ -2,40 +2,39 @@ USE `paqueteria` ;
 
 
 -- Agregar Departamentos de Guatemala
-INSERT INTO departamentos (id, nombre)
+INSERT INTO departamentos (id, nombre, map_id)
 VALUES
-    (1, 'Guatemala'),
-    (2, 'Baja Verapaz'),
-    (3, 'Alta Verapaz'),
-    (4, 'El Progreso'),
-    (5, 'Izabal'),
-    (6, 'Zacapa'),
-    (7, 'Chiquimula'),
-    (8, 'Santa Rosa'),
-    (9, 'Jalapa'),
-    (10, 'Jutiapa'),
-    (11, 'Sacatepequez'),
-    (12, 'Chimaltenango'),
-    (13, 'Escuintla'),
-    (14, 'Suchitepequez'),
-    (15, 'Retalhuleu'),
-    (16, 'San Marcos'),
-    (17, 'Huehuetenango'),
-    (18, 'Quetzaltenango'),
-    (19, 'Totonicapan'),
-    (20, 'Quiche'),
-    (21, 'Solola'),
-    (22, 'Suchitepequez'),
-    (23, 'Peten');
+    (1, 'Guatemala','GU'),
+    (2, 'Baja Verapaz','BV'),
+    (3, 'Alta Verapaz','AV'),
+    (4, 'El Progreso','PR'),
+    (5, 'Izabal','IZ'),
+    (6, 'Zacapa','ZA'),
+    (7, 'Chiquimula','CQ'),
+    (8, 'Santa Rosa','SR'),
+    (9, 'Jalapa','JA'),
+    (10, 'Jutiapa','JU'),
+    (11, 'Sacatepequez','SA'),
+    (12, 'Chimaltenango','CM'),
+    (13, 'Escuintla','ES'),
+    (14, 'Suchitepequez','SU'),
+    (15, 'Retalhuleu','RE'),
+    (16, 'San Marcos','SM'),
+    (17, 'Huehuetenango','HU'),
+    (18, 'Quetzaltenango','QZ'),
+    (19, 'Totonicapan','TO'),
+    (20, 'Quiche','QC'),
+    (21, 'Solola','SO'),
+    (22, 'Peten','PE');
 
 
 -- Agregar Sucursales en Quetzaltenango
-INSERT INTO sucursales (id, nombre, direccion, departamento_id)
+INSERT INTO sucursales ( id, nombre, direccion,municipio, departamento_id)
 VALUES
-    (1, 'Sucursal Xela', 'Dirección Xela 1', 18),
-    (2, 'Sucursal Guatemala', 'Dirección Guatemala 1', 1),
-    (3, 'Sucursal Peten', 'Dirección Peten 1', 23),
-    (4, 'Sucursal Escuintla', 'Dirección Escuintla 1', 13);
+    (1, 'Sucursal Xela', 'Dirección Xela 1','Quetzaltenango', 18),
+    (2, 'Sucursal Guatemala', 'Dirección Guatemala 1','Guatemala', 1),
+    (3, 'Sucursal Peten', 'Dirección Peten 1','Flores', 22),
+    (4, 'Sucursal Escuintla', 'Dirección Escuintla 1','Tiquisate', 13);
 
 
 -- Agregar Roles
@@ -112,7 +111,7 @@ VALUES
 
 
 -- Envios de Xela
-INSERT INTO envios (fecha_envio, sucurlar_origen_id, sucurlar_destino_id, cantidad_paquetes, tarifa_id, fecha_entrega)
+INSERT INTO envios (fecha_envio, sucursal_origen_id, sucursal_destino_id, cantidad_paquetes, tarifa_id, fecha_entrega)
 VALUES
     ('2023-09-26', 1, 2, 3, 1, '2023-09-30'), --
     ('2023-09-27', 1, 2, 5, 1, '2023-10-01'), --
@@ -121,7 +120,7 @@ VALUES
     ('2023-09-30', 1, 3, 3, 1, '2023-10-04');
 
 -- Envios de Guate
-INSERT INTO envios (fecha_envio, sucurlar_origen_id, sucurlar_destino_id, cantidad_paquetes, tarifa_id, fecha_entrega)
+INSERT INTO envios (fecha_envio, sucursal_origen_id, sucursal_destino_id, cantidad_paquetes, tarifa_id, fecha_entrega)
 VALUES
     ('2023-09-26', 2, 1, 5, 1, '2023-09-30'),
     ('2023-09-27', 2, 1, 8, 2, '2023-10-01'),
@@ -131,7 +130,7 @@ VALUES
 
 
 -- Envios de Peten
-INSERT INTO envios (fecha_envio, sucurlar_origen_id, sucurlar_destino_id, cantidad_paquetes, tarifa_id, fecha_entrega)
+INSERT INTO envios (fecha_envio, sucursal_origen_id, sucursal_destino_id, cantidad_paquetes, tarifa_id, fecha_entrega)
 VALUES
     ('2023-09-26', 3, 1, 1, 1, '2023-09-30'), --
     ('2023-09-27', 3, 1, 1, 1, '2023-10-01'), --
@@ -140,7 +139,7 @@ VALUES
     ('2023-09-30', 3, 2, 5, 1, '2023-10-04');
 
 -- Envios de Escuintla
-INSERT INTO envios (fecha_envio, sucurlar_origen_id, sucurlar_destino_id, cantidad_paquetes, tarifa_id, fecha_entrega)
+INSERT INTO envios (fecha_envio, sucursal_origen_id, sucursal_destino_id, cantidad_paquetes, tarifa_id, fecha_entrega)
 VALUES
     ('2023-09-26', 4, 1, 2, 1, '2023-09-30'), --
     ('2023-09-27', 4, 2, 2, 1, '2023-10-01'), --
@@ -150,31 +149,31 @@ VALUES
 
 
 -- Insertar vehículos para sucursal Quetzaltenango
-INSERT INTO vehiculos (tipo, tonelaje, sucursal)
+INSERT INTO vehiculos (nombre, placas, color,tipo, tonelaje, sucursal)
 VALUES
-    ('Camión', 5.0, 1),
-    ('Furgoneta', 2.5, 1),
-    ('Camión Grande', 10.0, 1);
+    ('Camion 1','C-0123GMX','Rojo','Camión', 5.0, 1),
+    ('Furgoneta 1','C-0124GMX','Blanco','Furgoneta', 2.5, 1),
+    ('Camion 2','C-0125GMX','Amarillo','Camión Grande', 10.0, 1);
 
 -- Insertar vehículos para sucursal  Guatemala
-INSERT INTO vehiculos (tipo, tonelaje, sucursal)
+INSERT INTO vehiculos (nombre, placas, color,tipo, tonelaje, sucursal)
 VALUES
-    ('Camión', 6.0, 2),
-    ('Furgoneta', 3.0, 2),
-    ('Camión Grande', 12.0, 2);
+    ('Camion 1','C-0485JVB','Blanco','Camión', 6.0, 2),
+    ('Furgoneta liviana','C-0123JWT','Azul','Furgoneta', 3.0, 2),
+    ('Camion 2','C-0123JSU','Blanco','Camión Grande', 12.0, 2);
 
 -- Insertar vehículos para sucursal  Peten
-INSERT INTO vehiculos (tipo, tonelaje, sucursal)
+INSERT INTO vehiculos (nombre, placas, color,tipo, tonelaje, sucursal)
 VALUES
-    ('Camión', 4.0, 3),
-    ('Furgoneta', 2.0, 3),
-    ('Camioneta', 1.5, 3);
+    ('Camion 1','C-0485GHH','Rojo','Camión', 4.0, 3),
+    ('Furgoneta 1','C-09455GPQ','Amarilla','Furgoneta', 2.0, 3),
+    ('Furgoneta 2','C-0642GJF','Blanco','Furgoneta', 1.5, 3);
 
 
 -- Insertar vehículos para sucursal  Escuintla
-INSERT INTO vehiculos (tipo, tonelaje, sucursal)
+INSERT INTO vehiculos (nombre, placas, color,tipo, tonelaje, sucursal)
 VALUES
-    ('Camión', 5.3, 4),
-    ('Furgoneta', 3.0, 4),
-    ('Camioneta', 1.0, 4);
+    ('Camion','C-0785CFG','Negro','Camión', 5.3, 4),
+    ('Pick up 1','P-0453FFG','Azul','PickUp', 2.0, 4),
+    ('Fugoneta','C-0953FAG','Amarillo','Furgoneta', 1.5, 4);
 
