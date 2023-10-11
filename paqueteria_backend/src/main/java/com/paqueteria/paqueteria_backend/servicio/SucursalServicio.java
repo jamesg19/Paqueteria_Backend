@@ -31,6 +31,16 @@ public class SucursalServicio {
     }
 
     /**
+     * Guardar
+     */
+    public void guardarSucursal(){
+        Sucursales sucursalNueva=new Sucursales();
+
+
+
+    }
+
+    /**
      * Obtiene todas las sucursales
      * @param
      * @return

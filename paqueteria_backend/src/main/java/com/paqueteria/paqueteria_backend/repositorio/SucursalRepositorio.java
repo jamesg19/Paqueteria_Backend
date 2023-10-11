@@ -10,6 +10,9 @@ import java.util.List;
 public interface SucursalRepositorio extends JpaRepository<Sucursales, Integer> {
 
     Sucursales findById(int id);
+
+
+
     List<Sucursales> findAll();
 
 }
