@@ -1,7 +1,7 @@
 package com.paqueteria.paqueteria_backend.servicio;
 
 
-import com.paqueteria.paqueteria_backend.entidad.Sucursales;
+import com.paqueteria.paqueteria_backend.entidad.Sucursal;
 import com.paqueteria.paqueteria_backend.repositorio.SucursalRepositorio;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +20,12 @@ public class SucursalServicio {
         this.sucursalRepositorio = sucursalRepositorio;
     }
 
-    public Sucursales obtenerSucursalId(int id){
+    public Sucursal obtenerSucursalId(int id){
         /**
          * Aqui en servicio toda la logica
          */
         //Hace la consulta por medio del repositorio que accede a la base de datos
-        Sucursales mySucursal=this.sucursalRepositorio.findById(id);
+        Sucursal mySucursal=this.sucursalRepositorio.findById(id);
 
         return mySucursal;
     }
@@ -34,7 +34,7 @@ public class SucursalServicio {
      * Guardar
      */
     public void guardarSucursal(){
-        Sucursales sucursalNueva=new Sucursales();
+        Sucursal sucursalNueva=new Sucursal();
 
 
 
@@ -46,12 +46,12 @@ public class SucursalServicio {
      * @return
      */
 
-    public List<Sucursales> obtenerSucursales(){
+    public List<Sucursal> obtenerSucursales(){
         /**
          * Aqui en servicio toda la logica
          */
         //Hace la consulta por medio del repositorio que accede a la base de datos
-        List<Sucursales> mySucursal=this.sucursalRepositorio.findAll();
+        List<Sucursal> mySucursal=this.sucursalRepositorio.findAll();
 
         return mySucursal;
     }
