@@ -27,20 +27,22 @@ public class Djikstra {
             System.out.println("Id Sucursal: " + sucursal.getId());
             //List<Ruta> rutasSucursal1 = getRutasPorIdOrigen();  Asi deberia de quedar pero aun no esta la clase ni la tabla tons???
             int val2 = 0;
+            /*
             for (Sucursales sucursal2 : sucursales) {                
                 for (Ruta ruta : rutasSucursal1) {
-                    if (ruta.getDestino() == sucursal.getId()) {
+                    if (ruta.getDestino() == sucursal2.getId()) {
                         graph[val1][val2] = ruta.getPeso();
                         break;
                     }
                 }
                 val2 +=1;
             }
+            */
             val1 +=1;
         }
 
         return graph;
-        //Deberia de chonar cuando este todo listo :v
+        //Deberia de chonar cuando este todo listo :v y sino pos se arregla 
     }
     
     
