@@ -18,7 +18,7 @@ CREATE TABLE sucursales (
     direccion VARCHAR(255) NOT NULL,
     departamento_id INT NOT NULL,
     FOREIGN KEY (departamento_id) REFERENCES departamentos(id)
-)ENGINE=InnoDB AUTO_INCREMENT = 100;
+)ENGINE=InnoDB AUTO_INCREMENT = 1 ;
 
 
 
@@ -37,7 +37,7 @@ CREATE TABLE personal (
     sucursal_id INT NOT NULL,
     rol_id INT NOT NULL,
 
-    FOREIGN KEY (sucursal_id) REFERENCES sucursales(id),
+    FOREIGN KEY (sucursal_id) REFERENCES sucursales(id) on delete cascade,
     FOREIGN KEY (rol_id) REFERENCES roles(id)
 )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
@@ -58,8 +58,8 @@ CREATE TABLE envios (
     tarifa_id INT NOT NULL,
     fecha_entrega DATE NOT NULL,
     peso DECIMAL(5, 2) NOT NULL DEFAULT 1,
-    FOREIGN KEY (sucursal_origen_id) REFERENCES sucursales(id),
-    FOREIGN KEY (sucursal_destino_id) REFERENCES sucursales(id),
+    FOREIGN KEY (sucursal_origen_id) REFERENCES sucursales(id) on delete cascade,
+    FOREIGN KEY (sucursal_destino_id) REFERENCES sucursales(id) on delete cascade,
     FOREIGN KEY (tarifa_id) REFERENCES tarifa_envio(id)
 )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
@@ -72,7 +72,7 @@ CREATE TABLE vehiculos (
     tonelaje DECIMAL(5, 2) NOT NULL,
     color VARCHAR(50)  ,
     sucursal INT NOT NULL, -- A la sucursal que pertenece el vehiculo
-    FOREIGN KEY (sucursal) REFERENCES sucursales(id)
+    FOREIGN KEY (sucursal) REFERENCES sucursales(id) on delete cascade
 )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
 -- Tabla de Seguimiento de la ruta del envío
@@ -84,7 +84,7 @@ CREATE TABLE seguimiento_envios (
     descripcion VARCHAR(255),
 
     FOREIGN KEY (envio_id) REFERENCES envios(envio_id),
-    FOREIGN KEY (sucursal_id) REFERENCES sucursales(id),
+    FOREIGN KEY (sucursal_id) REFERENCES sucursales(id) on delete cascade,
     FOREIGN KEY (vehiculo_id) REFERENCES vehiculos(vehiculo_id)
 ) ENGINE=InnoDB AUTO_INCREMENT = 1;
 
@@ -97,8 +97,8 @@ CREATE TABLE distancia_tiendas (
     sucursal_destino INT NOT NULL,
     distancia DECIMAL(10, 2) NOT NULL,
     PRIMARY KEY (sucursal_origen,sucursal_destino),
-    FOREIGN KEY (sucursal_origen) REFERENCES sucursales(id),
-    FOREIGN KEY (sucursal_destino) REFERENCES sucursales(id)
+    FOREIGN KEY (sucursal_origen) REFERENCES sucursales(id) on delete cascade,
+    FOREIGN KEY (sucursal_destino) REFERENCES sucursales(id) on delete cascade
 )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
 
