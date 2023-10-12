@@ -1,6 +1,7 @@
 package com.paqueteria.paqueteria_backend.controlador;
 
 
+import com.paqueteria.paqueteria_backend.djikstra.Djikstra;
 import com.paqueteria.paqueteria_backend.entidad.Sucursales;
 import com.paqueteria.paqueteria_backend.servicio.SucursalServicio;
 import jakarta.servlet.http.HttpServletRequest;
@@ -65,6 +66,26 @@ public class SucursalesControlador {
         catch( Exception e){
             System.out.println("Error: "+e);
             return null;
+        }
+
+    }
+
+    /**
+     * Obtiene una lista de sucursales
+     * @param request
+     * @param response
+     * @return
+     */
+    @GetMapping("/get_djikstra")
+    public String getDjikstra(HttpServletRequest request, HttpServletResponse response)  {
+        try {
+            Djikstra djikstra = new Djikstra();
+            
+            return djikstra.probarCositas();
+        }
+        catch( Exception e){
+            System.out.println("Error: "+e);
+            return "Tronitos";
         }
 
     }
