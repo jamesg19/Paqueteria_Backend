@@ -1,5 +1,6 @@
 package com.paqueteria.paqueteria_backend.entidad;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,18 +11,16 @@ import lombok.Setter;
 public class Municipio {
     @Id
     @Column(name = "idMunicipio", length = 10, nullable = false)
-    private String idMunicipio;
+    private int id;
 
-    @Id
-    @Column(name = "idDepartamento", length = 10, nullable = false)
-    private String idDepartamento;
+
 
     @Column(name = "nombre", length = 45)
     private String nombre;
 
+    @JsonBackReference
     @ManyToOne
-    @Id
-    @JoinColumn(name = "idDepartamento", referencedColumnName = "idDepartamento", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "fk_Municipio_Dep"))
+    @JoinColumn(name="idDepartamento")
     private Departamento departamento;
 
 }

@@ -1,62 +1,56 @@
 package com.paqueteria.paqueteria_backend.entidad;
 
-import java.util.Objects;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.paqueteria.paqueteria_backend.entidad.dto.SucursalDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Sucursal")
-@IdClass(SucursalId.class)
+@Table(name="Sucursal")
 @Getter
 @Setter
 public class Sucursal {
-    @Id
-    @Column(name = "idSucursal", length = 10, nullable = false)
-    private String idSucursal;
 
     @Id
-    @Column(name = "idMunicipio", length = 10, nullable = false)
-    private String idMunicipio;
+    @Column(name = "idSucursal")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idSucursal;
 
-    @Column(name = "idDepartamento", length = 10)
-    private String idDepartamento;
+    @JsonIgnoreProperties({"municipio"})
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idDepartamento", referencedColumnName = "idDepartamento")
+    private Departamento departamento;
 
-    @Column(name = "direccion", length = 145)
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "idMunicipio", referencedColumnName = "idMunicipio")
+    private Municipio municipio;
+
+    @Column(name = "direccion")
     private String direccion;
 
-    @Column(name = "nombre", length = 200)
+    @Column(name = "nombre")
     private String nombre;
 
     @Column(name = "esEnlace")
-    private Boolean esEnlace;
+    private boolean esEnlace;
 
     @Column(name = "estado")
-    private Boolean estado;
+    private boolean estado;
 
-    @ManyToOne
-    @Id
-    @JoinColumn(name = "idMunicipio", referencedColumnName = "idMunicipio", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "fk_Sucursal_muni"))
-    private Municipio municipio;
+/*
+    public SucursalDto getSucursalDto(){
 
-    @ManyToOne
-    @Id
-    @JoinColumn(name = "idDepartamento", referencedColumnName = "idDepartamento", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "fk_Sucursal_dep"))
-    private Departamento departamento;
+        SucursalDto suc=new SucursalDto();
+        suc.setDireccion(this.getDireccion());
+        suc.setNombre(this.getNombre());
+        suc.setEsEnlace(this.isEsEnlace());
+        suc.setEstado(this.isEstado());
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Sucursal sucursal = (Sucursal) o;
-        return idSucursal.equals(sucursal.idSucursal) &&
-               idMunicipio.equals(sucursal.idMunicipio);
-    }
+        suc.setDepartamento_id(this.getDepartamento().getId());
+        suc.setDepartamento_id(this.getMunicipio().getId());
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(idSucursal, idMunicipio);
-    }
-
+        return suc;
+    }*/
 }

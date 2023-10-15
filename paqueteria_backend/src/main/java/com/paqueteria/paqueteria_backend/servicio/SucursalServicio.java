@@ -1,59 +1,63 @@
 package com.paqueteria.paqueteria_backend.servicio;
 
-
+import com.paqueteria.paqueteria_backend.entidad.Departamento;
 import com.paqueteria.paqueteria_backend.entidad.Sucursal;
+import com.paqueteria.paqueteria_backend.entidad.dto.SucursalDto;
+import com.paqueteria.paqueteria_backend.repositorio.DepartamentoRepositorio;
+import com.paqueteria.paqueteria_backend.repositorio.SucursalDtoRepositorio;
 import com.paqueteria.paqueteria_backend.repositorio.SucursalRepositorio;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SucursalServicio {
 
     private SucursalRepositorio sucursalRepositorio;
+    private SucursalDtoRepositorio sucursalDtoRepositorio;
 
     /**
      * Constructor
      * @param sucursalRepositorio
      */
-    public SucursalServicio(SucursalRepositorio sucursalRepositorio) {
+    public SucursalServicio(SucursalRepositorio sucursalRepositorio, SucursalDtoRepositorio sucursalDtoRepositorio) {
         this.sucursalRepositorio = sucursalRepositorio;
+        this.sucursalDtoRepositorio=sucursalDtoRepositorio;
     }
 
-    public Sucursal obtenerSucursalId(int id){
-        /**
-         * Aqui en servicio toda la logica
-         */
+
+
+    public Optional<Sucursal> obtenerSucursalId(long id){
         //Hace la consulta por medio del repositorio que accede a la base de datos
-        Sucursal mySucursal=this.sucursalRepositorio.findById(id);
+        Optional<Sucursal> sucursales=this.sucursalRepositorio.findByIdSucursal(id);
 
-        return mySucursal;
+        return sucursales;
     }
 
-    /**
-     * Guardar
-     */
-    public void guardarSucursal(){
-        Sucursal sucursalNueva=new Sucursal();
-
-
-
-    }
-
-    /**
-     * Obtiene todas las sucursales
-     * @param
-     * @return
-     */
-
-    public List<Sucursal> obtenerSucursales(){
-        /**
-         * Aqui en servicio toda la logica
-         */
+    public List<Sucursal> obtenerSucursalesEstado(boolean estado){
         //Hace la consulta por medio del repositorio que accede a la base de datos
-        List<Sucursal> mySucursal=this.sucursalRepositorio.findAll();
+        List<Sucursal> sucursales=this.sucursalRepositorio.findByEstado(estado);
 
-        return mySucursal;
+        return sucursales;
     }
+
+    public ResponseEntity<String> saveSucursal(SucursalDto sucursal){
+        try{
+
+            this.sucursalDtoRepositorio.save(sucursal);
+
+            return new ResponseEntity<>("", HttpStatus.OK);
+
+        } catch(Exception e){
+            System.out.println(e);
+            return new ResponseEntity<>("Error al guardar sucursal: "+e, HttpStatus.CONFLICT);
+        }
+
+    }
+
+
 
 }

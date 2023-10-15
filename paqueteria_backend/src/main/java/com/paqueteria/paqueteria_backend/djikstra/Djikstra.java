@@ -1,11 +1,13 @@
 package com.paqueteria.paqueteria_backend.djikstra;
 
+import com.paqueteria.paqueteria_backend.entidad.Sucursal;
+import com.paqueteria.paqueteria_backend.repositorio.SucursalRepositorio;
+import com.paqueteria.paqueteria_backend.servicio.SucursalServicio;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
-
-import com.paqueteria.paqueteria_backend.entidad.Sucursales;
 
 public class Djikstra {
 
@@ -14,21 +16,21 @@ public class Djikstra {
         this.probarCositas();
     }
 
-    public int[][] crearGrafico(List<Sucursales> sucursales){
+    public int[][] crearGrafico(List<Sucursal> sucursales){
         /*Como aun no tengo la base de datos ni los datos me los voy a fumar */
-        
+
 
         int cantidadSucursales = sucursales.size();
-        
-        int[][] graph = new int[cantidadSucursales][cantidadSucursales]; 
+
+        int[][] graph = new int[cantidadSucursales][cantidadSucursales];
 
         int val1 = 0; // Me dio hueva cambiar todo y se quedo asi :v total lo hice desde que me dijeron que lo hiciera :v
-        for (Sucursales sucursal : sucursales) {
-            System.out.println("Id Sucursal: " + sucursal.getId());
+        for (Sucursal sucursal : sucursales) {
+            System.out.println("Id Sucursal: " + sucursal.getIdSucursal());
             //List<Ruta> rutasSucursal1 = getRutasPorIdOrigen();  Asi deberia de quedar pero aun no esta la clase ni la tabla tons???
             int val2 = 0;
             /*
-            for (Sucursales sucursal2 : sucursales) {                
+            for (Sucursales sucursal2 : sucursales) {
                 for (Ruta ruta : rutasSucursal1) {
                     if (ruta.getDestino() == sucursal2.getId()) {
                         graph[val1][val2] = ruta.getPeso();
@@ -42,10 +44,10 @@ public class Djikstra {
         }
 
         return graph;
-        //Deberia de chonar cuando este todo listo :v y sino pos se arregla 
+        //Deberia de chonar cuando este todo listo :v y sino pos se arregla
     }
-    
-    
+
+
     public String probarCositas(){
 
         int[][] graph = {
@@ -100,7 +102,7 @@ public class Djikstra {
             return;
         }
         printPath(parent, parent[target]);
-        //System.out.print((int)('0' + target) + " ");        
+        //System.out.print((int)('0' + target) + " ");
         System.out.print(target+"->");
     }
 }

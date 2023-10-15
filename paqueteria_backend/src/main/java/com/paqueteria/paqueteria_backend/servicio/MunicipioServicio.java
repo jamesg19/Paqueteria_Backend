@@ -5,6 +5,7 @@ import com.paqueteria.paqueteria_backend.repositorio.MunicipioRepositorio;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MunicipioServicio {
@@ -25,9 +26,10 @@ public class MunicipioServicio {
      * @return
      */
 
-    public List<Municipio> obtenerMunicipios(){
+    public List<Municipio> obtenerMunicipiosDeptoId(int id){
         //Hace la consulta por medio del repositorio que accede a la base de datos
-        List<Municipio> municipios=this.municipioRepositorio.findAll();
+        List<Municipio> municipios=this.municipioRepositorio.findByDepartamentoId(id);
+        //Optional<Municipio> municipios=this.municipioRepositorio.findById(id);
 
         return municipios;
     }
