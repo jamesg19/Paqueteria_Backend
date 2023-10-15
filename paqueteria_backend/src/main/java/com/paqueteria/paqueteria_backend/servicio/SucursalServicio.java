@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +42,13 @@ public class SucursalServicio {
     public List<Sucursal> obtenerSucursalesEstado(boolean estado){
         //Hace la consulta por medio del repositorio que accede a la base de datos
         List<Sucursal> sucursales=this.sucursalRepositorio.findByEstado(estado);
+
+        return sucursales;
+    }
+
+    public Page<Sucursal> obtenerTodasSucursales(Pageable pageable){
+        //Hace la consulta por medio del repositorio que accede a la base de datos
+        Page<Sucursal> sucursales=this.sucursalRepositorio.findAll(pageable);
 
         return sucursales;
     }
