@@ -56,8 +56,14 @@ public class SucursalServicio {
     public ResponseEntity<String> saveSucursal(SucursalDto sucursal){
         try{
 
-            this.sucursalDtoRepositorio.save(sucursal);
-
+            SucursalDto suc=this.sucursalDtoRepositorio.findByIdSucursal(sucursal.getIdSucursal());
+            if(suc != null){
+                System.out.println("Estado: "+sucursal.isEstado());
+                System.out.println("Enlace: "+sucursal.isEsEnlace());
+                suc.setEstado(sucursal.isEstado());
+                suc.setEsEnlace(sucursal.isEsEnlace());
+                this.sucursalDtoRepositorio.save(suc);
+            }
             return new ResponseEntity<>("", HttpStatus.OK);
 
         } catch(Exception e){
