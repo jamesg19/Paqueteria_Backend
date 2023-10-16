@@ -89,7 +89,7 @@ public class SucursalControlador {
     }
 
     @PostMapping("/editar_sucursal")
-    public ResponseEntity<String> saveSucursal(HttpServletRequest request, HttpServletResponse response, @RequestBody SucursalDto sucursal)  {
+    public ResponseEntity<String> editarSucursal(HttpServletRequest request, HttpServletResponse response, @RequestBody SucursalDto sucursal)  {
 
         try {
             //System.out.println(sucursal.getDepartamento().getId());
