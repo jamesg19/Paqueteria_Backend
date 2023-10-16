@@ -23,9 +23,14 @@ public interface SucursalRepositorio extends JpaRepository<Sucursal, String> {
     List<Sucursal> findByEstado(boolean estado);
 
     Optional<Sucursal> findByIdSucursal(long id);
-    //INSERT INTO paqueteria.sucursal (idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado) VALUES (8, 5, 'ddddd', 'nnnnnnnnnn', 1, 1)
-    //@Query("SELECT NEW com.example.model.Sucursal(sDto.id, sDto.departamento, sDto.municipio, sDto.direccion, sDto.nombre, sDto.esEnlace, sDto.estado) FROM SucursalDto sDto WHERE sDto.id = :id")
-    //@Query("")
-    //Sucursal mapDtoToEntity(@Param("id") String id);
-    //Optional<Sucursal> findByIdAndEstado(String id, boolean estado);
+    /**
+     * SELECT S.idSucursal, S.nombre id, (
+     *     SELECT nombre from Departamento where idDepartamento = S.idDepartamento
+     * ) As Departamento,
+     * (
+     *     SELECT nombre from Municipio where idDepartamento = S.idDepartamento and idMunicipio = S.idMunicipio
+     * ) As Municipio
+     * from Sucursal As S;
+     */
+
 }

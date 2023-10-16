@@ -1,4 +1,5 @@
---  partamentos
+-- partamentos
+
 
 INSERT INTO Departamento VALUES (01,"Guatemala","GU");
 INSERT INTO Departamento VALUES (02,"El Progreso","PR");
@@ -23,7 +24,7 @@ INSERT INTO Departamento VALUES (20,"Chiquimula","CQ");
 INSERT INTO Departamento VALUES (21,"Jalapa","JA");
 INSERT INTO Departamento VALUES (22,"Jutiapa","JU");
 
---  Municipios Total 338
+-- Municipios Total 338
 
 INSERT INTO Municipio VALUES (001, 01,"Guatemala");
 INSERT INTO Municipio VALUES (002, 01,"Santa Catarina Pinula");

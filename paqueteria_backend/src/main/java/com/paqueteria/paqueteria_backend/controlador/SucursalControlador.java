@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,7 +61,8 @@ public class SucursalControlador {
     }
 
     @GetMapping("/get_todas_sucursales")
-    public Page<Sucursal> getAllSucursales(HttpServletRequest request, HttpServletResponse response, Pageable pageable)  {
+    public Page<Sucursal> getAllSucursales(HttpServletRequest request, HttpServletResponse response,Pageable pageable  )  {
+
         try {
             Page<Sucursal> departamentos =this.sucursalServicio.obtenerTodasSucursales(pageable);
 
@@ -70,6 +72,7 @@ public class SucursalControlador {
             System.out.println("Error: "+e);
             return null;
         }
+
     }
 
     @PostMapping("/save_sucursal")
@@ -81,7 +84,20 @@ public class SucursalControlador {
         }
         catch( Exception e){
             System.out.println("Error: "+e);
-            return null;
+            return new ResponseEntity<>("", HttpStatus.CONFLICT);
+        }
+    }
+
+    @PostMapping("/editar_sucursal")
+    public ResponseEntity<String> saveSucursal(HttpServletRequest request, HttpServletResponse response, @RequestBody SucursalDto sucursal)  {
+
+        try {
+            //System.out.println(sucursal.getDepartamento().getId());
+            return this.sucursalServicio.saveSucursal(sucursal);
+        }
+        catch( Exception e){
+            System.out.println("Error: "+e);
+            return new ResponseEntity<>("", HttpStatus.CONFLICT);
         }
     }
 

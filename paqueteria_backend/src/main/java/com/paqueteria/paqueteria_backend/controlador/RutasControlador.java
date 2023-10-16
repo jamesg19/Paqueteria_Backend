@@ -7,10 +7,9 @@ import com.paqueteria.paqueteria_backend.servicio.MunicipioServicio;
 import com.paqueteria.paqueteria_backend.servicio.RutaServicio;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -44,6 +43,20 @@ public class RutasControlador {
         catch( Exception e){
             System.out.println("Error: "+e);
             return null;
+        }
+
+    }
+
+    @PostMapping("/save_ruta")
+    public ResponseEntity<String> saveRuta(HttpServletRequest request, HttpServletResponse response, @RequestBody Ruta ruta)  {
+        try {
+            return this.rutaServicio.saveRuta(ruta);
+
+
+        }
+        catch( Exception e){
+            System.out.println("Error: "+e);
+            return new ResponseEntity<>("", HttpStatus.CONFLICT);
         }
 
     }

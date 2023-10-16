@@ -4,6 +4,8 @@ import com.paqueteria.paqueteria_backend.entidad.Municipio;
 import com.paqueteria.paqueteria_backend.entidad.Ruta;
 import com.paqueteria.paqueteria_backend.repositorio.MunicipioRepositorio;
 import com.paqueteria.paqueteria_backend.repositorio.RutaRepositorio;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,6 +44,20 @@ public class RutaServicio {
 
 
         return rutas;
+    }
+
+    public ResponseEntity<String> saveRuta(Ruta ruta){
+        try {
+            //Hace la consulta por medio del repositorio que accede a la base de datos
+            this.rutaRepositorio.save(ruta);
+            System.out.println("Lo guarda...");
+            return new ResponseEntity<>("", HttpStatus.OK);
+
+        } catch(Exception e){
+            System.out.println("Error al guardar: \n"+e);
+            return new ResponseEntity<>("", HttpStatus.CONFLICT);
+
+        }
     }
 
 }

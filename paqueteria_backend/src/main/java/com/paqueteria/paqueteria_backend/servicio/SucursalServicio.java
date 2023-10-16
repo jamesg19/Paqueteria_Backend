@@ -46,7 +46,7 @@ public class SucursalServicio {
         return sucursales;
     }
 
-    public Page<Sucursal> obtenerTodasSucursales(Pageable pageable){
+    public Page<Sucursal> obtenerTodasSucursales(Pageable pageable ){
         //Hace la consulta por medio del repositorio que accede a la base de datos
         Page<Sucursal> sucursales=this.sucursalRepositorio.findAll(pageable);
 
