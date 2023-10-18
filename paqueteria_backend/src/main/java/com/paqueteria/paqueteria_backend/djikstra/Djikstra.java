@@ -1,9 +1,11 @@
 package com.paqueteria.paqueteria_backend.djikstra;
 
+import com.paqueteria.paqueteria_backend.entidad.Ruta;
 import com.paqueteria.paqueteria_backend.entidad.Sucursal;
 import com.paqueteria.paqueteria_backend.repositorio.SucursalRepositorio;
 import com.paqueteria.paqueteria_backend.servicio.SucursalServicio;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -11,40 +13,85 @@ import java.util.PriorityQueue;
 
 public class Djikstra {
 
+    private boolean huboCambio;
+    private int[][] graph;
+    private List<Sucursal> rutaSucursales;
+    private List<Sucursal> sucursales;
+    
+
     public Djikstra(){
         System.out.print("Inicializando el algoritmo de djikstra");
-        this.probarCositas();
+        this.huboCambio = false;        
     }
 
-    public int[][] crearGrafico(List<Sucursal> sucursales){
-        /*Como aun no tengo la base de datos ni los datos me los voy a fumar */
+    public boolean getHuboCambio(){
+        return this.huboCambio;
+    }
+
+    public void setHuboCambio(boolean hayCambio){
+        this.huboCambio = hayCambio;
+    }   
+    
+    public List<Sucursal> buscarMejorRuta(List<Sucursal> sucursales,List<Ruta> rutas, int origen, int destino){
+        //Aqui al ya tener todo se puede guardar el grafico y utilizar  if (huboCambio)
+        this.sucursales = sucursales;
+        crearGrafico(this.sucursales, rutas);
 
 
+        int valOrigenGrafico = -1;
+        int valDestinoGrafico = -1;
+        int val = 0;
+        for (Sucursal sucursal : this.sucursales) {
+            if (sucursal.getIdSucursal() == origen) {
+                valOrigenGrafico = val;
+            }
+            if (sucursal.getIdSucursal() == destino) {
+                valDestinoGrafico = val;
+            }
+            if(valOrigenGrafico != -1 && valDestinoGrafico != -1){
+                break;
+            }
+            val += 1;
+        }
+        int[] parent = dijkstra(this.graph,valOrigenGrafico,valDestinoGrafico);
+        this.rutaSucursales = new ArrayList<>(); 
+        //printPath(parent,valDestinoGrafico);
+        validarSucursales(parent,valDestinoGrafico);
+
+        return this.rutaSucursales;
+    }
+        
+
+    public void crearGrafico(List<Sucursal> sucursales,List<Ruta> rutas){        
         int cantidadSucursales = sucursales.size();
 
-        int[][] graph = new int[cantidadSucursales][cantidadSucursales];
+        this.graph = new int[cantidadSucursales][cantidadSucursales];
 
-        int val1 = 0; // Me dio hueva cambiar todo y se quedo asi :v total lo hice desde que me dijeron que lo hiciera :v
+        int val1 = 0;
         for (Sucursal sucursal : sucursales) {
-            System.out.println("Id Sucursal: " + sucursal.getIdSucursal());
-            //List<Ruta> rutasSucursal1 = getRutasPorIdOrigen();  Asi deberia de quedar pero aun no esta la clase ni la tabla tons???
+            //System.out.println("Id Sucursal: " + sucursal.getIdSucursal());            
             int val2 = 0;
-            /*
-            for (Sucursales sucursal2 : sucursales) {
-                for (Ruta ruta : rutasSucursal1) {
-                    if (ruta.getDestino() == sucursal2.getId()) {
-                        graph[val1][val2] = ruta.getPeso();
+            for (Sucursal sucursal2 : sucursales) {
+                int peso = 0;
+                for (Ruta ruta : rutas) {
+                    if (ruta.getOrigen().getIdSucursal() == sucursal.getIdSucursal() && ruta.getDestino().getIdSucursal() == sucursal2.getIdSucursal()) {
+                        peso = (int)Math.round(ruta.getDistancia());
                         break;
                     }
                 }
+                this.graph[val1][val2] = peso;
                 val2 +=1;
-            }
-            */
+            }            
             val1 +=1;
-        }
+        }                
+    }
 
-        return graph;
-        //Deberia de chonar cuando este todo listo :v y sino pos se arregla
+    private void validarSucursales(int[] parent, int target){
+        if (target == -1) {
+            return;
+        }
+        validarSucursales(parent, parent[target]);        
+        this.rutaSucursales.add(this.sucursales.get(target));
     }
 
 
@@ -60,12 +107,13 @@ public class Djikstra {
         };
 
         int source = 0; // Nodo S
-        int target = 4; // Nodo T
-        return dijkstra(graph, source, target);
-
+        int target = 5; // Nodo T
+        int[] parent = dijkstra(graph, source, target);
+        printPath(parent, target);
+        return "";
     }
 
-    public String dijkstra(int[][] graph, int source, int target) {
+    public int[] dijkstra(int[][] graph, int source, int target) {
         int V = graph.length;
         System.out.println("V: "+V);
         int[] distance = new int[V];
@@ -91,10 +139,10 @@ public class Djikstra {
                 }
             }
         }
-        printPath(parent, target);
+        //printPath(parent, target);
         // La distancia más corta desde S hasta T es almacenada en distance[T]
         System.out.println("La ruta más corta desde S hasta T es: " + distance[target]);
-        return "La ruta más corta desde S hasta T es: " + distance[target];
+        return parent;
     }
     // Método para imprimir el camino desde el nodo de origen hasta el nodo de destino
     public void printPath(int[] parent, int target) {
