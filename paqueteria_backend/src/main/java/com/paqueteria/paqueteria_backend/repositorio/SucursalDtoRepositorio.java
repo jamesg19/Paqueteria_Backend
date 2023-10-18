@@ -11,5 +11,5 @@ import java.util.Optional;
 @Repository
 public interface SucursalDtoRepositorio extends JpaRepository<SucursalDto, String> {
 
-
+    SucursalDto findByIdSucursal(int id);
 }
