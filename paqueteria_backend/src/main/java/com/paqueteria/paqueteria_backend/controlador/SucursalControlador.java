@@ -3,6 +3,7 @@ package com.paqueteria.paqueteria_backend.controlador;
 
 import com.paqueteria.paqueteria_backend.entidad.Departamento;
 import com.paqueteria.paqueteria_backend.entidad.Sucursal;
+import com.paqueteria.paqueteria_backend.entidad.dto.SucursalDepto;
 import com.paqueteria.paqueteria_backend.entidad.dto.SucursalDto;
 import com.paqueteria.paqueteria_backend.servicio.DepartamentoServicio;
 import com.paqueteria.paqueteria_backend.servicio.SucursalServicio;
@@ -93,7 +94,7 @@ public class SucursalControlador {
 
         try {
             //System.out.println(sucursal.getDepartamento().getId());
-            return this.sucursalServicio.saveSucursal(sucursal);
+            return this.sucursalServicio.editarSucursal(sucursal);
         }
         catch( Exception e){
             System.out.println("Error: "+e);
@@ -101,6 +102,20 @@ public class SucursalControlador {
         }
     }
 
+
+    @GetMapping("/get_sucursales_departamento")
+    public List<SucursalDepto> getSucursalPorDepartamento(HttpServletRequest request, HttpServletResponse response)  {
+
+        try {
+            //System.out.println(sucursal.getDepartamento().getId());
+            List<SucursalDepto> obj= this.sucursalServicio.obtenerSucursalPorDepartamento();
+            return obj;
+        }
+        catch( Exception e){
+            System.out.println("Error: "+e);
+            return null;
+        }
+    }
 
 
 
