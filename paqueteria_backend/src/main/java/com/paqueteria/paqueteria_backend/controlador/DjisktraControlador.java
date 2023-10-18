@@ -3,8 +3,10 @@ package com.paqueteria.paqueteria_backend.controlador;
 
 import com.paqueteria.paqueteria_backend.djikstra.Djikstra;
 import com.paqueteria.paqueteria_backend.djikstra.DjisktraTest;
+import com.paqueteria.paqueteria_backend.entidad.Ruta;
 import com.paqueteria.paqueteria_backend.entidad.Sucursal;
 import com.paqueteria.paqueteria_backend.repositorio.SucursalRepositorio;
+import com.paqueteria.paqueteria_backend.servicio.RutaServicio;
 import com.paqueteria.paqueteria_backend.servicio.SucursalServicio;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,34 +21,69 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/ruta_optima")
 public class DjisktraControlador {
-    //private SucursalRepositorio sucursalRepositorio;
+    private SucursalServicio sucursalServicio;
+    private RutaServicio rutaServicio;
+    private Djikstra djikstra;
 
-//localhost:8443/api/sucursales/get_sucursales
+//http://localhost:8443/api/ruta_optima/get_ruta?origen=2&destino=3
 
     /**
      * Constructor del repositorio
      * Encargado de recibir las peticiones Http
      * @param
      */
-    public DjisktraControlador() {
-        //this.sucursalRepositorio=sucursalRepositorio;
-
+    public DjisktraControlador(SucursalServicio sucursalServicio,RutaServicio rutaServicio) {
+        this.sucursalServicio=sucursalServicio;
+        this.rutaServicio = rutaServicio;
+        this.djikstra = new Djikstra();
     }
 
 
 
     @GetMapping("/get_ruta")
     public String getRUta(HttpServletRequest request, HttpServletResponse response, String origen, String destino)  {
-        try {
-            //DjisktraTest optimizador= new DjisktraTest(origen, destino, this.sucursalRepositorio );
+        try {            
+            List<Sucursal> sucursales = this.sucursalServicio.obtenerSucursalesEstado(true);
+            List<Ruta> rutas = this.rutaServicio.obtenerRutas();                        
 
-            return "funciona";
+            /*String comoseVeElGrafico = "";
+            for (int i = 0; i < graph.length; i++) {
+                // Recorre cada elemento de la fila actual
+                for (int j = 0; j < graph[i].length; j++) {
+                    comoseVeElGrafico += graph[i][j] + " "; // Imprime el valor y un espacio en blanco
+                }
+                comoseVeElGrafico += '\n'; // Cambia de línea después de imprimir una fila completa
+            }*/
+            
+            List<Sucursal> valRuta = this.djikstra.buscarMejorRuta(sucursales, rutas, Integer.parseInt(origen), Integer.parseInt(destino));
+
+            /*
+            System.out.println("Inicio de ruta");
+            for (Sucursal sucursal : valRuta) {
+                System.out.println("Sucursal ID: " + sucursal.getIdSucursal());
+            }
+            System.out.println("Fin de ruta");
+             */
+            
+            return "funciona: " + origen + " , " + destino + "Ruta Optima: ";
         }
         catch( Exception e){
             System.out.println("Error: "+e);
             return null;
         }
-    }
+    }    
+
+    @GetMapping("/set_cambio_ruta")
+    public String getRUta(HttpServletRequest request, HttpServletResponse response)  {
+        try {
+            this.djikstra.setHuboCambio(true);
+            return "Ruta Cambiada";
+        }
+        catch( Exception e){
+            System.out.println("Error: "+e);
+            return null;
+        }
+    }   
 
 
 
