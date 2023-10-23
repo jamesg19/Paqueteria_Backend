@@ -52,7 +52,6 @@ public class SucursalControlador {
     public List<Sucursal> getSucursales(HttpServletRequest request, HttpServletResponse response, @RequestParam boolean estado)  {
         try {
             List<Sucursal> departamentos =this.sucursalServicio.obtenerSucursalesEstado(estado);
-
             return departamentos;
         }
         catch( Exception e){
@@ -102,10 +101,8 @@ public class SucursalControlador {
         }
     }
 
-
     @GetMapping("/get_sucursales_departamento")
     public List<SucursalDepto> getSucursalPorDepartamento(HttpServletRequest request, HttpServletResponse response)  {
-
         try {
             //System.out.println(sucursal.getDepartamento().getId());
             List<SucursalDepto> obj= this.sucursalServicio.obtenerSucursalPorDepartamento();
@@ -116,7 +113,4 @@ public class SucursalControlador {
             return null;
         }
     }
-
-
-
 }

@@ -24,10 +24,11 @@ public class EnvioServicio {
     public List<Envio> obtenerEnvios(){
         return this.envioRepo.findAll();
     }
-
-
-
     public EnvioSimple saveEnvio(EnvioSimple envio){
         return this.envioSimpleRepo.save(envio);
     }
+
+    public List<EnvioSimple> getEnviosIdSucursalOrigen(long id){return this.envioSimpleRepo.findEnvioSimpleByIdSucursalOrigen(id);}
+
+    public List<EnvioSimple> getAll(){return this.envioSimpleRepo.findAll();}
 }

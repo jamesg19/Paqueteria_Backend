@@ -55,4 +55,10 @@ public class PersonaControlador {
             var created = personaServicio.savePersona(persona);
             return ResponseEntity.ok(created);
     }
+
+    @PutMapping("/editar_persona")
+    public ResponseEntity<Persona> editarPersona(@RequestBody Persona persona) throws Error{
+        var created = personaServicio.updatePersona(persona);
+        return ResponseEntity.ok(created);
+    }
 }

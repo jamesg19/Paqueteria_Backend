@@ -26,4 +26,5 @@ public class PersonaServicio {
     public Persona savePersona(Persona persona){
         return personaRepo.save(persona);
     }
+    public Persona updatePersona(Persona persona){return this.personaRepo.save(persona);}
 }

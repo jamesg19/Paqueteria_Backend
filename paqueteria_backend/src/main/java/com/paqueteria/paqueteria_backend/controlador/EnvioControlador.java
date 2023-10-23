@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -26,7 +27,16 @@ public class EnvioControlador {
 
     @PostMapping("/save_envio")
     public ResponseEntity<EnvioSimple> save(@RequestBody EnvioSimple envioEntrada)throws Error {
-        System.out.println(envioEntrada);
         return ResponseEntity.ok(this.envioServicio.saveEnvio(envioEntrada));
+    }
+
+    @GetMapping("/get_sucursal_id")
+    public ResponseEntity<List<EnvioSimple>> getBySucursalOrige(@RequestParam long id)throws Error{
+        return ResponseEntity.ok(this.envioServicio.getEnviosIdSucursalOrigen(id));
+    }
+
+    @GetMapping("/get_all")
+    public ResponseEntity<List<EnvioSimple>> getAll() throws Error{
+        return ResponseEntity.ok(this.envioServicio.getAll());
     }
 }
