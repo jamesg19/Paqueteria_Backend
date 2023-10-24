@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +46,55 @@ public class RutasControlador {
             System.out.println("Error: "+e);
             return null;
         }
+
+    }
+    @GetMapping("/get_rutas_mapa")
+    public List<Ruta> getRutasMapa(HttpServletRequest request, HttpServletResponse response)  {
+        try {
+            List<Ruta> rutass=this.rutaServicio.obtenerRutasMapa();
+            int contador1 = 0;
+            int contador2 = 0;
+            // Crear un iterador para recorrer la lista
+            Iterator<Ruta> iterator = rutass.iterator();
+            List<Ruta> listaDeRutasFiltradas = rutass;
+            while (iterator.hasNext()) {
+                Ruta ruta = iterator.next();
+
+
+
+                boolean esReverso = false;
+                for (Ruta otraRuta : rutass) {
+                    if (ruta.getOrigen().getIdSucursal() == otraRuta.getDestino().getIdSucursal() &&
+                            ruta.getDestino().getIdSucursal() == otraRuta.getOrigen().getIdSucursal()) {
+                        esReverso = true;
+                        contador1+=1;
+                        System.out.println("--");
+                        System.out.println("Origen: "+ruta.getOrigen().getIdSucursal()+" Destino: "+ruta.getDestino().getIdSucursal());
+                        System.out.println("Origen: "+otraRuta.getOrigen().getIdSucursal()+" Destino: "+otraRuta.getDestino().getIdSucursal());
+                        System.out.println();
+                        break;
+                    }
+                }
+                if (esReverso==true) {
+                    // Remover el elemento que cumple con las condiciones originales
+                    System.out.println("Remueve");
+                    iterator.remove();
+                    listaDeRutasFiltradas.remove(ruta);
+                }
+
+
+
+                }
+            System.out.println("Repetidos "+contador1);
+            System.out.println(listaDeRutasFiltradas.size());
+            return listaDeRutasFiltradas;
+
+        }
+        catch( Exception e){
+            System.out.println("Error: "+e);
+            return null;
+        }
+
 
     }
 

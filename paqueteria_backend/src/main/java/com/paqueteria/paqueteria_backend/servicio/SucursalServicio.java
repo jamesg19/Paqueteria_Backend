@@ -68,6 +68,8 @@ public class SucursalServicio {
 
                 suc.setEstado(sucursal.isEstado());
                 suc.setEsEnlace(sucursal.isEsEnlace());
+                suc.setLongitud(sucursal.getLongitud());
+                suc.setLatitud(sucursal.getLatitud());
                 this.sucursalDtoRepositorio.save(suc);
             }
             return new ResponseEntity<>("", HttpStatus.OK);

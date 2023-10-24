@@ -38,6 +38,14 @@ public class RutaServicio {
         return rutas;
     }
 
+    public List<Ruta> obtenerRutasMapa(){
+        //Hace la consulta por medio del repositorio que accede a la base de datos
+        List<Ruta> rutas=this.rutaRepositorio.findByOrigenEstado(true);
+
+
+        return rutas;
+    }
+
     public Optional<Ruta> obtenerRutaId(int id){
         //Hace la consulta por medio del repositorio que accede a la base de datos
         Optional<Ruta> rutas=this.rutaRepositorio.findById(id);

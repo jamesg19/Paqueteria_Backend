@@ -38,6 +38,12 @@ public class SucursalDto {
     @Column(name = "estado")
     private boolean estado;
 
+    @Column(name = "longitud")
+    private double longitud;
+
+    @Column(name = "latitud")
+    private double latitud;
+
 
 
 }

@@ -15,6 +15,7 @@ public class Ruta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idSucursalOrigen", referencedColumnName = "idSucursal")
     private Sucursal origen;
