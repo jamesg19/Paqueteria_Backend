@@ -39,10 +39,12 @@ public class DjisktraControlador {
     }
 
 
-
+    //si deviuelve vacio no esta activa
+    //si devuelve solo el destino es poque no existe
     @GetMapping("/get_ruta")
-    public String getRUta(HttpServletRequest request, HttpServletResponse response, String origen, String destino)  {
-        try {            
+    public List<Sucursal> getRUta(HttpServletRequest request, HttpServletResponse response, String origen, String destino)  {
+        try {
+
             List<Sucursal> sucursales = this.sucursalServicio.obtenerSucursalesEstado(true);
             List<Ruta> rutas = this.rutaServicio.obtenerRutas();                        
 
@@ -64,8 +66,9 @@ public class DjisktraControlador {
             }
             System.out.println("Fin de ruta");
              */
-            
-            return "funciona: " + origen + " , " + destino + "Ruta Optima: ";
+
+            System.out.println("funciona: " + origen + " , " + destino + "Ruta Optima: ");
+            return valRuta;
         }
         catch( Exception e){
             System.out.println("Error: "+e);
