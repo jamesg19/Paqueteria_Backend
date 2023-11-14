@@ -51,7 +51,8 @@ public class PersonaControlador {
 
     @PostMapping("/save_persona")
     public ResponseEntity<Persona> savePersona(@RequestBody Persona persona) throws Error{
-            if(personaServicio.obtenerPersonaNit(persona.getNit()).isPresent())throw new Error("Usuario Repetido",HttpStatus.BAD_REQUEST);
+            if(personaServicio.obtenerPersonaNit(persona.getNit()).isPresent())
+                throw new Error("Usuario Repetido",HttpStatus.BAD_REQUEST);
             var created = personaServicio.savePersona(persona);
             return ResponseEntity.ok(created);
     }
