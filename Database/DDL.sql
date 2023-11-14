@@ -231,6 +231,7 @@ CREATE TABLE IF NOT EXISTS `paqueteria`.`Historico_Sucursales` (
   `idHistorico` INT(11) NOT NULL AUTO_INCREMENT,
   `idEnvio` INT(11) NULL DEFAULT NULL,
   `idSucursal` INT(11) NULL DEFAULT NULL,
+  `idVehiculo` INT (11) NOT NULL,
   `fecha` DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (`idHistorico`),
   INDEX `fk_Historico_Sucursales_Envio_idx` (`idEnvio` ASC) VISIBLE,
