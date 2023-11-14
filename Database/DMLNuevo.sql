@@ -415,7 +415,7 @@ INSERT INTO Ruta VALUES (117,50,4,150,0,0);
 --VEHICULOS
 --Los vehiculos estan iguales lo que si es que agregue algunos a las sucursales que se necesitan
 
-INSERT INTO paqueteria.vehiculo (idVehiculo, marca,tipo, placa, tonelage, anio, noAsientos, capacidadVol, capacidadTon)
+INSERT INTO paqueteria.Vehiculo (idVehiculo, marca,tipo, placa, tonelage, anio, noAsientos, capacidadVol, capacidadTon)
 VALUES (1,'TOYOTA','PICKUP', 'P123SDMN', '2', '2014', 2, 2, 1),
        (2,'HONDA','PICKUP', 'P123SDM', '2', '2010', 2, 2, 1),
        (3,'ISUZU','CAMION', 'C-987ABC', '2', '2010', 2, 2, 1),
@@ -442,7 +442,7 @@ VALUES (1,'TOYOTA','PICKUP', 'P123SDMN', '2', '2014', 2, 2, 1),
        (24, 'ISUZU', 'CAMION', 'C-321MNO', '2', '2016', 2, 2, 1),
        (25, 'MITSUBISHI', 'CAMION', 'C-876PQR', '2', '2019', 2, 2, 1);
 
-INSERT INTO paqueteria.vehiculo_sucursal
+INSERT INTO paqueteria.Vehiculo_Sucursal
     (idVehiculo, idSucursal, fechaCompra) VALUES
     (1, 1, '2023-10-20 12:33:18'),
     (3, 10, '2023-10-20 12:33:18'),
@@ -456,7 +456,7 @@ INSERT INTO paqueteria.vehiculo_sucursal
     (22, 45, '2023-10-20 12:33:18'),
     (23, 45, '2023-10-20 12:33:18'),
     (24, 14, '2023-10-20 12:33:18'),
-    (25, 15, '2023-10-20 12:33:18'),
+    (25, 15, '2023-10-20 12:33:18')
     ;
 
 
