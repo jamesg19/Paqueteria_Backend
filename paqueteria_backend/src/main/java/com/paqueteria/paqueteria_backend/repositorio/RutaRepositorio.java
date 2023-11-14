@@ -15,6 +15,8 @@ public interface RutaRepositorio extends  JpaRepository<Ruta, Long> {
 
     List<Ruta> findAll();
 
+    List<Ruta> findByOrigenEstado(boolean estado);
+
     /**
      * Busca si el destino esta disponible estado=(true/false)
      * @param estado
