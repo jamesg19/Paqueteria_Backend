@@ -371,18 +371,26 @@ INSERT INTO Municipio VALUES (22017, 22,"Quesada");
 -- Les deje el mismo id que las que estan en el otro documento
 
 -- SUCURSALES
+-- 59,51,42,58,11,14,8,9,1,50,4
+--Agregue la 4 porque la 1 solo tenia ruta  a la 4
+
 INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (1, 16, 16009, 'DIRECCION 1A', 'SUCURSAL ALTA VERAPAZ 1', 1, 1, 15.473058, -90311858);
 INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (4, 16, 16001, 'DIRECCION 4A', 'SUCURSAL ALTA VERAPAZ 4', 1, 0, 15.470203, -90391952);
-INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (10, 20, 20001, 'DIRECCION 1C', 'SUCURSAL CHIQUIMULA 1', 1, 1, 14.796817, -89542253);
+INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (8, 4, 4001, 'DIRECCION 1C', 'SUCURSAL CHIMALTENANGO 1', 1, 1, 14.658462, -90817723);
+INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (9, 4, 4006, 'DIRECCION 2C', 'SUCURSAL CHIMALTENANGO 2', 1, 0, 14.759636, -90988555);
+INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (11, 5, 5001, 'DIRECCION 1E', 'SUCURSAL ESCUINTLA 1', 1, 1, 14.293687, -90783052);
 INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (14, 1, 1001, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 1', 1, 1, 14.632534, -90509313);
-INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (15, 1, 1001, 'DIRECCION 2G', 'SUCURSAL GUATEMALA 2', 1, 1, 14.618158, -90525710);
-INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (44, 18, 18001, 'DIRECCION 1I', 'SUCURSAL IZABAL 1', 1, 1, 15.710531, -88584358);
-INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (45, 18, 18004, 'DIRECCION 2I', 'SUCURSAL IZABAL 2', 1, 0, 15.473818, -88841622);
-INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (48, 22, 22001, 'DIRECCION 1J', 'SUCURSAL JUTIAPA 1', 1, 1, 14.638964, -89974817);
+INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (42, 13, 13001, 'DIRECCION 1H', 'SUCURSAL HUEHUETENANGO 1', 1, 1, 15.318132, -91494273);
 INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (50, 17, 17001, 'DIRECCION 1P', 'SUCURSAL PETEN 1', 1, 1, 16.916206, -89885350);
+INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (51, 9, 9001, 'DIRECCION 1Q', 'SUCURSAL QUETZALTENANGO 1', 1, 1, 14.846059, -91535813);
+INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (58, 11, 11001, 'DIRECCION 1R', 'SUCURSAL RETALHULEU 1', 1, 1, 14.532962, -91680599);
+INSERT INTO paqueteria.Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (59, 12, 12015, 'DIRECCION 1S', 'SUCURSAL SAN MARCOS 1', 1, 1, 14.911192, -92053164);
+
+
 
 --RUTAS
 -- Aqui tambien estan solo las rutas necesarias
+-- 1,4,8,9,11,14,42,50,51,58,59
 
 INSERT INTO Ruta VALUES (001,4,1,9.2,0,0);
 INSERT INTO Ruta VALUES (049,1,4,9.2,0,0);
@@ -390,26 +398,32 @@ INSERT INTO Ruta VALUES (049,1,4,9.2,0,0);
 INSERT INTO Ruta VALUES (097,4,14,211,0,0);
 INSERT INTO Ruta VALUES (108,14,4,211,0,0);
 
-INSERT INTO Ruta VALUES (011,14,15,2,0,0);
-INSERT INTO Ruta VALUES (059,15,14,2,0,0);
-
-INSERT INTO Ruta VALUES (106,14,48,123,0,0);
-INSERT INTO Ruta VALUES (114,48,14,123,0,0);
-
-INSERT INTO Ruta VALUES (100,10,48,92,0,0);
-INSERT INTO Ruta VALUES (130,48,10,92,0,0);
-
-INSERT INTO Ruta VALUES (101,10,45,142,0,0);
-INSERT INTO Ruta VALUES (110,45,10,142,0,0);
-
-INSERT INTO Ruta VALUES (037,45,44,54,0,0);
-INSERT INTO Ruta VALUES (087,44,45,54,0,0);
-
-INSERT INTO Ruta VALUES (111,45,50,142,0,0);
-INSERT INTO Ruta VALUES (118,50,45,142,0,0);
-
 INSERT INTO Ruta VALUES (096,4,50,150,0,0);
 INSERT INTO Ruta VALUES (117,50,4,150,0,0);
+
+INSERT INTO Ruta VALUES (056,8,9,34,0,0);
+INSERT INTO Ruta VALUES (007,9,8,34,0,0);
+
+INSERT INTO Ruta VALUES (099,9,14,51,0,0);
+INSERT INTO Ruta VALUES (104,14,9,51,0,0);
+
+INSERT INTO Ruta VALUES (098,9,51,148,0,0);
+INSERT INTO Ruta VALUES (130,51,9,148,0,0); -- Esta la agregue porque no existia
+
+INSERT INTO Ruta VALUES (103,11,14,67,0,0);
+INSERT INTO Ruta VALUES (105,14,11,67,0,0);
+
+INSERT INTO Ruta VALUES (102,11,58,132,0,0);
+INSERT INTO Ruta VALUES (125,58,11,132,0,0);
+
+INSERT INTO Ruta VALUES (109,42,51,90,0,0);
+INSERT INTO Ruta VALUES (123,51,42,90,0,0);
+
+INSERT INTO Ruta VALUES (120,51,58,75,0,0);
+INSERT INTO Ruta VALUES (126,58,51,75,0,0);
+
+INSERT INTO Ruta VALUES (119,51,59,50,0,0);
+INSERT INTO Ruta VALUES (127,59,51,50,0,0);
 
 
 --VEHICULOS
@@ -443,32 +457,101 @@ VALUES (1,'TOYOTA','PICKUP', 'P123SDMN', '2', '2014', 2, 2, 1),
        (25, 'MITSUBISHI', 'CAMION', 'C-876PQR', '2', '2019', 2, 2, 1);
 
 INSERT INTO paqueteria.Vehiculo_Sucursal
-    (idVehiculo, idSucursal, fechaCompra) VALUES
-    (1, 1, '2023-10-20 12:33:18'),
-    (3, 10, '2023-10-20 12:33:18'),
-    (6, 14, '2023-10-20 12:33:18'),
-    (9, 44, '2023-10-20 12:33:18'),
-    (11, 48, '2023-10-20 12:33:18'),
-    (12, 50, '2023-10-20 12:33:18'),
-    (19, 4, '2023-10-20 12:33:18'),
-    (20, 4, '2023-10-20 12:33:18'),
-    (21, 50, '2023-10-20 12:33:18'),
-    (22, 45, '2023-10-20 12:33:18'),
-    (23, 45, '2023-10-20 12:33:18'),
-    (24, 14, '2023-10-20 12:33:18'),
-    (25, 15, '2023-10-20 12:33:18')
+    (idVehiculo, idSucursal, fechaCompra) VALUES -- 59,51,42,58,11,14,8,9,1,50
+    (1, 59, '2023-10-20 12:33:18'),
+    (2, 59, '2023-10-20 12:33:18'),
+    (3, 51, '2023-10-20 12:33:18'),
+    (4, 51, '2023-10-20 12:33:18'),
+    (5, 42, '2023-10-20 12:33:18'),
+    (6, 42, '2023-10-20 12:33:18'),
+    (7, 58, '2023-10-20 12:33:18'),
+    (8, 58, '2023-10-20 12:33:18'),
+    (9, 11, '2023-10-20 12:33:18'),
+    (10, 11, '2023-10-20 12:33:18'),
+    (11, 14, '2023-10-20 12:33:18'),
+    (12, 14, '2023-10-20 12:33:18'),
+    (13, 8, '2023-10-20 12:33:18'),
+    (14, 8, '2023-10-20 12:33:18'),
+    (15, 9, '2023-10-20 12:33:18'),
+    (16, 9, '2023-10-20 12:33:18'),
+    (17, 1, '2023-10-20 12:33:18'),
+    (18, 1, '2023-10-20 12:33:18'),
+    (19, 50, '2023-10-20 12:33:18'),
+    (20, 50, '2023-10-20 12:33:18'),
+    (21, 59, '2023-10-20 12:33:18'),
+    (22, 51, '2023-10-20 12:33:18'),
+    (23, 42, '2023-10-20 12:33:18'),
+    (24, 58, '2023-10-20 12:33:18'),
+    (25, 11, '2023-10-20 12:33:18')
     ;
 
+--ROLES
+INSERT INTO Rol (`nombre`, `descripcion`) VALUES
+('Gerente de Operaciones Logísticas', 'Responsable de supervisar y optimizar las operaciones diarias de recepción, almacenamiento y envío de paquetes. Coordina equipos para garantizar eficiencia y cumplimiento de plazos.'),
+('Especialista en Rastreo y Seguimiento', 'Encargado de monitorear el movimiento de los paquetes en tiempo real. Responde a consultas de clientes sobre la ubicación y el estado de sus envíos.'),
+('Coordinador de Distribución', 'Organiza y gestiona la entrega de paquetes a destinatarios finales, asegurando la puntualidad y la integridad de los envíos.'),
+('Inspector de Calidad de Empaques', 'Evalúa y asegura la calidad del embalaje de los paquetes para prevenir daños durante el transporte y garantizar la satisfacción del cliente.'),
+('Agente de Atención al Cliente', 'Brinda asistencia y resuelve consultas de clientes relacionadas con envíos, horarios, tarifas y otros servicios de paquetería.'),
+('Especialista en Aduanas', 'Encargado de gestionar los trámites aduaneros para envíos internacionales, asegurando el cumplimiento de regulaciones y normativas.'),
+('Conductor de Entregas', 'Responsable de conducir vehículos de reparto y entregar paquetes de manera segura y oportuna a los destinatarios finales.'),
+('Técnico de Mantenimiento de Vehículos', 'Realiza el mantenimiento preventivo y correctivo de la flota de vehículos de la empresa de paquetería.'),
+('Analista de Datos Logísticos', 'Recopila y analiza datos relacionados con las operaciones logísticas para identificar áreas de mejora y aumentar la eficiencia.'),
+('Especialista en Seguridad de Almacén', 'Garantiza la seguridad física y de datos en los almacenes de la empresa de paquetería, implementando medidas preventivas y de control.');
 
 
+--PERSONAS
+
+INSERT INTO Persona (`nombre`, `edad`, `domicilio`, `celular`, `nit`, `password`) VALUES
+('Persona 1', 30, 'Calle 1 Ciudad A', '123456789', '987654321', 'admin123'),
+('Persona 2', 25, 'Calle 2 Ciudad B', '123456789', '987654322', 'admin123'),
+('Persona 3', 25, 'Calle 3 Ciudad C', '123456789', '987654323', 'admin123'),
+('Persona 4', 25, 'Calle 4 Ciudad D', '123456789', '987654324', 'admin123'),
+('Persona 5', 25, 'Calle 5 Ciudad E', '123456789', '987654325', 'admin123'),
+('Persona 6', 25, 'Calle 6 Ciudad F', '123456789', '987654326', 'admin123'),
+('Persona 7', 25, 'Calle 7 Ciudad G', '123456789', '987654327', 'admin123'),
+('Persona 8', 25, 'Calle 8 Ciudad H', '123456789', '987654328', 'admin123'),
+('Persona 9', 25, 'Calle 9 Ciudad I', '123456789', '987654329', 'admin123'),
+('Persona 10', 25, 'Calle 0 Ciudad J', '123456789', '987654330', 'admin123'),
+('Persona 11', 30, 'Calle 1 Ciudad A', '123456789', '987654331', 'admin123'),
+('Persona 12', 25, 'Calle 2 Ciudad B', '123456789', '987654332', 'admin123'),
+('Persona 13', 25, 'Calle 3 Ciudad C', '123456789', '987654333', 'admin123'),
+('Persona 14', 25, 'Calle 4 Ciudad D', '123456789', '987654334', 'admin123'),
+('Persona 15', 25, 'Calle 5 Ciudad E', '123456789', '987654335', 'admin123'),
+('Persona 16', 25, 'Calle 6 Ciudad F', '123456789', '987654336', 'admin123'),
+('Persona 17', 25, 'Calle 7 Ciudad G', '123456789', '987654337', 'admin123'),
+('Persona 18', 25, 'Calle 8 Ciudad H', '123456789', '987654338', 'admin123'),
+('Persona 19', 25, 'Calle 9 Ciudad I', '123456789', '987654339', 'admin123'),
+('Persona 20', 25, 'Calle 0 Ciudad J', '123456789', '987654340', 'admin123'),
+('Persona 21', 30, 'Calle 1 Ciudad A', '123456789', '987654341', 'admin123'),
+('Persona 22', 25, 'Calle 2 Ciudad B', '123456789', '987654342', 'admin123'),
+('Persona 23', 25, 'Calle 3 Ciudad C', '123456789', '987654343', 'admin123'),
+('Persona 24', 25, 'Calle 4 Ciudad D', '123456789', '987654344', 'admin123'),
+('Persona 25', 25, 'Calle 5 Ciudad E', '123456789', '987654345', 'admin123'),
+('Persona 26', 25, 'Calle 6 Ciudad F', '123456789', '987654346', 'admin123'),
+('Persona 27', 25, 'Calle 7 Ciudad G', '123456789', '987654347', 'admin123'),
+('Persona 28', 25, 'Calle 8 Ciudad H', '123456789', '987654348', 'admin123'),
+('Persona 29', 25, 'Calle 9 Ciudad I', '123456789', '987654349', 'admin123'),
+('Persona 30', 25, 'Calle 0 Ciudad J', '123456789', '987654350', 'admin123'),
+('Persona 31', 30, 'Calle 1 Ciudad A', '123456789', '987654351', 'admin123'),
+('Persona 32', 25, 'Calle 2 Ciudad B', '123456789', '987654352', 'admin123'),
+('Persona 33', 25, 'Calle 3 Ciudad C', '123456789', '987654353', 'admin123'),
+('Persona 34', 25, 'Calle 4 Ciudad D', '123456789', '987654354', 'admin123'),
+('Persona 35', 25, 'Calle 5 Ciudad E', '123456789', '987654355', 'admin123'),
+('Persona 36', 25, 'Calle 6 Ciudad F', '123456789', '987654356', 'admin123'),
+('Persona 37', 25, 'Calle 7 Ciudad G', '123456789', '987654357', 'admin123'),
+('Persona 38', 25, 'Calle 8 Ciudad H', '123456789', '987654358', 'admin123'),
+('Persona 39', 25, 'Calle 9 Ciudad I', '123456789', '987654359', 'admin123'),
+('Persona 40', 25, 'Calle 0 Ciudad J', '123456789', '987654360', 'admin123'),
+('Persona 41', 30, 'Calle 1 Ciudad A', '123456789', '987654361', 'admin123'),
+('Persona 42', 25, 'Calle 2 Ciudad B', '123456789', '987654362', 'admin123'),
+('Persona 43', 25, 'Calle 3 Ciudad C', '123456789', '987654363', 'admin123'),
+('Persona 44', 25, 'Calle 4 Ciudad D', '123456789', '987654364', 'admin123'),
+('Persona 45', 25, 'Calle 5 Ciudad E', '123456789', '987654365', 'admin123'),
+('Persona 46', 25, 'Calle 6 Ciudad F', '123456789', '987654366', 'admin123'),
+('Persona 47', 25, 'Calle 7 Ciudad G', '123456789', '987654367', 'admin123'),
+('Persona 48', 25, 'Calle 8 Ciudad H', '123456789', '987654368', 'admin123'),
+('Persona 49', 25, 'Calle 9 Ciudad I', '123456789', '987654369', 'admin123'),
+('Persona 50', 25, 'Calle 0 Ciudad J', '123456789', '987654370', 'admin123');
 
 
-
-
-
-
-
-
-
-
-
+--Personal
