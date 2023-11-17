@@ -1490,4 +1490,3 @@ insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) va
 insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 17, 1727, 'Home');
 insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 24, 1459, 'Beauty');
 
-
