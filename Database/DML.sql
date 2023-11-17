@@ -877,33 +877,669 @@ INSERT INTO Ruta VALUES (129,61,54,52,0,0);
 
 
 
-/*
-INSERT INTO paqueteria.ruta (idSucursalOrigen, idSucursalDestino, distancia, dias, costo)
-VALUES
-    (1, 7, 118, 1, 0),
-    (1, 8, 118, 1, 0),
-    (1, 10, 118, 1, 0),
-    (1, 7, 118, 1, 0),
+--ROLES
+INSERT INTO Rol (`nombre`, `descripcion`) VALUES
+('Gerente de Operaciones Logísticas', 'Responsable de supervisar y optimizar las operaciones diarias de recepción, almacenamiento y envío de paquetes. Coordina equipos para garantizar eficiencia y cumplimiento de plazos.'),
+('Especialista en Rastreo y Seguimiento', 'Encargado de monitorear el movimiento de los paquetes en tiempo real. Responde a consultas de clientes sobre la ubicación y el estado de sus envíos.'),
+('Coordinador de Distribución', 'Organiza y gestiona la entrega de paquetes a destinatarios finales, asegurando la puntualidad y la integridad de los envíos.'),
+('Inspector de Calidad de Empaques', 'Evalúa y asegura la calidad del embalaje de los paquetes para prevenir daños durante el transporte y garantizar la satisfacción del cliente.'),
+('Agente de Atención al Cliente', 'Brinda asistencia y resuelve consultas de clientes relacionadas con envíos, horarios, tarifas y otros servicios de paquetería.'),
+('Especialista en Aduanas', 'Encargado de gestionar los trámites aduaneros para envíos internacionales, asegurando el cumplimiento de regulaciones y normativas.'),
+('Conductor de Entregas', 'Responsable de conducir vehículos de reparto y entregar paquetes de manera segura y oportuna a los destinatarios finales.'),
+('Técnico de Mantenimiento de Vehículos', 'Realiza el mantenimiento preventivo y correctivo de la flota de vehículos de la empresa de paquetería.'),
+('Analista de Datos Logísticos', 'Recopila y analiza datos relacionados con las operaciones logísticas para identificar áreas de mejora y aumentar la eficiencia.'),
+('Especialista en Seguridad de Almacén', 'Garantiza la seguridad física y de datos en los almacenes de la empresa de paquetería, implementando medidas preventivas y de control.');
 
-    (2, 13, 118, 1, 0),
-    (2, 3, 118, 1, 0),
-    (2, 4, 118, 1, 0),
 
-    (3, 4, 118, 1, 0),
-    (3, 11, 118, 1, 0),
+--PERSONAS
 
-    (4, 1, 118, 1, 0),
-    (4, 7, 118, 1, 0),
+INSERT INTO Persona (`idPersona`,`nombre`, `edad`, `domicilio`, `celular`, `nit`, `password`) VALUES
+('1','Persona 1', 30, 'Calle 1 Ciudad A', '123456789', '987654321', 'admin123'),
+('2','Persona 2', 25, 'Calle 2 Ciudad B', '123456789', '987654322', 'admin123'),
+('3','Persona 3', 25, 'Calle 3 Ciudad C', '123456789', '987654323', 'admin123'),
+('4','Persona 4', 25, 'Calle 4 Ciudad D', '123456789', '987654324', 'admin123'),
+('5','Persona 5', 25, 'Calle 5 Ciudad E', '123456789', '987654325', 'admin123'),
+('6','Persona 6', 25, 'Calle 6 Ciudad F', '123456789', '987654326', 'admin123'),
+('7','Persona 7', 25, 'Calle 7 Ciudad G', '123456789', '987654327', 'admin123'),
+('8','Persona 8', 25, 'Calle 8 Ciudad H', '123456789', '987654328', 'admin123'),
+('9','Persona 9', 25, 'Calle 9 Ciudad I', '123456789', '987654329', 'admin123'),
+('10','Persona 10', 25, 'Calle 0 Ciudad J', '123456789', '987654330', 'admin123'),
+('11','Persona 11', 30, 'Calle 1 Ciudad A', '123456789', '987654331', 'admin123'),
+('12','Persona 12', 25, 'Calle 2 Ciudad B', '123456789', '987654332', 'admin123'),
+('13','Persona 13', 25, 'Calle 3 Ciudad C', '123456789', '987654333', 'admin123'),
+('14','Persona 14', 25, 'Calle 4 Ciudad D', '123456789', '987654334', 'admin123'),
+('15','Persona 15', 25, 'Calle 5 Ciudad E', '123456789', '987654335', 'admin123'),
+('16','Persona 16', 25, 'Calle 6 Ciudad F', '123456789', '987654336', 'admin123'),
+('17','Persona 17', 25, 'Calle 7 Ciudad G', '123456789', '987654337', 'admin123'),
+('18','Persona 18', 25, 'Calle 8 Ciudad H', '123456789', '987654338', 'admin123'),
+('19','Persona 19', 25, 'Calle 9 Ciudad I', '123456789', '987654339', 'admin123'),
+('20','Persona 20', 25, 'Calle 0 Ciudad J', '123456789', '987654340', 'admin123'),
+('21','Persona 21', 30, 'Calle 1 Ciudad A', '123456789', '987654341', 'admin123'),
+('22','Persona 22', 25, 'Calle 2 Ciudad B', '123456789', '987654342', 'admin123'),
+('23','Persona 23', 25, 'Calle 3 Ciudad C', '123456789', '987654343', 'admin123'),
+('24','Persona 24', 25, 'Calle 4 Ciudad D', '123456789', '987654344', 'admin123'),
+('25','Persona 25', 25, 'Calle 5 Ciudad E', '123456789', '987654345', 'admin123'),
+('26','Persona 26', 25, 'Calle 6 Ciudad F', '123456789', '987654346', 'admin123'),
+('27','Persona 27', 25, 'Calle 7 Ciudad G', '123456789', '987654347', 'admin123'),
+('28','Persona 28', 25, 'Calle 8 Ciudad H', '123456789', '987654348', 'admin123'),
+('29','Persona 29', 25, 'Calle 9 Ciudad I', '123456789', '987654349', 'admin123'),
+('30','Persona 30', 25, 'Calle 0 Ciudad J', '123456789', '987654350', 'admin123'),
+('31','Persona 31', 30, 'Calle 1 Ciudad A', '123456789', '987654351', 'admin123'),
+('32','Persona 32', 25, 'Calle 2 Ciudad B', '123456789', '987654352', 'admin123'),
+('33','Persona 33', 25, 'Calle 3 Ciudad C', '123456789', '987654353', 'admin123'),
+('34','Persona 34', 25, 'Calle 4 Ciudad D', '123456789', '987654354', 'admin123'),
+('35','Persona 35', 25, 'Calle 5 Ciudad E', '123456789', '987654355', 'admin123'),
+('36','Persona 36', 25, 'Calle 6 Ciudad F', '123456789', '987654356', 'admin123'),
+('37','Persona 37', 25, 'Calle 7 Ciudad G', '123456789', '987654357', 'admin123'),
+('38','Persona 38', 25, 'Calle 8 Ciudad H', '123456789', '987654358', 'admin123'),
+('39','Persona 39', 25, 'Calle 9 Ciudad I', '123456789', '987654359', 'admin123'),
+('40','Persona 40', 25, 'Calle 0 Ciudad J', '123456789', '987654360', 'admin123'),
+('41','Persona 41', 30, 'Calle 1 Ciudad A', '123456789', '987654361', 'admin123'),
+('42','Persona 42', 25, 'Calle 2 Ciudad B', '123456789', '987654362', 'admin123'),
+('43','Persona 43', 25, 'Calle 3 Ciudad C', '123456789', '987654363', 'admin123'),
+('44','Persona 44', 25, 'Calle 4 Ciudad D', '123456789', '987654364', 'admin123'),
+('45','Persona 45', 25, 'Calle 5 Ciudad E', '123456789', '987654365', 'admin123'),
+('46','Persona 46', 25, 'Calle 6 Ciudad F', '123456789', '987654366', 'admin123'),
+('47','Persona 47', 25, 'Calle 7 Ciudad G', '123456789', '987654367', 'admin123'),
+('48','Persona 48', 25, 'Calle 8 Ciudad H', '123456789', '987654368', 'admin123'),
+('49','Persona 49', 25, 'Calle 9 Ciudad I', '123456789', '987654369', 'admin123'),
+('50','Persona 50', 25, 'Calle 0 Ciudad J', '123456789', '987654370', 'admin123');
 
-    (5, 9, 118, 1, 0),
-    (5, 12, 118, 1, 0),
-    (5, 10, 118, 1, 0),
-    (5, 14, 118, 1, 0),
 
-    (6, 5, 20, 1, 0),
+--Personal
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (1, 1, 4, 58);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (2, 2, 1, 51);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (3, 3, 9, 11);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (4, 4, 8, 9);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (5, 5, 1, 9);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (6, 6, 7, 42);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (7, 7, 1, 50);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (8, 8, 3, 59);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (9, 9, 2, 59);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (10, 10, 10, 9);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (11, 11, 10, 9);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (12, 12, 1, 9);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (13, 13, 2, 11);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (14, 14, 4, 8);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (15, 15, 2, 51);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (16, 16, 3, 50);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (17, 17, 8, 9);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (18, 18, 1, 58);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (19, 19, 5, 58);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (20, 20, 3, 59);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (21, 21, 3, 11);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (22, 22, 7, 14);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (23, 23, 5, 42);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (24, 24, 7, 14);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (25, 25, 1, 50);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (26, 26, 10, 42);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (27, 27, 9, 11);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (28, 28, 7, 14);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (29, 29, 4, 1);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (30, 30, 3, 14);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (31, 31, 8, 50);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (32, 32, 7, 1);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (33, 33, 7, 11);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (34, 34, 4, 42);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (35, 35, 3, 8);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (36, 36, 5, 9);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (37, 37, 1, 1);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (38, 38, 3, 9);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (39, 39, 7, 4);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (40, 40, 6, 4);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (41, 41, 9, 58);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (42, 42, 6, 9);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (43, 43, 3, 51);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (44, 44, 3, 1);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (45, 45, 8, 14);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (46, 46, 3, 11);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (47, 47, 9, 58);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (48, 48, 10, 50);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (49, 49, 4, 59);
+insert into Personal (idPersonal, idPersona, idRol, idSucursal) values (50, 50, 2, 59);
 
-    (7, 8, 20, 1, 0),
+--Asambleas
+--Se realiza 1 asamblea al mes por 2 anios
+--24 Asambleas, todas realizadas el primer dia del mes
+-- yyyy-mm-dd hh:mm:ss
 
-    (7, 8, 20, 1, 0),*/
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (1, '2021-01-01 00:00:00', 'Newton');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (2, '2021-02-01 00:00:00', 'Blois');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (3, '2021-03-01 00:00:00', 'Somovo');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (4, '2021-04-01 00:00:00', 'Selishche');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (5, '2021-05-01 00:00:00', 'La Caleta Culebras');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (6, '2021-06-01 00:00:00', 'Yayao');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (7, '2021-07-01 00:00:00', 'Dimitrovgrad');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (8, '2021-08-01 00:00:00', 'Tigbinan');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (9, '2021-09-01 00:00:00', 'Bara Datu');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (10, '2021-10-01 00:00:00', 'Candon');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (11, '2021-11-01 00:00:00', 'Kristianstad');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (12, '2021-12-01 00:00:00', 'Arroyo Salado');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (13, '2021-01-01 00:00:00', 'Zhaozhen');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (14, '2021-02-01 00:00:00', 'Agdangan');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (15, '2021-03-01 00:00:00', 'Gedaliang');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (16, '2021-04-01 00:00:00', 'Saño');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (17, '2021-05-01 00:00:00', 'Cimişlia');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (18, '2021-06-01 00:00:00', 'Ferme-Neuve');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (19, '2021-07-01 00:00:00', 'Castrovirreyna');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (20, '2021-08-01 00:00:00', 'Poste du Lac');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (21, '2021-09-01 00:00:00', 'Chenārān');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (22, '2021-10-01 00:00:00', 'Listvyanskiy');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (23, '2021-11-01 00:00:00', 'Sitrah');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (24, '2021-12-01 00:00:00', 'Gandu');
+
+
+--Gastos
+--Los gastos de tipo fijo son los que no tendras asamblea por lo que no cambiaran en 2 anios
+--Mientras que los especiales van a cambiar durante el tiempo, y se deciden en la asamblea.
+
+--Gastos fijos
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (1, 'Internet',      0454, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (1, 'Luz',           0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (1, 'Agua',          0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (1, 'Telefono',      0600, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (1, 'Alquiler',      2500, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (1, 'Mantenimiento', 0700, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (1, 'Gasolina',      5000, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (1, 'Seguro',        1500, 'FIJO');
+
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (4, 'Internet',      0454, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (4, 'Luz',           0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (4, 'Agua',          0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (4, 'Telefono',      0600, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (4, 'Alquiler',      2500, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (4, 'Mantenimiento', 0700, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (4, 'Gasolina',      5000, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (4, 'Seguro',        1500, 'FIJO');
+
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (8, 'Internet',      0454, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (8, 'Luz',           0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (8, 'Agua',          0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (8, 'Telefono',      0600, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (8, 'Alquiler',      2500, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (8, 'Mantenimiento', 0700, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (8, 'Gasolina',      5000, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (8, 'Seguro',        1500, 'FIJO');
+
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (9, 'Internet',      0454, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (9, 'Luz',           0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (9, 'Agua',          0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (9, 'Telefono',      0600, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (9, 'Alquiler',      2500, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (9, 'Mantenimiento', 0700, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (9, 'Gasolina',      5000, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (9, 'Seguro',        1500, 'FIJO');
+
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (11, 'Internet',      0454, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (11, 'Luz',           0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (11, 'Agua',          0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (11, 'Telefono',      0600, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (11, 'Alquiler',      2500, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (11, 'Mantenimiento', 0700, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (11, 'Gasolina',      5000, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (11, 'Seguro',        1500, 'FIJO');
+
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (14, 'Internet',      0454, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (14, 'Luz',           0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (14, 'Agua',          0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (14, 'Telefono',      0600, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (14, 'Alquiler',      2500, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (14, 'Mantenimiento', 0700, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (14, 'Gasolina',      5000, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (14, 'Seguro',        1500, 'FIJO');
+
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (42, 'Internet',      0454, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (42, 'Luz',           0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (42, 'Agua',          0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (42, 'Telefono',      0600, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (42, 'Alquiler',      2500, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (42, 'Mantenimiento', 0700, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (42, 'Gasolina',      5000, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (42, 'Seguro',        1500, 'FIJO');
+
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (50, 'Internet',      0454, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (50, 'Luz',           0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (50, 'Agua',          0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (50, 'Telefono',      0600, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (50, 'Alquiler',      2500, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (50, 'Mantenimiento', 0700, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (50, 'Gasolina',      5000, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (50, 'Seguro',        1500, 'FIJO');
+
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (51, 'Internet',      0454, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (51, 'Luz',           0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (51, 'Agua',          0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (51, 'Telefono',      0600, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (51, 'Alquiler',      2500, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (51, 'Mantenimiento', 0700, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (51, 'Gasolina',      5000, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (51, 'Seguro',        1500, 'FIJO');
+
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (58, 'Internet',      0454, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (58, 'Luz',           0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (58, 'Agua',          0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (58, 'Telefono',      0600, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (58, 'Alquiler',      2500, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (58, 'Mantenimiento', 0700, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (58, 'Gasolina',      5000, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (58, 'Seguro',        1500, 'FIJO');
+
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (59, 'Internet',      0454, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (59, 'Luz',           0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (59, 'Agua',          0300, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (59, 'Telefono',      0600, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (59, 'Alquiler',      2500, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (59, 'Mantenimiento', 0700, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (59, 'Gasolina',      5000, 'FIJO');
+insert into Gasto (idSucursal, descripcion, monto, tipo) values (59, 'Seguro',        1500, 'FIJO');
+
+--Gastos especiales
+--Estos gastos se ven contabilizan al final de la asamblea
+-- Por lo que el gasto de la asamblea con fecha 01 de febrero de 2021 corresponde a un gasto especial de enero de 2021
+
+
+
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 5, 117, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 10, 1676, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 24, 1051, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 4, 786, 'Grocery');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 9, 2453, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 4, 2280, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 9, 680, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 2, 2178, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 5, 187, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 21, 1928, 'Baby');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 20, 1944, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 7, 778, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 15, 764, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 12, 2473, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 19, 1515, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 17, 2354, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 23, 746, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 9, 1493, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 11, 1775, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 8, 329, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 10, 1035, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 22, 2488, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 3, 402, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 17, 2148, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 7, 1316, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 13, 1713, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 17, 2220, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 10, 1756, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 7, 493, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 5, 1321, 'Baby');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 20, 2365, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 17, 1566, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 5, 1931, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 9, 2338, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 5, 1224, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 13, 1920, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 22, 1578, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 12, 1480, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 3, 2213, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 5, 227, 'Grocery');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 11, 510, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 6, 299, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 9, 1917, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 22, 262, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 9, 1505, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 9, 1233, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 4, 1643, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 2, 1651, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 4, 1531, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 10, 1755, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 21, 1129, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 11, 1403, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 20, 2079, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 8, 1724, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 9, 1462, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 12, 1702, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 15, 1229, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 21, 2492, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 20, 2493, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 23, 181, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 21, 226, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 6, 732, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 21, 2097, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 9, 337, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 6, 680, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 10, 2078, 'Baby');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 15, 887, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 18, 1704, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 9, 1713, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 14, 2267, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 20, 1991, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 8, 1749, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (1, 'ESPECIAL', 3, 389, 'Computers');
+
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 6, 530, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 15, 1842, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 2, 164, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 12, 769, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 24, 2440, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 15, 2085, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 8, 171, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 19, 320, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 24, 1209, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 23, 1632, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 7, 1758, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 5, 2194, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 15, 913, 'Grocery');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 10, 216, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 10, 1540, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 11, 125, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 16, 2220, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 9, 571, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 20, 320, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 17, 275, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 12, 775, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 16, 1839, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 22, 1509, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 24, 335, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 11, 798, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 8, 1759, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 6, 719, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 14, 2362, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 4, 2033, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 22, 2285, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 4, 819, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 3, 588, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 12, 1052, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 22, 661, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 11, 247, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 4, 1328, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 5, 1483, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 19, 1202, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 6, 1040, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 9, 515, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 21, 1943, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 7, 2413, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 21, 908, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 5, 2467, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 7, 677, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 16, 72, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 2, 475, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 23, 2290, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (4, 'ESPECIAL', 2, 2435, 'Computers');
+
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 10, 496, 'Baby');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 14, 1921, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 23, 1439, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 2, 1212, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 12, 817, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 2, 1740, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 11, 1030, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 5, 445, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 9, 675, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 11, 503, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 5, 1719, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 11, 1190, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 17, 2134, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 18, 550, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 7, 920, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 16, 220, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 15, 2259, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 2, 2062, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 6, 532, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 23, 1175, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 12, 1146, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 19, 1089, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 7, 166, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 18, 2080, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 22, 2436, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 24, 492, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 18, 723, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 16, 1499, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 19, 683, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (8, 'ESPECIAL', 8, 749, 'Clothing');
+
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 10, 1720, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 5, 2048, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 21, 1862, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 20, 1002, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 17, 2306, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 14, 892, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 8, 1020, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 13, 2428, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 17, 2490, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 21, 1924, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 6, 1200, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 16, 2233, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 12, 2390, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 14, 96, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 6, 978, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 10, 708, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 5, 1517, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 16, 127, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 4, 1727, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 11, 1052, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 11, 113, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 9, 1008, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 18, 2397, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 21, 357, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 10, 1800, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 13, 71, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 17, 1125, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 2, 1001, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 8, 2465, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (9, 'ESPECIAL', 8, 2222, 'Beauty');
+
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 11, 994, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 20, 198, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 9, 1344, 'Grocery');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 5, 1433, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 14, 778, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 18, 2500, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 3, 267, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 18, 987, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 23, 1667, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 16, 2284, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 10, 2206, 'Baby');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 22, 152, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 15, 700, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 20, 1971, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 15, 792, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 13, 1963, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 7, 1542, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 2, 911, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 4, 1917, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 20, 2185, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 23, 2031, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 13, 833, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 13, 2287, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 14, 632, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 4, 1556, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 24, 148, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 7, 31, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 21, 1102, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 6, 37, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (11, 'ESPECIAL', 16, 2374, 'Beauty');
+
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 16, 475, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 18, 2471, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 14, 378, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 23, 1191, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 12, 2412, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 2, 1176, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 3, 1463, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 9, 813, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 10, 2118, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 24, 1494, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 23, 762, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 24, 1530, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 12, 611, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 24, 2493, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 18, 881, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 2, 2063, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 18, 191, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 3, 614, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 14, 1602, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 24, 1695, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 12, 657, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 24, 1999, 'Baby');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 12, 1774, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 22, 49, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 21, 1981, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 14, 2450, 'Baby');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 9, 447, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 14, 86, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 22, 123, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (14, 'ESPECIAL', 19, 1731, 'Jewelry');
+
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 17, 1161, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 3, 627, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 8, 1093, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 24, 1658, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 12, 1214, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 17, 953, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 15, 524, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 2, 376, 'Baby');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 14, 169, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 23, 1272, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 16, 591, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 2, 1092, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 16, 558, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 18, 1353, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 13, 2193, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 4, 2375, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 6, 2406, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 10, 659, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 23, 1300, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 8, 2312, 'Garden');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 18, 2407, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 6, 78, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 20, 1683, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 12, 2191, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 23, 1343, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 3, 2479, 'Grocery');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 23, 2428, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 11, 1895, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 3, 1690, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (42, 'ESPECIAL', 11, 2284, 'Outdoors');
+
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 10, 42, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 22, 1785, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 21, 775, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 10, 955, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 8, 1540, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 6, 1996, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 3, 790, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 17, 823, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 8, 2443, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 20, 1730, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 5, 1918, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 6, 1387, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 22, 420, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 2, 1813, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 5, 252, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 13, 1504, 'Grocery');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 7, 1636, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 15, 1709, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 8, 1753, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 22, 455, 'Movies');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 24, 630, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 10, 830, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 13, 599, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 13, 1261, 'Baby');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 9, 1436, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 21, 863, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 22, 1377, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 16, 2438, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 8, 1058, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (50, 'ESPECIAL', 4, 1911, 'Sports');
+
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 7, 1756, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 11, 1414, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 15, 1225, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 22, 1338, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 6, 347, 'Grocery');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 24, 2084, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 22, 839, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 2, 1722, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 24, 931, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 2, 831, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 22, 524, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 24, 1003, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 18, 223, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 22, 1352, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 15, 56, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 20, 1088, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 16, 458, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 7, 2096, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 2, 980, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 21, 1548, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 10, 1360, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 13, 1043, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 9, 437, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 11, 2225, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 19, 827, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 16, 1688, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 2, 144, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 5, 214, 'Outdoors');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 23, 1160, 'Books');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (51, 'ESPECIAL', 11, 1732, 'Grocery');
+
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 16, 2014, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 22, 726, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 24, 1085, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 12, 1989, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 3, 1095, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 7, 1483, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 11, 1894, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 21, 1669, 'Baby');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 5, 845, 'Grocery');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 16, 80, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 22, 420, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 19, 44, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 7, 634, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 6, 2238, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 21, 74, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 4, 1820, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 19, 1967, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 19, 880, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 6, 1722, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 3, 1618, 'Kids');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 4, 1478, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 12, 753, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 7, 1633, 'Music');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 3, 1432, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 12, 1483, 'Games');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 2, 572, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 9, 1853, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 5, 388, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 24, 245, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (58, 'ESPECIAL', 12, 125, 'Grocery');
+
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 12, 105, 'Toys');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 13, 1013, 'Automotive');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 7, 1358, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 16, 286, 'Electronics');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 18, 143, 'Health');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 8, 967, 'Clothing');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 2, 206, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 18, 1442, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 2, 561, 'Jewelry');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 8, 1207, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 8, 1229, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 22, 644, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 23, 2360, 'Baby');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 11, 2363, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 2, 207, 'Sports');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 6, 759, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 13, 1894, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 5, 240, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 18, 2143, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 8, 2073, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 13, 2294, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 3, 1626, 'Industrial');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 4, 1987, 'Grocery');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 12, 1804, 'Shoes');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 20, 1451, 'Computers');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 17, 1418, 'Beauty');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 18, 564, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 3, 1607, 'Tools');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 17, 1727, 'Home');
+insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 24, 1459, 'Beauty');
 
 
