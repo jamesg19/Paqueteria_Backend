@@ -4,19 +4,23 @@ import com.paqueteria.paqueteria_backend.entidad.Ruta;
 import com.paqueteria.paqueteria_backend.entidad.Sucursal;
 import com.paqueteria.paqueteria_backend.repositorio.SucursalRepositorio;
 import com.paqueteria.paqueteria_backend.servicio.SucursalServicio;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
-
+@Getter
+@Setter
 public class Djikstra {
 
     private boolean huboCambio;
     private int[][] graph;
     private List<Sucursal> rutaSucursales;
     private List<Sucursal> sucursales;
+    private double distanciaRecorrida=0;
     
 
     public Djikstra(){
@@ -95,23 +99,7 @@ public class Djikstra {
     }
 
 
-    public String probarCositas(){
 
-        int[][] graph = {
-            {0, 4, 2, 0, 0, 0},
-            {4, 0, 1, 5,0, 0},
-            {2, 1, 0, 8, 10, 0},
-            {0, 5, 8, 0, 2, 6},
-            {0, 0, 10, 2, 0, 2},
-            {0, 0, 0, 6, 2, 0}
-        };
-
-        int source = 0; // Nodo S
-        int target = 5; // Nodo T
-        int[] parent = dijkstra(graph, source, target);
-        printPath(parent, target);
-        return "";
-    }
 
     public int[] dijkstra(int[][] graph, int source, int target) {
         int V = graph.length;
@@ -141,6 +129,7 @@ public class Djikstra {
         }
         //printPath(parent, target);
         // La distancia más corta desde S hasta T es almacenada en distance[T]
+        distanciaRecorrida=distance[target];
         System.out.println("La ruta más corta desde S hasta T es: " + distance[target]);
         return parent;
     }
