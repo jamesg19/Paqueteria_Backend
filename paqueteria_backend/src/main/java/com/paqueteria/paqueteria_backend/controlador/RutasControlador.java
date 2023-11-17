@@ -3,6 +3,7 @@ package com.paqueteria.paqueteria_backend.controlador;
 
 import com.paqueteria.paqueteria_backend.entidad.Municipio;
 import com.paqueteria.paqueteria_backend.entidad.Ruta;
+import com.paqueteria.paqueteria_backend.entidad.Sucursal;
 import com.paqueteria.paqueteria_backend.servicio.MunicipioServicio;
 import com.paqueteria.paqueteria_backend.servicio.RutaServicio;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -124,6 +126,11 @@ public class RutasControlador {
             return null;
         }
 
+    }
+
+    @GetMapping("/getOD")
+    public ResponseEntity<Ruta> getRutaOD(@RequestParam Sucursal origen, @RequestParam Sucursal destino) throws Error{
+        return ResponseEntity.ok(this.rutaServicio.getByOD(origen,destino));
     }
 
 

@@ -40,5 +40,18 @@ public class Envio {
     @Column(name="subTotal")
     private double subTotal;
 
+    @Column(name = "peso")
+    private double peso;
+
+    @Column(name = "volumen")
+    private double volumen;
+
+    @Column(name = "diasTranscurridos")
+    private int diasTranscurridos;
+
+    @Column(name = "estado")
+    private String estado;
+
+
 
 }

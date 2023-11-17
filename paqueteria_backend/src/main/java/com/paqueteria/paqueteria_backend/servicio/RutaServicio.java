@@ -2,6 +2,7 @@ package com.paqueteria.paqueteria_backend.servicio;
 
 import com.paqueteria.paqueteria_backend.entidad.Municipio;
 import com.paqueteria.paqueteria_backend.entidad.Ruta;
+import com.paqueteria.paqueteria_backend.entidad.Sucursal;
 import com.paqueteria.paqueteria_backend.repositorio.MunicipioRepositorio;
 import com.paqueteria.paqueteria_backend.repositorio.RutaRepositorio;
 import org.springframework.http.HttpStatus;
@@ -66,6 +67,10 @@ public class RutaServicio {
             return new ResponseEntity<>("", HttpStatus.CONFLICT);
 
         }
+    }
+
+    public Ruta getByOD(Sucursal origen, Sucursal destino) {
+        return this.rutaRepositorio.findByOrigenAndDestino(origen,destino);
     }
 
 }

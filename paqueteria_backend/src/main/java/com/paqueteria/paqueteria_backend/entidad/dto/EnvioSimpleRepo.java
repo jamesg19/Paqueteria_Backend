@@ -9,4 +9,7 @@ import java.util.List;
 public interface EnvioSimpleRepo extends JpaRepository<EnvioSimple,Long> {
     EnvioSimple findById(long id);
     List<EnvioSimple> findEnvioSimpleByIdSucursalOrigen(long id);
+
+    List<EnvioSimple> findByEstado(String estado);
+
 }

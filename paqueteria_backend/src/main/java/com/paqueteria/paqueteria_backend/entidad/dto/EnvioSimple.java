@@ -29,6 +29,9 @@ public class EnvioSimple {
     @Column(name="nitReceptor")
     private long nitReceptor;
 
+    @Column(name="estado")
+    private long estado;
+
     @Column(name="fechaLlegada")
     private LocalDateTime fecha;
 

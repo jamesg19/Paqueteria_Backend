@@ -2,6 +2,7 @@ package com.paqueteria.paqueteria_backend.repositorio;
 
 import com.paqueteria.paqueteria_backend.entidad.Municipio;
 import com.paqueteria.paqueteria_backend.entidad.Ruta;
+import com.paqueteria.paqueteria_backend.entidad.Sucursal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -25,5 +26,6 @@ public interface RutaRepositorio extends  JpaRepository<Ruta, Long> {
     List<Ruta> findByDestino_Estado(boolean estado);
 
     Optional<Ruta> findById(int id);
+    Ruta findByOrigenAndDestino(Sucursal origen,Sucursal destino);
 
 }
