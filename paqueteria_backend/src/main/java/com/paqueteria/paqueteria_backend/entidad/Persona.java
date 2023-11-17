@@ -28,4 +28,7 @@ public class Persona {
 
     @Column(name="nit")
     private String nit;
+
+    @Column(name="password")
+    private String password;
 }
