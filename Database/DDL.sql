@@ -53,6 +53,26 @@ COLLATE = utf8mb4_unicode_ci;
 
 
 -- -----------------------------------------------------
+-- Table `paqueteria`.`Persona`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `paqueteria`.`Persona` ;
+
+CREATE TABLE IF NOT EXISTS `paqueteria`.`Persona` (
+  `idPersona` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(145) NULL DEFAULT NULL,
+  `edad` INT(11) NULL DEFAULT NULL,
+  `domicilio` VARCHAR(45) NULL DEFAULT NULL,
+  `celular` VARCHAR(45) NULL DEFAULT NULL,
+  `nit` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NULL,
+  PRIMARY KEY (`idPersona`),
+  UNIQUE INDEX `nit_UNIQUE` (`nit` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
 -- Table `paqueteria`.`Municipio`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `paqueteria`.`Municipio` ;
@@ -104,25 +124,6 @@ CREATE TABLE IF NOT EXISTS `paqueteria`.`Sucursal` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 AUTO_INCREMENT = 63
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_unicode_ci;
-
-
--- -----------------------------------------------------
--- Table `paqueteria`.`Persona`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `paqueteria`.`Persona` ;
-
-CREATE TABLE IF NOT EXISTS `paqueteria`.`Persona` (
-  `idPersona` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(145) NULL DEFAULT NULL,
-  `edad` INT(11) NULL DEFAULT NULL,
-  `domicilio` VARCHAR(45) NULL DEFAULT NULL,
-  `celular` VARCHAR(45) NULL DEFAULT NULL,
-  `nit` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idPersona`),
-  UNIQUE INDEX `nit_UNIQUE` (`nit` ASC) VISIBLE)
-ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
@@ -201,20 +202,21 @@ DROP TABLE IF EXISTS `paqueteria`.`Gasto` ;
 CREATE TABLE IF NOT EXISTS `paqueteria`.`Gasto` (
   `idGasto` INT(11) NOT NULL AUTO_INCREMENT,
   `idSucursal` INT(11) NULL DEFAULT NULL,
-  `idAsamblea` INT(11) NULL DEFAULT NULL,
   `descripcion` VARCHAR(45) NULL DEFAULT NULL,
-  `moto` DOUBLE NULL DEFAULT NULL,
+  `monto` DOUBLE NULL DEFAULT NULL,
+  `tipo` VARCHAR(45) NULL DEFAULT NULL,
+  `Asamblea_idAsamblea` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`idGasto`),
   INDEX `fk_Gasto_Sucursal_idx` (`idSucursal` ASC) VISIBLE,
-  INDEX `fk_Gasto_Asamblea_idx` (`idAsamblea` ASC) VISIBLE,
-  CONSTRAINT `fk_Gasto_Asamblea`
-    FOREIGN KEY (`idAsamblea`)
-    REFERENCES `paqueteria`.`Asamblea` (`idAsamblea`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_Gasto_Asamblea1_idx` (`Asamblea_idAsamblea` ASC) VISIBLE,
   CONSTRAINT `fk_Gasto_Sucursal`
     FOREIGN KEY (`idSucursal`)
     REFERENCES `paqueteria`.`Sucursal` (`idSucursal`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Gasto_Asamblea1`
+    FOREIGN KEY (`Asamblea_idAsamblea`)
+    REFERENCES `paqueteria`.`Asamblea` (`idAsamblea`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -238,29 +240,6 @@ CREATE TABLE IF NOT EXISTS `paqueteria`.`Historico_Sucursales` (
   CONSTRAINT `fk_Historico_Sucursales_Envio`
     FOREIGN KEY (`idEnvio`)
     REFERENCES `paqueteria`.`Envio` (`idEnvio`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_unicode_ci;
-
-
--- -----------------------------------------------------
--- Table `paqueteria`.`Honorario`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `paqueteria`.`Honorario` ;
-
-CREATE TABLE IF NOT EXISTS `paqueteria`.`Honorario` (
-  `idHonorario` INT(11) NOT NULL AUTO_INCREMENT,
-  `idAsamblea` INT(11) NULL DEFAULT NULL,
-  `nombre` VARCHAR(145) NULL DEFAULT NULL,
-  `descripcion` VARCHAR(350) NULL DEFAULT NULL,
-  `monto` DOUBLE NULL DEFAULT NULL,
-  PRIMARY KEY (`idHonorario`),
-  INDEX `fk_Honorario_Asamblea_idx` (`idAsamblea` ASC) VISIBLE,
-  CONSTRAINT `fk_Honorario_Asamblea`
-    FOREIGN KEY (`idAsamblea`)
-    REFERENCES `paqueteria`.`Asamblea` (`idAsamblea`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -293,18 +272,10 @@ CREATE TABLE IF NOT EXISTS `paqueteria`.`Personal` (
   `idPersona` INT(11) NOT NULL,
   `idRol` INT(11) NOT NULL,
   `idSucursal` INT(11) NOT NULL,
-  `idHonorario` INT(11) NOT NULL,
-  `pass` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`idPersonal`),
-  INDEX `fk_Personal_hon_idx` (`idHonorario` ASC) VISIBLE,
   INDEX `fk_Personal_per_idx` (`idPersona` ASC) VISIBLE,
   INDEX `fk_Personal_rol_idx` (`idRol` ASC) VISIBLE,
   INDEX `fk_Personal_sucrusal_idx` (`idSucursal` ASC) VISIBLE,
-  CONSTRAINT `fk_Personal_hon`
-    FOREIGN KEY (`idHonorario`)
-    REFERENCES `paqueteria`.`Honorario` (`idHonorario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Personal_per`
     FOREIGN KEY (`idPersona`)
     REFERENCES `paqueteria`.`Persona` (`idPersona`)
@@ -318,6 +289,36 @@ CREATE TABLE IF NOT EXISTS `paqueteria`.`Personal` (
   CONSTRAINT `fk_Personal_sucrusal`
     FOREIGN KEY (`idSucursal`)
     REFERENCES `paqueteria`.`Sucursal` (`idSucursal`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `paqueteria`.`Honorario`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `paqueteria`.`Honorario` ;
+
+CREATE TABLE IF NOT EXISTS `paqueteria`.`Honorario` (
+  `idHonorario` INT(11) NOT NULL AUTO_INCREMENT,
+  `idAsamblea` INT(11) NULL DEFAULT NULL,
+  `nombre` VARCHAR(145) NULL DEFAULT NULL,
+  `descripcion` VARCHAR(350) NULL DEFAULT NULL,
+  `monto` DOUBLE NULL DEFAULT NULL,
+  `Personal_idPersonal` INT(11) NOT NULL,
+  PRIMARY KEY (`idHonorario`),
+  INDEX `fk_Honorario_Asamblea_idx` (`idAsamblea` ASC) VISIBLE,
+  INDEX `fk_Honorario_Personal1_idx` (`Personal_idPersonal` ASC) VISIBLE,
+  CONSTRAINT `fk_Honorario_Asamblea`
+    FOREIGN KEY (`idAsamblea`)
+    REFERENCES `paqueteria`.`Asamblea` (`idAsamblea`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Honorario_Personal1`
+    FOREIGN KEY (`Personal_idPersonal`)
+    REFERENCES `paqueteria`.`Personal` (`idPersonal`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
