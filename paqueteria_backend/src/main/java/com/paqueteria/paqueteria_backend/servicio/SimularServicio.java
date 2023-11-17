@@ -19,7 +19,8 @@ public class SimularServicio {
 
 
     private List<EnvioSimple> getEnviosEnRuta(){
-        this.envioServicio.getEnviosEnRuta("En ruta");
+
+        return  this.envioServicio.getEnviosEnRuta("En ruta");
 
     }
 
