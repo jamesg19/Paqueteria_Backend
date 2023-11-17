@@ -369,68 +369,68 @@ INSERT INTO Municipio VALUES (22017, 22,"Quesada");
 -- Sucursales (64) 51 simples 10 con enlace 3 solo enlace
 --
 
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (1, 16, 16009, 'DIRECCION 1A', 'SUCURSAL ALTA VERAPAZ 1', 1, 1, 15.473058, -90311858);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (2, 16, 16009, 'DIRECCION 2A', 'SUCURSAL ALTA VERAPAZ 2', 1, 0, 15.478657, -90309873);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (3, 16, 16009, 'DIRECCION 3A', 'SUCURSAL ALTA VERAPAZ 3', 1, 0, 15.47497, -90316224);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (4, 16, 16001, 'DIRECCION 4A', 'SUCURSAL ALTA VERAPAZ 4', 1, 0, 15.470203, -90391952);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (5, 16, 16001, 'DIRECCION 5A', 'SUCURSAL ALTA VERAPAZ 5', 1, 0, 15.463119, -90398169);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (6, 16, 16013, 'DIRECCION 6A', 'SUCURSAL ALTA VERAPAZ 6', 1, 0, 15.80967, -90290229);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (7, 16, 16008, 'DIRECCION 7A', 'SUCURSAL ALTA VERAPAZ 7', 1, 0, 15.414897, -89820984);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (8, 4, 4001, 'DIRECCION 1C', 'SUCURSAL CHIMALTENANGO 1', 1, 1, 14.658462, -90817723);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (9, 4, 4006, 'DIRECCION 2C', 'SUCURSAL CHIMALTENANGO 2', 1, 0, 14.759636, -90988555);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (10, 20, 20001, 'DIRECCION 1C', 'SUCURSAL CHIQUIMULA 1', 1, 1, 14.796817, -89542253);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (11, 5, 5001, 'DIRECCION 1E', 'SUCURSAL ESCUINTLA 1', 1, 1, 14.293687, -90783052);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (12, 5, 5001, 'DIRECCION 2E', 'SUCURSAL ESCUINTLA 2', 1, 0, 14.281259, -90776883);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (13, 5, 5002, 'DIRECCION 3E', 'SUCURSAL ESCUINTLA 3', 1, 1, 14.333127, -91020019);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (14, 1, 1001, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 1', 1, 1, 14.632534, -90509313);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (15, 1, 1001, 'DIRECCION 2G', 'SUCURSAL GUATEMALA 2', 1, 1, 14.618158, -90525710);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (16, 1, 1001, 'DIRECCION 3G', 'SUCURSAL GUATEMALA 3', 1, 0, 14.616281, -90514891);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (17, 1, 1001, 'DIRECCION 4G', 'SUCURSAL GUATEMALA 4', 1, 0, 14.63796, -90506929);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (18, 1, 1001, 'DIRECCION 5G', 'SUCURSAL GUATEMALA 5', 1, 0, 14.646107, -90508256);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (19, 1, 1001, 'DIRECCION 6G', 'SUCURSAL GUATEMALA 6', 1, 0, 14.655883, -90497488);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (20, 1, 1001, 'DIRECCION 7G', 'SUCURSAL GUATEMALA 7', 1, 0, 14.649079, -90518640);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (21, 1, 1001, 'DIRECCION 8G', 'SUCURSAL GUATEMALA 8', 1, 0, 14.64177, -90514858);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (22, 1, 1001, 'DIRECCION 9G', 'SUCURSAL GUATEMALA 9', 1, 0, 14.617292, -90530150);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (23, 1, 1001, 'DIRECCION 10G', 'SUCURSAL GUATEMALA 10', 1, 0, 14.598668, -90493334);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (24, 1, 1008, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 11', 1, 0, 14.632662, -90609090);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (25, 1, 1008, 'DIRECCION 2G', 'SUCURSAL GUATEMALA 12', 1, 0, 14.614664, -90603414);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (26, 1, 1008, 'DIRECCION 3G', 'SUCURSAL GUATEMALA 13', 1, 0, 14.63002, -90597072);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (27, 1, 1008, 'DIRECCION 4G', 'SUCURSAL GUATEMALA 14', 1, 0, 14.620912, -90591027);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (28, 1, 1008, 'DIRECCION 5G', 'SUCURSAL GUATEMALA 15', 1, 0, 14.631307, -90591665);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (29, 1, 1015, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 16', 1, 0, 14.526081, -90591218);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (30, 1, 1015, 'DIRECCION 2G', 'SUCURSAL GUATEMALA 17', 1, 0, 14.52599, -90578205);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (31, 1, 1015, 'DIRECCION 3G', 'SUCURSAL GUATEMALA 18', 1, 0, 14.533936, -90582423);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (32, 1, 1015, 'DIRECCION 4G', 'SUCURSAL GUATEMALA 19', 1, 0, 14.542278, -90592468);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (33, 1, 1015, 'DIRECCION 5G', 'SUCURSAL GUATEMALA 20', 1, 0, 14.546639, -90590333);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (34, 1, 1010, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 21', 1, 0, 14.721291, -90647372);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (35, 1, 1010, 'DIRECCION 2G', 'SUCURSAL GUATEMALA 22', 1, 0, 14.723426, -90643340);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (36, 1, 1010, 'DIRECCION 3G', 'SUCURSAL GUATEMALA 26', 1, 0, 14.714915, -90649606);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (37, 1, 1010, 'DIRECCION 4G', 'SUCURSAL GUATEMALA 26', 1, 0, 14.719592, -90649498);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (38, 1, 1016, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 23', 1, 0, 14.486527, -90536457);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (39, 1, 1016, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 23', 1, 0, 14.477879, -90535641);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (40, 1, 1014, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 24', 1, 0, 14.482203, -90623297);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (41, 1, 1017, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 25', 1, 0, 14.512924, -90564282);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (42, 13, 13001, 'DIRECCION 1H', 'SUCURSAL HUEHUETENANGO 1', 1, 1, 15.318132, -91494273);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (43, 13, 13026, 'DIRECCION 2H', 'SUCURSAL HUEHUETENANGO 2', 1, 0, 15.804567, -91314717);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (44, 18, 18001, 'DIRECCION 1I', 'SUCURSAL IZABAL 1', 1, 1, 15.710531, -88584358);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (45, 18, 18004, 'DIRECCION 2I', 'SUCURSAL IZABAL 2', 1, 0, 15.473818, -88841622);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (46, 21, 21001, 'DIRECCION 1J', 'SUCURSAL JALAPA 1', 1, 1, 14.634018, -89994022);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (47, 21, 21001, 'DIRECCION 2J', 'SUCURSAL JALAPA 2', 1, 0, 14.645453, -89984377);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (48, 22, 22001, 'DIRECCION 1J', 'SUCURSAL JUTIAPA 1', 1, 1, 14.638964, -89974817);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (49, 22, 22001, 'DIRECCION 2J', 'SUCURSAL JUTIAPA 2', 1, 0, 14.630372, -89984018);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (50, 17, 17001, 'DIRECCION 1P', 'SUCURSAL PETEN 1', 1, 1, 16.916206, -89885350);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (51, 9, 9001, 'DIRECCION 1Q', 'SUCURSAL QUETZALTENANGO 1', 1, 1, 14.846059, -91535813);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (52, 9, 9001, 'DIRECCION 2Q', 'SUCURSAL QUETZALTENANGO 2', 1, 1, 14.843021, -91514454);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (53, 9, 9020, 'DIRECCION 2Q', 'SUCURSAL QUETZALTENANGO 2', 1, 0, 14.700755, -91864198);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (54, 14, 14006, 'DIRECCION 1Q', 'SUCURSAL QUICHE 1', 1, 1, 14.941875, -91110467);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (55, 14, 14020, 'DIRECCION 2Q', 'SUCURSAL QUICHE 2', 1, 0, 15.987077, -90777599);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (56, 14, 14012, 'DIRECCION 3Q', 'SUCURSAL QUICHE 3', 1, 0, 14.992706, -90801969);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (57, 14, 14001, 'DIRECCION 4Q', 'SUCURSAL QUICHE 4', 1, 0, 15.025872, -91152306);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (58, 11, 11001, 'DIRECCION 1R', 'SUCURSAL RETALHULEU 1', 1, 1, 14.532962, -91680599);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (59, 12, 12015, 'DIRECCION 1S', 'SUCURSAL SAN MARCOS 1', 1, 1, 14.911192, -92053164);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (60, 7, 7001, 'DIRECCION 1S', 'SUCURSAL SOLOLA 1', 1, 1, 14.767009, -91181318);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (61, 8, 8001, 'DIRECCION 1T', 'SUCURSAL TOTONICAPAN 1', 1, 1, 14.912026, -91358942);
-INSERT INTO paqueteria.sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (62, 8, 8005, 'DIRECCION 1T', 'SUCURSAL TOTONICAPAN 2', 1, 0, 15.042345, -91407239);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (1, 16, 16009, 'DIRECCION 1A', 'SUCURSAL ALTA VERAPAZ 1', 1, 1, 15.473058, -90311858);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (2, 16, 16009, 'DIRECCION 2A', 'SUCURSAL ALTA VERAPAZ 2', 1, 0, 15.478657, -90309873);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (3, 16, 16009, 'DIRECCION 3A', 'SUCURSAL ALTA VERAPAZ 3', 1, 0, 15.47497, -90316224);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (4, 16, 16001, 'DIRECCION 4A', 'SUCURSAL ALTA VERAPAZ 4', 1, 0, 15.470203, -90391952);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (5, 16, 16001, 'DIRECCION 5A', 'SUCURSAL ALTA VERAPAZ 5', 1, 0, 15.463119, -90398169);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (6, 16, 16013, 'DIRECCION 6A', 'SUCURSAL ALTA VERAPAZ 6', 1, 0, 15.80967, -90290229);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (7, 16, 16008, 'DIRECCION 7A', 'SUCURSAL ALTA VERAPAZ 7', 1, 0, 15.414897, -89820984);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (8, 4, 4001, 'DIRECCION 1C', 'SUCURSAL CHIMALTENANGO 1', 1, 1, 14.658462, -90817723);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (9, 4, 4006, 'DIRECCION 2C', 'SUCURSAL CHIMALTENANGO 2', 1, 0, 14.759636, -90988555);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (10, 20, 20001, 'DIRECCION 1C', 'SUCURSAL CHIQUIMULA 1', 1, 1, 14.796817, -89542253);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (11, 5, 5001, 'DIRECCION 1E', 'SUCURSAL ESCUINTLA 1', 1, 1, 14.293687, -90783052);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (12, 5, 5001, 'DIRECCION 2E', 'SUCURSAL ESCUINTLA 2', 1, 0, 14.281259, -90776883);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (13, 5, 5002, 'DIRECCION 3E', 'SUCURSAL ESCUINTLA 3', 1, 1, 14.333127, -91020019);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (14, 1, 1001, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 1', 1, 1, 14.632534, -90509313);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (15, 1, 1001, 'DIRECCION 2G', 'SUCURSAL GUATEMALA 2', 1, 1, 14.618158, -90525710);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (16, 1, 1001, 'DIRECCION 3G', 'SUCURSAL GUATEMALA 3', 1, 0, 14.616281, -90514891);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (17, 1, 1001, 'DIRECCION 4G', 'SUCURSAL GUATEMALA 4', 1, 0, 14.63796, -90506929);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (18, 1, 1001, 'DIRECCION 5G', 'SUCURSAL GUATEMALA 5', 1, 0, 14.646107, -90508256);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (19, 1, 1001, 'DIRECCION 6G', 'SUCURSAL GUATEMALA 6', 1, 0, 14.655883, -90497488);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (20, 1, 1001, 'DIRECCION 7G', 'SUCURSAL GUATEMALA 7', 1, 0, 14.649079, -90518640);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (21, 1, 1001, 'DIRECCION 8G', 'SUCURSAL GUATEMALA 8', 1, 0, 14.64177, -90514858);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (22, 1, 1001, 'DIRECCION 9G', 'SUCURSAL GUATEMALA 9', 1, 0, 14.617292, -90530150);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (23, 1, 1001, 'DIRECCION 10G', 'SUCURSAL GUATEMALA 10', 1, 0, 14.598668, -90493334);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (24, 1, 1008, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 11', 1, 0, 14.632662, -90609090);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (25, 1, 1008, 'DIRECCION 2G', 'SUCURSAL GUATEMALA 12', 1, 0, 14.614664, -90603414);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (26, 1, 1008, 'DIRECCION 3G', 'SUCURSAL GUATEMALA 13', 1, 0, 14.63002, -90597072);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (27, 1, 1008, 'DIRECCION 4G', 'SUCURSAL GUATEMALA 14', 1, 0, 14.620912, -90591027);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (28, 1, 1008, 'DIRECCION 5G', 'SUCURSAL GUATEMALA 15', 1, 0, 14.631307, -90591665);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (29, 1, 1015, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 16', 1, 0, 14.526081, -90591218);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (30, 1, 1015, 'DIRECCION 2G', 'SUCURSAL GUATEMALA 17', 1, 0, 14.52599, -90578205);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (31, 1, 1015, 'DIRECCION 3G', 'SUCURSAL GUATEMALA 18', 1, 0, 14.533936, -90582423);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (32, 1, 1015, 'DIRECCION 4G', 'SUCURSAL GUATEMALA 19', 1, 0, 14.542278, -90592468);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (33, 1, 1015, 'DIRECCION 5G', 'SUCURSAL GUATEMALA 20', 1, 0, 14.546639, -90590333);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (34, 1, 1010, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 21', 1, 0, 14.721291, -90647372);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (35, 1, 1010, 'DIRECCION 2G', 'SUCURSAL GUATEMALA 22', 1, 0, 14.723426, -90643340);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (36, 1, 1010, 'DIRECCION 3G', 'SUCURSAL GUATEMALA 26', 1, 0, 14.714915, -90649606);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (37, 1, 1010, 'DIRECCION 4G', 'SUCURSAL GUATEMALA 26', 1, 0, 14.719592, -90649498);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (38, 1, 1016, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 23', 1, 0, 14.486527, -90536457);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (39, 1, 1016, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 23', 1, 0, 14.477879, -90535641);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (40, 1, 1014, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 24', 1, 0, 14.482203, -90623297);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (41, 1, 1017, 'DIRECCION 1G', 'SUCURSAL GUATEMALA 25', 1, 0, 14.512924, -90564282);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (42, 13, 13001, 'DIRECCION 1H', 'SUCURSAL HUEHUETENANGO 1', 1, 1, 15.318132, -91494273);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (43, 13, 13026, 'DIRECCION 2H', 'SUCURSAL HUEHUETENANGO 2', 1, 0, 15.804567, -91314717);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (44, 18, 18001, 'DIRECCION 1I', 'SUCURSAL IZABAL 1', 1, 1, 15.710531, -88584358);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (45, 18, 18004, 'DIRECCION 2I', 'SUCURSAL IZABAL 2', 1, 0, 15.473818, -88841622);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (46, 21, 21001, 'DIRECCION 1J', 'SUCURSAL JALAPA 1', 1, 1, 14.634018, -89994022);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (47, 21, 21001, 'DIRECCION 2J', 'SUCURSAL JALAPA 2', 1, 0, 14.645453, -89984377);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (48, 22, 22001, 'DIRECCION 1J', 'SUCURSAL JUTIAPA 1', 1, 1, 14.638964, -89974817);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (49, 22, 22001, 'DIRECCION 2J', 'SUCURSAL JUTIAPA 2', 1, 0, 14.630372, -89984018);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (50, 17, 17001, 'DIRECCION 1P', 'SUCURSAL PETEN 1', 1, 1, 16.916206, -89885350);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (51, 9, 9001, 'DIRECCION 1Q', 'SUCURSAL QUETZALTENANGO 1', 1, 1, 14.846059, -91535813);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (52, 9, 9001, 'DIRECCION 2Q', 'SUCURSAL QUETZALTENANGO 2', 1, 1, 14.843021, -91514454);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (53, 9, 9020, 'DIRECCION 2Q', 'SUCURSAL QUETZALTENANGO 2', 1, 0, 14.700755, -91864198);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (54, 14, 14006, 'DIRECCION 1Q', 'SUCURSAL QUICHE 1', 1, 1, 14.941875, -91110467);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (55, 14, 14020, 'DIRECCION 2Q', 'SUCURSAL QUICHE 2', 1, 0, 15.987077, -90777599);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (56, 14, 14012, 'DIRECCION 3Q', 'SUCURSAL QUICHE 3', 1, 0, 14.992706, -90801969);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (57, 14, 14001, 'DIRECCION 4Q', 'SUCURSAL QUICHE 4', 1, 0, 15.025872, -91152306);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (58, 11, 11001, 'DIRECCION 1R', 'SUCURSAL RETALHULEU 1', 1, 1, 14.532962, -91680599);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (59, 12, 12015, 'DIRECCION 1S', 'SUCURSAL SAN MARCOS 1', 1, 1, 14.911192, -92053164);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (60, 7, 7001, 'DIRECCION 1S', 'SUCURSAL SOLOLA 1', 1, 1, 14.767009, -91181318);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (61, 8, 8001, 'DIRECCION 1T', 'SUCURSAL TOTONICAPAN 1', 1, 1, 14.912026, -91358942);
+INSERT INTO Sucursal (idSucursal, idDepartamento, idMunicipio, direccion, nombre, esEnlace, estado, longitud, latitud) VALUES (62, 8, 8005, 'DIRECCION 1T', 'SUCURSAL TOTONICAPAN 2', 1, 0, 15.042345, -91407239);
 
 
 
@@ -507,63 +507,10 @@ INSERT INTO Sucursal VALUES (14,08,08001,"DIRECCION 1T","SUCURSAL TOTONICAPAN 1"
 
 -- Usuarios para emisor y receptor
 
--- Personas
-INSERT INTO Persona VALUES (1,"PERSONA  01", 68, "DOMICILIO 01", "12345671", "100001");
-INSERT INTO Persona VALUES (2,"PERSONA  02", 40, "DOMICILIO 02", "12345672", "100002");
-INSERT INTO Persona VALUES (3,"PERSONA  03", 46, "DOMICILIO 03", "12345673", "100003");
-INSERT INTO Persona VALUES (4,"PERSONA  04", 63, "DOMICILIO 04", "12345674", "100004");
-INSERT INTO Persona VALUES (5,"PERSONA  05", 70, "DOMICILIO 05", "12345675", "100005");
-INSERT INTO Persona VALUES (6,"PERSONA  06", 31, "DOMICILIO 06", "12345676", "100006");
-INSERT INTO Persona VALUES (7,"PERSONA  07", 23, "DOMICILIO 07", "12345677", "100007");
-INSERT INTO Persona VALUES (8,"PERSONA  08", 35, "DOMICILIO 08", "12345678", "100008");
-INSERT INTO Persona VALUES (9,"PERSONA  09", 46, "DOMICILIO 09", "12345679", "100009");
-INSERT INTO Persona VALUES (10,"PERSONA 10", 32, "DOMICILIO 10", "12345610", "100010");
-INSERT INTO Persona VALUES (11,"PERSONA 11", 42, "DOMICILIO 11", "12345611", "100011");
-INSERT INTO Persona VALUES (12,"PERSONA 12", 54, "DOMICILIO 12", "12345612", "100012");
-INSERT INTO Persona VALUES (13,"PERSONA 13", 46, "DOMICILIO 13", "12345613", "100013");
-INSERT INTO Persona VALUES (14,"PERSONA 14", 39, "DOMICILIO 14", "12345614", "100014");
-INSERT INTO Persona VALUES (15,"PERSONA 15", 56, "DOMICILIO 15", "12345615", "100015");
-INSERT INTO Persona VALUES (16,"PERSONA 16", 20, "DOMICILIO 16", "12345616", "100016");
-INSERT INTO Persona VALUES (17,"PERSONA 17", 68, "DOMICILIO 17", "12345617", "100017");
-INSERT INTO Persona VALUES (18,"PERSONA 18", 69, "DOMICILIO 18", "12345618", "100018");
-INSERT INTO Persona VALUES (19,"PERSONA 19", 35, "DOMICILIO 19", "12345619", "100019");
-INSERT INTO Persona VALUES (20,"PERSONA 20", 38, "DOMICILIO 20", "12345620", "100020");
-INSERT INTO Persona VALUES (21,"PERSONA 21", 59, "DOMICILIO 21", "12345621", "100021");
-INSERT INTO Persona VALUES (22,"PERSONA 22", 23, "DOMICILIO 22", "12345622", "100022");
-INSERT INTO Persona VALUES (23,"PERSONA 23", 58, "DOMICILIO 23", "12345623", "100023");
-INSERT INTO Persona VALUES (24,"PERSONA 24", 50, "DOMICILIO 24", "12345624", "100024");
-INSERT INTO Persona VALUES (25,"PERSONA 25", 70, "DOMICILIO 25", "12345625", "100025");
-INSERT INTO Persona VALUES (26,"PERSONA 26", 29, "DOMICILIO 26", "12345626", "100026");
-INSERT INTO Persona VALUES (27,"PERSONA 27", 48, "DOMICILIO 27", "12345627", "100027");
-INSERT INTO Persona VALUES (28,"PERSONA 28", 34, "DOMICILIO 28", "12345628", "100028");
-INSERT INTO Persona VALUES (29,"PERSONA 29", 26, "DOMICILIO 29", "12345629", "100029");
-INSERT INTO Persona VALUES (30,"PERSONA 30", 69, "DOMICILIO 30", "12345630", "100030");
-INSERT INTO Persona VALUES (31,"PERSONA 31", 49, "DOMICILIO 31", "12345631", "100031");
-INSERT INTO Persona VALUES (32,"PERSONA 32", 60, "DOMICILIO 32", "12345632", "100032");
-INSERT INTO Persona VALUES (33,"PERSONA 33", 56, "DOMICILIO 33", "12345633", "100033");
-INSERT INTO Persona VALUES (34,"PERSONA 34", 30, "DOMICILIO 34", "12345634", "100034");
-INSERT INTO Persona VALUES (35,"PERSONA 35", 38, "DOMICILIO 35", "12345635", "100035");
-INSERT INTO Persona VALUES (36,"PERSONA 36", 28, "DOMICILIO 36", "12345636", "100036");
-INSERT INTO Persona VALUES (37,"PERSONA 37", 63, "DOMICILIO 37", "12345637", "100037");
-INSERT INTO Persona VALUES (38,"PERSONA 38", 66, "DOMICILIO 38", "12345638", "100038");
-INSERT INTO Persona VALUES (39,"PERSONA 39", 28, "DOMICILIO 39", "12345639", "100039");
-INSERT INTO Persona VALUES (40,"PERSONA 40", 56, "DOMICILIO 40", "12345640", "100040");
-INSERT INTO Persona VALUES (41,"PERSONA 41", 28, "DOMICILIO 41", "12345641", "100041");
-INSERT INTO Persona VALUES (42,"PERSONA 42", 44, "DOMICILIO 42", "12345642", "100042");
-INSERT INTO Persona VALUES (43,"PERSONA 43", 51, "DOMICILIO 43", "12345643", "100043");
-INSERT INTO Persona VALUES (44,"PERSONA 44", 63, "DOMICILIO 44", "12345644", "100044");
-INSERT INTO Persona VALUES (45,"PERSONA 45", 55, "DOMICILIO 45", "12345645", "100045");
-INSERT INTO Persona VALUES (46,"PERSONA 46", 49, "DOMICILIO 46", "12345646", "100046");
-INSERT INTO Persona VALUES (47,"PERSONA 47", 35, "DOMICILIO 47", "12345647", "100047");
-INSERT INTO Persona VALUES (48,"PERSONA 48", 45, "DOMICILIO 48", "12345648", "100048");
-INSERT INTO Persona VALUES (49,"PERSONA 49", 37, "DOMICILIO 49", "12345649", "100049");
-INSERT INTO Persona VALUES (50,"PERSONA 50", 62, "DOMICILIO 50", "12345650", "100050");
-
-
 -- INSERT INTO Envio VALUES (1,43,44,1,2,"2023-11-24",245);
 
 
-INSERT INTO paqueteria.vehiculo (idVehiculo, marca,tipo, placa, tonelage, anio, noAsientos, capacidadVol, capacidadTon)
+INSERT INTO Vehiculo (idVehiculo, marca,tipo, placa, tonelage, anio, noAsientos, capacidadVol, capacidadTon)
 VALUES (1,'TOYOTA','PICKUP', 'P123SDMN', '2', '2014', 2, 2, 1),
        (2,'HONDA','PICKUP', 'P123SDM', '2', '2010', 2, 2, 1),
        (3,'ISUZU','CAMION', 'C-987ABC', '2', '2010', 2, 2, 1),
@@ -585,7 +532,7 @@ VALUES (1,'TOYOTA','PICKUP', 'P123SDMN', '2', '2014', 2, 2, 1),
 
 
 
-INSERT INTO paqueteria.vehiculo_sucursal
+INSERT INTO Vehiculo_Sucursal
     (idVehiculo, idSucursal, fechaCompra) VALUES
     (1, 1, '2023-10-20 12:33:18'),
     (2, 8, '2023-10-20 12:33:18'),
@@ -893,57 +840,58 @@ INSERT INTO Rol (`nombre`, `descripcion`) VALUES
 
 --PERSONAS
 
-INSERT INTO Persona (`idPersona`,`nombre`, `edad`, `domicilio`, `celular`, `nit`, `password`) VALUES
-('1','Persona 1', 30, 'Calle 1 Ciudad A', '123456789', '987654321', 'admin123'),
-('2','Persona 2', 25, 'Calle 2 Ciudad B', '123456789', '987654322', 'admin123'),
-('3','Persona 3', 25, 'Calle 3 Ciudad C', '123456789', '987654323', 'admin123'),
-('4','Persona 4', 25, 'Calle 4 Ciudad D', '123456789', '987654324', 'admin123'),
-('5','Persona 5', 25, 'Calle 5 Ciudad E', '123456789', '987654325', 'admin123'),
-('6','Persona 6', 25, 'Calle 6 Ciudad F', '123456789', '987654326', 'admin123'),
-('7','Persona 7', 25, 'Calle 7 Ciudad G', '123456789', '987654327', 'admin123'),
-('8','Persona 8', 25, 'Calle 8 Ciudad H', '123456789', '987654328', 'admin123'),
-('9','Persona 9', 25, 'Calle 9 Ciudad I', '123456789', '987654329', 'admin123'),
-('10','Persona 10', 25, 'Calle 0 Ciudad J', '123456789', '987654330', 'admin123'),
-('11','Persona 11', 30, 'Calle 1 Ciudad A', '123456789', '987654331', 'admin123'),
-('12','Persona 12', 25, 'Calle 2 Ciudad B', '123456789', '987654332', 'admin123'),
-('13','Persona 13', 25, 'Calle 3 Ciudad C', '123456789', '987654333', 'admin123'),
-('14','Persona 14', 25, 'Calle 4 Ciudad D', '123456789', '987654334', 'admin123'),
-('15','Persona 15', 25, 'Calle 5 Ciudad E', '123456789', '987654335', 'admin123'),
-('16','Persona 16', 25, 'Calle 6 Ciudad F', '123456789', '987654336', 'admin123'),
-('17','Persona 17', 25, 'Calle 7 Ciudad G', '123456789', '987654337', 'admin123'),
-('18','Persona 18', 25, 'Calle 8 Ciudad H', '123456789', '987654338', 'admin123'),
-('19','Persona 19', 25, 'Calle 9 Ciudad I', '123456789', '987654339', 'admin123'),
-('20','Persona 20', 25, 'Calle 0 Ciudad J', '123456789', '987654340', 'admin123'),
-('21','Persona 21', 30, 'Calle 1 Ciudad A', '123456789', '987654341', 'admin123'),
-('22','Persona 22', 25, 'Calle 2 Ciudad B', '123456789', '987654342', 'admin123'),
-('23','Persona 23', 25, 'Calle 3 Ciudad C', '123456789', '987654343', 'admin123'),
-('24','Persona 24', 25, 'Calle 4 Ciudad D', '123456789', '987654344', 'admin123'),
-('25','Persona 25', 25, 'Calle 5 Ciudad E', '123456789', '987654345', 'admin123'),
-('26','Persona 26', 25, 'Calle 6 Ciudad F', '123456789', '987654346', 'admin123'),
-('27','Persona 27', 25, 'Calle 7 Ciudad G', '123456789', '987654347', 'admin123'),
-('28','Persona 28', 25, 'Calle 8 Ciudad H', '123456789', '987654348', 'admin123'),
-('29','Persona 29', 25, 'Calle 9 Ciudad I', '123456789', '987654349', 'admin123'),
-('30','Persona 30', 25, 'Calle 0 Ciudad J', '123456789', '987654350', 'admin123'),
-('31','Persona 31', 30, 'Calle 1 Ciudad A', '123456789', '987654351', 'admin123'),
-('32','Persona 32', 25, 'Calle 2 Ciudad B', '123456789', '987654352', 'admin123'),
-('33','Persona 33', 25, 'Calle 3 Ciudad C', '123456789', '987654353', 'admin123'),
-('34','Persona 34', 25, 'Calle 4 Ciudad D', '123456789', '987654354', 'admin123'),
-('35','Persona 35', 25, 'Calle 5 Ciudad E', '123456789', '987654355', 'admin123'),
-('36','Persona 36', 25, 'Calle 6 Ciudad F', '123456789', '987654356', 'admin123'),
-('37','Persona 37', 25, 'Calle 7 Ciudad G', '123456789', '987654357', 'admin123'),
-('38','Persona 38', 25, 'Calle 8 Ciudad H', '123456789', '987654358', 'admin123'),
-('39','Persona 39', 25, 'Calle 9 Ciudad I', '123456789', '987654359', 'admin123'),
-('40','Persona 40', 25, 'Calle 0 Ciudad J', '123456789', '987654360', 'admin123'),
-('41','Persona 41', 30, 'Calle 1 Ciudad A', '123456789', '987654361', 'admin123'),
-('42','Persona 42', 25, 'Calle 2 Ciudad B', '123456789', '987654362', 'admin123'),
-('43','Persona 43', 25, 'Calle 3 Ciudad C', '123456789', '987654363', 'admin123'),
-('44','Persona 44', 25, 'Calle 4 Ciudad D', '123456789', '987654364', 'admin123'),
-('45','Persona 45', 25, 'Calle 5 Ciudad E', '123456789', '987654365', 'admin123'),
-('46','Persona 46', 25, 'Calle 6 Ciudad F', '123456789', '987654366', 'admin123'),
-('47','Persona 47', 25, 'Calle 7 Ciudad G', '123456789', '987654367', 'admin123'),
-('48','Persona 48', 25, 'Calle 8 Ciudad H', '123456789', '987654368', 'admin123'),
-('49','Persona 49', 25, 'Calle 9 Ciudad I', '123456789', '987654369', 'admin123'),
-('50','Persona 50', 25, 'Calle 0 Ciudad J', '123456789', '987654370', 'admin123');
+INSERT INTO Persona 
+(`idPersona`,`nombre`, `edad`, `domicilio`, `celular`, `nit`, `password`) VALUES
+('1','Persona 1', 30, 'Calle 1 Ciudad A', '123456789', '10001', 'admin123'),
+('2','Persona 2', 25, 'Calle 2 Ciudad B', '123456789', '10002', 'admin123'),
+('3','Persona 3', 25, 'Calle 3 Ciudad C', '123456789', '10003', 'admin123'),
+('4','Persona 4', 25, 'Calle 4 Ciudad D', '123456789', '10004', 'admin123'),
+('5','Persona 5', 25, 'Calle 5 Ciudad E', '123456789', '10005', 'admin123'),
+('6','Persona 6', 25, 'Calle 6 Ciudad F', '123456789', '10006', 'admin123'),
+('7','Persona 7', 25, 'Calle 7 Ciudad G', '123456789', '10007', 'admin123'),
+('8','Persona 8', 25, 'Calle 8 Ciudad H', '123456789', '10008', 'admin123'),
+('9','Persona 9', 25, 'Calle 9 Ciudad I', '123456789', '10009', 'admin123'),
+('10','Persona 10', 25, 'Calle 0 Ciudad J', '123456789', '100010', 'admin123'),
+('11','Persona 11', 30, 'Calle 1 Ciudad A', '123456789', '100011', 'admin123'),
+('12','Persona 12', 25, 'Calle 2 Ciudad B', '123456789', '100012', 'admin123'),
+('13','Persona 13', 25, 'Calle 3 Ciudad C', '123456789', '100013', 'admin123'),
+('14','Persona 14', 25, 'Calle 4 Ciudad D', '123456789', '100014', 'admin123'),
+('15','Persona 15', 25, 'Calle 5 Ciudad E', '123456789', '100015', 'admin123'),
+('16','Persona 16', 25, 'Calle 6 Ciudad F', '123456789', '100016', 'admin123'),
+('17','Persona 17', 25, 'Calle 7 Ciudad G', '123456789', '100017', 'admin123'),
+('18','Persona 18', 25, 'Calle 8 Ciudad H', '123456789', '100018', 'admin123'),
+('19','Persona 19', 25, 'Calle 9 Ciudad I', '123456789', '100019', 'admin123'),
+('20','Persona 20', 25, 'Calle 0 Ciudad J', '123456789', '100020', 'admin123'),
+('21','Persona 21', 30, 'Calle 1 Ciudad A', '123456789', '100021', 'admin123'),
+('22','Persona 22', 25, 'Calle 2 Ciudad B', '123456789', '100022', 'admin123'),
+('23','Persona 23', 25, 'Calle 3 Ciudad C', '123456789', '100023', 'admin123'),
+('24','Persona 24', 25, 'Calle 4 Ciudad D', '123456789', '100024', 'admin123'),
+('25','Persona 25', 25, 'Calle 5 Ciudad E', '123456789', '100025', 'admin123'),
+('26','Persona 26', 25, 'Calle 6 Ciudad F', '123456789', '100026', 'admin123'),
+('27','Persona 27', 25, 'Calle 7 Ciudad G', '123456789', '100027', 'admin123'),
+('28','Persona 28', 25, 'Calle 8 Ciudad H', '123456789', '100028', 'admin123'),
+('29','Persona 29', 25, 'Calle 9 Ciudad I', '123456789', '100029', 'admin123'),
+('30','Persona 30', 25, 'Calle 0 Ciudad J', '123456789', '100030', 'admin123'),
+('31','Persona 31', 30, 'Calle 1 Ciudad A', '123456789', '100031', 'admin123'),
+('32','Persona 32', 25, 'Calle 2 Ciudad B', '123456789', '100032', 'admin123'),
+('33','Persona 33', 25, 'Calle 3 Ciudad C', '123456789', '100033', 'admin123'),
+('34','Persona 34', 25, 'Calle 4 Ciudad D', '123456789', '100034', 'admin123'),
+('35','Persona 35', 25, 'Calle 5 Ciudad E', '123456789', '100035', 'admin123'),
+('36','Persona 36', 25, 'Calle 6 Ciudad F', '123456789', '100036', 'admin123'),
+('37','Persona 37', 25, 'Calle 7 Ciudad G', '123456789', '100037', 'admin123'),
+('38','Persona 38', 25, 'Calle 8 Ciudad H', '123456789', '100038', 'admin123'),
+('39','Persona 39', 25, 'Calle 9 Ciudad I', '123456789', '100039', 'admin123'),
+('40','Persona 40', 25, 'Calle 0 Ciudad J', '123456789', '100040', 'admin123'),
+('41','Persona 41', 30, 'Calle 1 Ciudad A', '123456789', '100041', 'admin123'),
+('42','Persona 42', 25, 'Calle 2 Ciudad B', '123456789', '100042', 'admin123'),
+('43','Persona 43', 25, 'Calle 3 Ciudad C', '123456789', '100043', 'admin123'),
+('44','Persona 44', 25, 'Calle 4 Ciudad D', '123456789', '100044', 'admin123'),
+('45','Persona 45', 25, 'Calle 5 Ciudad E', '123456789', '100045', 'admin123'),
+('46','Persona 46', 25, 'Calle 6 Ciudad F', '123456789', '100046', 'admin123'),
+('47','Persona 47', 25, 'Calle 7 Ciudad G', '123456789', '100047', 'admin123'),
+('48','Persona 48', 25, 'Calle 8 Ciudad H', '123456789', '100048', 'admin123'),
+('49','Persona 49', 25, 'Calle 9 Ciudad I', '123456789', '100049', 'admin123'),
+('50','Persona 50', 25, 'Calle 0 Ciudad J', '123456789', '100050', 'admin123');
 
 
 --Personal
