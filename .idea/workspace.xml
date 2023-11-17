@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb5e0850-beed-4058-b1c9-10aecb42775e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/paqueteria_backend/src/main/java/com/paqueteria/paqueteria_backend/entidad/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/paqueteria_backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/paqueteria_backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,10 +16,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2WuBVmyfC3YgMSZ7BpSJfbmYEgu" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -31,6 +31,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/james/Documents/GitHub/Paqueteria_Backend/paqueteria_backend",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -43,6 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1697572611006</updated>
       <workItem from="1697572612663" duration="13000" />
+      <workItem from="1700244916153" duration="202000" />
     </task>
     <servers />
   </component>

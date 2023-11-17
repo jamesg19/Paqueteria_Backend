@@ -31,4 +31,8 @@ public class EnvioServicio {
     public List<EnvioSimple> getEnviosIdSucursalOrigen(long id){return this.envioSimpleRepo.findEnvioSimpleByIdSucursalOrigen(id);}
 
     public List<EnvioSimple> getAll(){return this.envioSimpleRepo.findAll();}
+
+    public List<EnvioSimple> getEnviosEnRuta(String estado){
+        return this.envioSimpleRepo.findByEstado(estado);
+    }
 }

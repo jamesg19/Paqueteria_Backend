@@ -32,6 +32,18 @@ public class EnvioSimple {
     @Column(name="fechaLlegada")
     private LocalDateTime fecha;
 
-    @Column(name="subTotal")
+    @Column(name="total")
     private double subTotal;
+
+    @Column(name = "peso")
+    private double peso;
+
+    @Column(name = "volumen")
+    private double volumen;
+
+    @Column(name = "diasTranscurridos")
+    private int diasTranscurridos;
+
+    @Column(name = "estado")
+    private String estado;
 }

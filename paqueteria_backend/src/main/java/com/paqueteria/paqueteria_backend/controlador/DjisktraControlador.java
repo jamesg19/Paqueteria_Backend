@@ -4,6 +4,7 @@ package com.paqueteria.paqueteria_backend.controlador;
 import com.paqueteria.paqueteria_backend.djikstra.Djikstra;
 import com.paqueteria.paqueteria_backend.djikstra.DjisktraTest;
 import com.paqueteria.paqueteria_backend.entidad.Ruta;
+import com.paqueteria.paqueteria_backend.entidad.RutaOptima;
 import com.paqueteria.paqueteria_backend.entidad.Sucursal;
 import com.paqueteria.paqueteria_backend.repositorio.SucursalRepositorio;
 import com.paqueteria.paqueteria_backend.servicio.RutaServicio;
@@ -42,8 +43,9 @@ public class DjisktraControlador {
     //si deviuelve vacio no esta activa
     //si devuelve solo el destino es poque no existe
     @GetMapping("/get_ruta")
-    public List<Sucursal> getRUta(HttpServletRequest request, HttpServletResponse response, String origen, String destino)  {
+    public RutaOptima getRUta(HttpServletRequest request, HttpServletResponse response, String origen, String destino)  {
         try {
+            RutaOptima rutaOptimaResponse=new RutaOptima();
 
             List<Sucursal> sucursales = this.sucursalServicio.obtenerSucursalesEstado(true);
             List<Ruta> rutas = this.rutaServicio.obtenerRutas();                        
@@ -58,7 +60,8 @@ public class DjisktraControlador {
             }*/
             
             List<Sucursal> valRuta = this.djikstra.buscarMejorRuta(sucursales, rutas, Integer.parseInt(origen), Integer.parseInt(destino));
-
+            rutaOptimaResponse.setRutas(valRuta);
+            rutaOptimaResponse.setDistancia(djikstra.getDistanciaRecorrida());
             /*
             System.out.println("Inicio de ruta");
             for (Sucursal sucursal : valRuta) {
@@ -68,7 +71,7 @@ public class DjisktraControlador {
              */
 
             System.out.println("funciona: " + origen + " , " + destino + "Ruta Optima: ");
-            return valRuta;
+            return rutaOptimaResponse;
         }
         catch( Exception e){
             System.out.println("Error: "+e);
