@@ -1497,3 +1497,18 @@ insert into Envio values (1,59,14,10001,10003,'2023-01-01',45,5,0,0,'enRuta');
 --QT > (GT & TO)
 insert into Envio values (2,51,14,10001,10003,'2023-01-01',45,5,0,0,'enRuta');
 insert into Envio values (3,51,61,10001,10003,'2023-01-01',45,5,0,0,'enRuta');
+
+insert into Pasos_Envio values(1,1,59);
+insert into Pasos_Envio values(2,1,51);
+insert into Pasos_Envio values(3,1,14);
+
+insert into Pasos_Envio values(4,2,51);
+insert into Pasos_Envio values(5,2,14);
+
+insert into Pasos_Envio values(6,2,51);
+insert into Pasos_Envio values(7,2,61);
+
+insert into Historico_Sucursales values (1,1,51,0,'2023-01-01');
+insert into Historico_Sucursales values (1,1,51,0,'2023-01-01');
+insert into Historico_Sucursales values (2,2,51,0,'2023-01-01');
+insert into Historico_Sucursales values (3,3,51,0,'2023-01-01');
