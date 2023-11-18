@@ -7,7 +7,6 @@ import java.util.List;
 @Getter
 @Setter
 public class RutaOptima {
-
     private List<Sucursal> rutas;
     private double distancia;
 }

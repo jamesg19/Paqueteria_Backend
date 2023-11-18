@@ -1,10 +1,13 @@
 package com.paqueteria.paqueteria_backend.entidad.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name="envio")
@@ -29,8 +32,9 @@ public class EnvioSimple {
     @Column(name="nitReceptor")
     private long nitReceptor;
 
-    @Column(name="fechaLlegada")
-    private LocalDateTime fecha;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(name="fecha")
+    private LocalDate fecha;
 
     @Column(name="total")
     private double subTotal;
