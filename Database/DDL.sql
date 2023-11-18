@@ -169,9 +169,9 @@ COLLATE = utf8mb4_unicode_ci;
 -- -----------------------------------------------------
 -- Table `mydb`.`PasosEnvio`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`PasosEnvio` ;
+DROP TABLE IF EXISTS `paqueteria`.`PasosEnvio` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`PasosEnvio` (
+CREATE TABLE IF NOT EXISTS `paqueteria`.`PasosEnvio` (
   `idPasosEnvio` INT NOT NULL AUTO_INCREMENT,
   `idEnvio` INT(11) NULL,
   `idSucursal` INT(11) NULL,
@@ -465,3 +465,8 @@ COLLATE = utf8mb4_unicode_ci;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+-- Vistas para la logica de simulacion de paqueteria by James
+CREATE OR REPLACE VIEW cantidad_envio_por_sucursal as SELECT  UUID() as id,E.idSucursalOrigen, E.idSucursalDestino, COUNT(E.idEnvio) AS cantidadEnvios FROM Sucursal S JOIN Envio E ON S.idSucursal = E.idSucursalOrigen WHERE
+    E.estado = 'enRuta' GROUP BY E.idSucursalOrigen, E.idSucursalDestino;
