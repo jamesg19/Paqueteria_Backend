@@ -1,9 +1,11 @@
 package com.paqueteria.paqueteria_backend.servicio;
 
 import com.paqueteria.paqueteria_backend.entidad.Envio;
+import com.paqueteria.paqueteria_backend.entidad.PasosEnvio;
 import com.paqueteria.paqueteria_backend.entidad.dto.EnvioSimple;
 import com.paqueteria.paqueteria_backend.entidad.dto.EnvioSimpleRepo;
 import com.paqueteria.paqueteria_backend.repositorio.EnvioRepositorio;
+import com.paqueteria.paqueteria_backend.repositorio.PasosEnvioRepositorio;
 import com.paqueteria.paqueteria_backend.repositorio.SucursalRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ public class EnvioServicio {
     private SucursalRepositorio sucursalRepo;
     @Autowired
     private EnvioSimpleRepo envioSimpleRepo;
+    @Autowired
+    PasosEnvioRepositorio envioPasosRepo;
     public Envio obtenerEnvioId(int id){
         return this.envioRepo.findEnvioById(id);
     }
@@ -35,4 +39,8 @@ public class EnvioServicio {
     public List<EnvioSimple> getEnviosEnRuta(String estado){
         return this.envioSimpleRepo.findByEstado(estado);
     }
+
+    public List<PasosEnvio> getPasosEnvio(int idEnvio){return this.envioPasosRepo.findByIdEnvioOrderByIdDesc(idEnvio);}
+
+    public PasosEnvio savePasosEnvio(PasosEnvio envio){return  this.envioPasosRepo.save(envio);}
 }

@@ -1,6 +1,8 @@
 package com.paqueteria.paqueteria_backend.controlador;
 
 import com.paqueteria.paqueteria_backend.entidad.Envio;
+import com.paqueteria.paqueteria_backend.entidad.PasosEnvio;
+import com.paqueteria.paqueteria_backend.entidad.Sucursal;
 import com.paqueteria.paqueteria_backend.entidad.dto.EnvioSimple;
 import com.paqueteria.paqueteria_backend.errores.Error;
 import com.paqueteria.paqueteria_backend.servicio.EnvioServicio;
@@ -9,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -39,4 +43,21 @@ public class EnvioControlador {
     public ResponseEntity<List<EnvioSimple>> getAll() throws Error{
         return ResponseEntity.ok(this.envioServicio.getAll());
     }
-}
+
+    @GetMapping("/get_pasos_envio")
+    public ResponseEntity<List<PasosEnvio>> getPasosEnvio(@RequestParam int id) throws  Error{
+        return ResponseEntity.ok(this.envioServicio.getPasosEnvio(id));
+    }
+
+    @PostMapping("/save_pasos_envio")
+    public ResponseEntity<List<PasosEnvio>> savePasosEnvio(@RequestBody List<Sucursal> sucursales, @RequestParam int idEnvio) throws Error{
+        List <PasosEnvio> retorno = new ArrayList<>();
+        sucursales.stream().forEach(data->{
+            PasosEnvio auxPasos = new PasosEnvio();
+            auxPasos.setIdSucursal(data.getIdSucursal());
+            auxPasos.setIdEnvio(idEnvio);
+            retorno.add(envioServicio.savePasosEnvio(auxPasos));
+        });
+        return ResponseEntity.ok(retorno);
+    }
+ }
