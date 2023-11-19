@@ -147,7 +147,21 @@ public class ReportesControlador {
             
             //yyyy-mm-dd
             System.out.println(recibidoReporteSucursal.getFechaAnalizar());
-            System.out.println(recibidoReporteSucursal.getSucursalForm());            
+            System.out.println(recibidoReporteSucursal.getSucursalForm());       
+            
+            //Traer envios recibidos de la sucursal entre el 1 del mes a la fecha limite
+
+            //Traer envio enviados de la sucursal entre el 1 del mes a la fecha limite
+
+            //Traer envios que estan de paso de la sucursal entre el 1 del mes a la fecha limite
+
+            //Traer cantidad de personal trabajando en la sucursal
+            
+
+            //Calcular los gastos de una sucursal
+
+            //Calcular las ganancias de una sucursal
+
             
             return reporte;
         }

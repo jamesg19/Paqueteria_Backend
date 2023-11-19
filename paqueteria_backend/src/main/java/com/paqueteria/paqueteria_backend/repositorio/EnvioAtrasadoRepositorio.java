@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EnvioAtrasadoRepositorio extends JpaRepository<EnvioAtrasado,long> {
+public interface EnvioAtrasadoRepositorio extends JpaRepository<EnvioAtrasado,Long> {
     int deleteByIdEnvio(int idEnvio);
     EnvioAtrasado getEnvioAtrasadoById(int id);
 }

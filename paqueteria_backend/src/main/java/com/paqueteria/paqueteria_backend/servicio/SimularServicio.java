@@ -66,7 +66,7 @@ public class SimularServicio {
                 }
             }
         });
-        this.verificarMontoMinimoEnvio(lista);
+        this.verificarMontoMinimoEnvio(lista,0);
 
         //ITERAR CADA ENVIO SEGUN SU LISTA en PasosEnvio
 
