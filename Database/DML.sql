@@ -1500,3 +1500,19 @@ insert into Envio values (3,51,61,10001,10003,'2023-01-01',45,5,0,0,'enRuta');
 
 CREATE OR REPLACE VIEW cantidad_envio_por_sucursal as SELECT  UUID() as id,E.idSucursalOrigen, E.idSucursalDestino, COUNT(E.idEnvio) AS cantidadEnvios FROM Sucursal S JOIN Envio E ON S.idSucursal = E.idSucursalOrigen WHERE
     E.estado = 'enRuta' GROUP BY E.idSucursalOrigen, E.idSucursalDestino;
+insert into Pasos_Envio values(1,1,59);
+insert into Pasos_Envio values(2,1,51);
+insert into Pasos_Envio values(3,1,14);
+
+insert into Pasos_Envio values(4,2,51);
+insert into Pasos_Envio values(5,2,14);
+
+insert into Pasos_Envio values(6,3,51);
+insert into Pasos_Envio values(7,3,61);
+
+insert into Historico_Sucursales values (1,1,59,0,'2023-01-01');
+insert into Historico_Sucursales values (2,1,51,0,'2023-01-04');
+insert into Historico_Sucursales values (3,1,14,0,'2023-01-06');
+
+insert into Historico_Sucursales values (4,2,51,0,'2023-01-01');
+insert into Historico_Sucursales values (5,3,51,0,'2023-01-01');

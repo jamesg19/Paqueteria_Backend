@@ -1,19 +1,26 @@
 package com.paqueteria.paqueteria_backend.servicio;
 
-import com.paqueteria.paqueteria_backend.entidad.CantidadEnvioPorSucursal;
+import com.paqueteria.paqueteria_backend.entidad.*;
 import com.paqueteria.paqueteria_backend.entidad.dto.EnvioSimple;
 import com.paqueteria.paqueteria_backend.entidad.dto.ResponseListEnvioSimple;
 import com.paqueteria.paqueteria_backend.repositorio.CantidadEnvioPorSucursalRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Service;
+import com.paqueteria.paqueteria_backend.djikstra.Djikstra;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 @Service
 public class SimularServicio {
     private EnvioServicio envioServicio;
     private CantidadEnvioPorSucursalRepositorio cantidadEnvioPorSucursal;
+    private Djikstra dijstraAlgoritmo;
+    @Autowired
+    private SucursalServicio sucursalService;
 
     public SimularServicio(EnvioServicio envioServicio,CantidadEnvioPorSucursalRepositorio cantidadEnvioPorSucursal) {
         this.envioServicio = envioServicio;
@@ -34,6 +41,32 @@ public class SimularServicio {
         response=this.verificarMontoMinimoEnvio(lista,3);
         enviosDisponibles=response.getDisponibles();
         enviosStandBy=response.getStandBy();
+        /*
+        * Itera sobre el listado filtrado por enRuta, luego se recorre ese listado si en el historico se encuentra que esta
+        * en la misma sucural de destino se cambia el estado del envio a etregado
+        * */
+        List<Envio> posiblesMovimientos = new ArrayList<>();
+        lista.stream().forEach(data->{
+            Envio envioAux = this.envioServicio.obtenerEnvioId(data.getId());
+            HistoricoSucursal auxHistorico = this.envioServicio.getHistorico(envioAux.getId()).get(0);
+            if(envioAux.getSucursalOrigen().getIdSucursal() == auxHistorico.getIdSucursal())envioAux.setEstado("entregado");
+            else{
+                List<PasosEnvio> pasosEnvioList = this.envioServicio.getPasosEnvio(envioAux.getId());
+                int indice= IntStream.range(0,pasosEnvioList.size()).filter(i->pasosEnvioList.get(i).equals(auxHistorico.getId())).findFirst().orElse(-1);
+                int nextSucursal = indice!=-1 && indice < pasosEnvioList.size() - 1 ? indice + 1:-1;
+                Optional<Sucursal> sucursalNext = sucursalService.obtenerSucursalId(nextSucursal);
+                if(sucursalNext.isPresent()){
+                    if(sucursalNext.get().isEstado())posiblesMovimientos.add(envioAux);
+                    else {
+                        EnvioAtrasado envioAtrasado = new EnvioAtrasado();
+                        envioAtrasado.setIdEnvio(envioAux.getId());
+                        envioAtrasado.setIdSucursal(auxHistorico.getIdSucursal());
+                        this.envioServicio.saveEnvioAtrasado(envioAtrasado);
+                    }
+                }
+            }
+        });
+        this.verificarMontoMinimoEnvio(lista);
 
         //ITERAR CADA ENVIO SEGUN SU LISTA en PasosEnvio
 

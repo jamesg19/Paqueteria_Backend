@@ -18,7 +18,7 @@ public class EnvioSimple {
     @Id
     @Column(name = "idEnvio")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name="idSucursalOrigen")
     private long idSucursalOrigen;
