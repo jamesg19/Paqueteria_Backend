@@ -32,3 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 Database/DiagramaDDL.mwb.bak
+paqueteria_backend/src/main/resources/application.properties
