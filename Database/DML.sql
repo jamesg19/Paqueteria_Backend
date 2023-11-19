@@ -1505,10 +1505,12 @@ insert into Pasos_Envio values(3,1,14);
 insert into Pasos_Envio values(4,2,51);
 insert into Pasos_Envio values(5,2,14);
 
-insert into Pasos_Envio values(6,2,51);
-insert into Pasos_Envio values(7,2,61);
+insert into Pasos_Envio values(6,3,51);
+insert into Pasos_Envio values(7,3,61);
 
-insert into Historico_Sucursales values (1,1,51,0,'2023-01-01');
-insert into Historico_Sucursales values (1,1,51,0,'2023-01-01');
-insert into Historico_Sucursales values (2,2,51,0,'2023-01-01');
-insert into Historico_Sucursales values (3,3,51,0,'2023-01-01');
+insert into Historico_Sucursales values (1,1,59,0,'2023-01-01');
+insert into Historico_Sucursales values (2,1,51,0,'2023-01-04');
+insert into Historico_Sucursales values (3,1,14,0,'2023-01-06');
+
+insert into Historico_Sucursales values (4,2,51,0,'2023-01-01');
+insert into Historico_Sucursales values (5,3,51,0,'2023-01-01');

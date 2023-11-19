@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface PasosEnvioRepositorio extends JpaRepository<PasosEnvio,Long> {
-    List<PasosEnvio> findByIdEnvioOrderByIdDesc(int idEnvio);
+    List<PasosEnvio> findByIdEnvioOrderByIdAsc(int idEnvio);
+    int deletePasosEnvioByIdEnvio(int idEnvio);
 }
