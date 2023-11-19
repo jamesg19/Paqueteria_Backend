@@ -509,10 +509,9 @@ INSERT INTO Sucursal VALUES (14,08,08001,"DIRECCION 1T","SUCURSAL TOTONICAPAN 1"
 
 -- INSERT INTO Envio VALUES (1,43,44,1,2,"2023-11-24",245);
 
+/*
 
-INSERT INTO Vehiculo (idVehiculo, marca,tipo, placa, tonelage, anio, noAsientos, capacidadVol, capacidadTon)
-VALUES (1,'TOYOTA','PICKUP', 'P123SDMN', '2', '2014', 2, 2, 1),
-       (2,'HONDA','PICKUP', 'P123SDM', '2', '2010', 2, 2, 1),
+(2,'HONDA','PICKUP', 'P123SDM', '2', '2010', 2, 2, 1),
        (3,'ISUZU','CAMION', 'C-987ABC', '2', '2010', 2, 2, 1),
        (4,'MERCEDEZ BENZ','CAMION', 'C-543XYZ', '2', '2013', 2, 2, 1),
        (5,'KIA','CAMION', 'P-654LMN', '2', '2001', 2, 2, 1),
@@ -524,14 +523,82 @@ VALUES (1,'TOYOTA','PICKUP', 'P123SDMN', '2', '2014', 2, 2, 1),
        (11,'FORD','CAMION', 'C-567VWX', '2', '2025', 2, 2, 1),
        (12,'HINO','CAMION', 'C-109YZA', '2', '2026', 2, 2, 1),
        (13,'NISSAN','CAMION', 'C-609JKL', '2', '2021', 2, 2, 1),
-       (14,'Mitsubishi Fuso','CAMION', 'C-185MNO', '2', '2024', 2, 2, 1),
+       
        (15,'Mitsubishi Fuso', 'CAMION','C-374PQR', '2', '2025', 2, 2, 1),
        (16,'Mitsubishi Fuso','CAMION', 'C-527STU', '2', '2026', 2, 2, 1),
        (17,'HINO','CAMION', 'C-725SQU', '2', '2026', 2, 2, 1),
-       (18,'Hino','CAMION', 'C-122ABU', '2', '2026', 2, 2, 1);
+       (18,'Hino','CAMION', 'C-122ABU', '2', '2026', 2, 2, 1)
+
+       (2,1,'Mitsubishi Fuso','CAMION', 'C-185MNO', '2', '2024', 2, 2, 10),
+*/
+INSERT INTO Vehiculo (idVehiculo,idSucursal, marca,tipo, placa, tonelage, anio, noAsientos, capacidadVol, capacidadTon)
+VALUES 
+      (1 , 1,'TOYOTA','PICKUP', 'P1231SDMN',  '2', '2014', 2, 2, 1),
+      (2 , 2,'TOYOTA','PICKUP', 'P1232SDMN',  '2', '2014', 2, 2, 1),
+      (3 , 3,'TOYOTA','PICKUP', 'P1233SDMN',  '2', '2014', 2, 2, 1),
+      (4 , 4,'TOYOTA','PICKUP', 'P1234SDMN',  '2', '2014', 2, 2, 1),
+      (5 , 5,'TOYOTA','PICKUP', 'P1235SDMN',  '2', '2014', 2, 2, 1),
+      (6 , 6,'TOYOTA','PICKUP', 'P1236SDMN',  '2', '2014', 2, 2, 1),
+      (7 , 7,'TOYOTA','PICKUP', 'P1237SDMN',  '2', '2014', 2, 2, 1),
+      (8 , 8,'TOYOTA','PICKUP', 'P1238SDMN',  '2', '2014', 2, 2, 1),
+      (9 , 9,'TOYOTA','PICKUP', 'P1239SDMN',  '2', '2014', 2, 2, 1),
+      (10,10,'TOYOTA','PICKUP', 'P12310SDMN', '2', '2014', 2, 2, 1),
+      (11,11,'TOYOTA','PICKUP', 'P12311SDMN', '2', '2014', 2, 2, 1),
+      (12,12,'TOYOTA','PICKUP', 'P12312SDMN', '2', '2014', 2, 2, 1),
+      (13,13,'TOYOTA','PICKUP', 'P12313SDMN', '2', '2014', 2, 2, 1),
+      (14,14,'TOYOTA','PICKUP', 'P12314SDMN', '2', '2014', 2, 2, 1),
+      (15,15,'TOYOTA','PICKUP', 'P12315SDMN', '2', '2014', 2, 2, 1),
+      (16,16,'TOYOTA','PICKUP', 'P12316SDMN', '2', '2014', 2, 2, 1),
+      (17,17,'TOYOTA','PICKUP', 'P12317SDMN', '2', '2014', 2, 2, 1),
+      (18,18,'TOYOTA','PICKUP', 'P12318SDMN', '2', '2014', 2, 2, 1),
+      (19,19,'TOYOTA','PICKUP', 'P12319SDMN', '2', '2014', 2, 2, 1),
+      (20,20,'TOYOTA','PICKUP', 'P12320SDMN', '2', '2014', 2, 2, 1),
+      (21,21,'TOYOTA','PICKUP', 'P12321SDMN', '2', '2014', 2, 2, 1),
+      (22,22,'TOYOTA','PICKUP', 'P12322SDMN', '2', '2014', 2, 2, 1),
+      (23,23,'TOYOTA','PICKUP', 'P12323SDMN', '2', '2014', 2, 2, 1),
+      (24,24,'TOYOTA','PICKUP', 'P12324SDMN', '2', '2014', 2, 2, 1),
+      (25,25,'TOYOTA','PICKUP', 'P12325SDMN', '2', '2014', 2, 2, 1),
+      (26,26,'TOYOTA','PICKUP', 'P12326SDMN', '2', '2014', 2, 2, 1),
+      (27,27,'TOYOTA','PICKUP', 'P12327SDMN', '2', '2014', 2, 2, 1),
+      (28,28,'TOYOTA','PICKUP', 'P12328SDMN', '2', '2014', 2, 2, 1),
+      (29,29,'TOYOTA','PICKUP', 'P12329SDMN', '2', '2014', 2, 2, 1),
+      (30,30,'TOYOTA','PICKUP', 'P12330SDMN', '2', '2014', 2, 2, 1),
+      (31,31,'TOYOTA','PICKUP', 'P12331SDMN', '2', '2014', 2, 2, 1),
+      (32,32,'TOYOTA','PICKUP', 'P12332SDMN', '2', '2014', 2, 2, 1),
+      (33,33,'TOYOTA','PICKUP', 'P12333SDMN', '2', '2014', 2, 2, 1),
+      (34,34,'TOYOTA','PICKUP', 'P12334SDMN', '2', '2014', 2, 2, 1),
+      (35,35,'TOYOTA','PICKUP', 'P12335SDMN', '2', '2014', 2, 2, 1),
+      (36,36,'TOYOTA','PICKUP', 'P12336SDMN', '2', '2014', 2, 2, 1),
+      (37,37,'TOYOTA','PICKUP', 'P12337SDMN', '2', '2014', 2, 2, 1),
+      (38,38,'TOYOTA','PICKUP', 'P12338SDMN', '2', '2014', 2, 2, 1),
+      (39,39,'TOYOTA','PICKUP', 'P12339SDMN', '2', '2014', 2, 2, 1),
+      (40,40,'TOYOTA','PICKUP', 'P12340SDMN', '2', '2014', 2, 2, 1),
+      (41,41,'TOYOTA','PICKUP', 'P12341SDMN', '2', '2014', 2, 2, 1),
+      (42,42,'TOYOTA','PICKUP', 'P12342SDMN', '2', '2014', 2, 2, 1),
+      (43,43,'TOYOTA','PICKUP', 'P12343SDMN', '2', '2014', 2, 2, 1),
+      (44,44,'TOYOTA','PICKUP', 'P12344SDMN', '2', '2014', 2, 2, 1),
+      (45,45,'TOYOTA','PICKUP', 'P12345SDMN', '2', '2014', 2, 2, 1),
+      (46,46,'TOYOTA','PICKUP', 'P12346SDMN', '2', '2014', 2, 2, 1),
+      (47,47,'TOYOTA','PICKUP', 'P12347SDMN', '2', '2014', 2, 2, 1),
+      (48,48,'TOYOTA','PICKUP', 'P12348SDMN', '2', '2014', 2, 2, 1),
+      (49,49,'TOYOTA','PICKUP', 'P12349SDMN', '2', '2014', 2, 2, 1),
+      (50,50,'TOYOTA','PICKUP', 'P12350SDMN', '2', '2014', 2, 2, 1),
+      (51,51,'TOYOTA','PICKUP', 'P12351SDMN', '2', '2014', 2, 2, 1),
+      (52,52,'TOYOTA','PICKUP', 'P12352SDMN', '2', '2014', 2, 2, 1),
+      (53,53,'TOYOTA','PICKUP', 'P12353SDMN', '2', '2014', 2, 2, 1),
+      (54,54,'TOYOTA','PICKUP', 'P12354SDMN', '2', '2014', 2, 2, 1),
+      (55,55,'TOYOTA','PICKUP', 'P12355SDMN', '2', '2014', 2, 2, 1),
+      (56,56,'TOYOTA','PICKUP', 'P12356SDMN', '2', '2014', 2, 2, 1),
+      (57,57,'TOYOTA','PICKUP', 'P12357SDMN', '2', '2014', 2, 2, 1),
+      (58,58,'TOYOTA','PICKUP', 'P12358SDMN', '2', '2014', 2, 2, 1),
+      (59,59,'TOYOTA','PICKUP', 'P12359SDMN', '2', '2014', 2, 2, 1),
+      (60,60,'TOYOTA','PICKUP', 'P12360SDMN', '2', '2014', 2, 2, 1),
+      (61,61,'TOYOTA','PICKUP', 'P12361SDMN', '2', '2014', 2, 2, 1),
+      (62,62,'TOYOTA','PICKUP', 'P12362SDMN', '2', '2014', 2, 2, 1)       
+    ;
 
 
-
+/*
 INSERT INTO Vehiculo_Sucursal
     (idVehiculo, idSucursal, fechaCompra) VALUES
     (1, 1, '2023-10-20 12:33:18'),
@@ -553,7 +620,7 @@ INSERT INTO Vehiculo_Sucursal
     (17, 60, '2023-10-20 12:33:18'),
     (18, 61, '2023-10-20 12:33:18');
 
-
+*/
 
 
 
