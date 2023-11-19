@@ -1,12 +1,12 @@
 package com.paqueteria.paqueteria_backend.servicio;
 
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 
 
 @Service
@@ -28,6 +28,94 @@ public class ReportesServicio {
 
         @SuppressWarnings("unchecked")
         List<Object[]> results = query.getResultList();
+
+        return results;
+    }
+
+    public String obtenerCantidadPersonalTrabajanSucursal(String idSucursal){
+        String sqlQuery = "SELECT COUNT(*) AS cantidad FROM Personal WHERE idSucursal = :idSucursal";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter("idSucursal", idSucursal);
+
+        @SuppressWarnings("unchecked")
+        List<Long> results = query.getResultList();
+
+        if (!results.isEmpty()) {
+            // Acceder al primer elemento y obtener el primer dato (índice 0)
+            Object primerDatoObjeto = results.get(0);            
+            return primerDatoObjeto.toString();
+        } else {
+            // Manejar el caso donde la lista está vacía
+            //throw new RuntimeException("La lista está vacía.");
+            return "0";
+        }        
+    }
+
+    public List<Object[]> obtenerCantidadEnviosRecibidosEntreFechas(String idSucursal,String fecha1, String fecha2){
+        String sqlQuery = "SELECT idEnvio,idSucursalOrigen,idSucursalDestino,nitEmisor,nitReceptor,fecha,total,peso,volumen,diasTranscurridos,estado FROM Envio WHERE idSucursalDestino = :idSucursal AND fecha BETWEEN :fecha1 AND :fecha2";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter("idSucursal", idSucursal);
+        query.setParameter("fecha1", fecha1);
+        query.setParameter("fecha2", fecha2);
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+
+        return results;
+    }
+
+    public List<Object[]> obtenerCantidadEnviosEnviadosEntreFechas(String idSucursal,String fecha1, String fecha2){
+        String sqlQuery = "SELECT idEnvio,idSucursalOrigen,idSucursalDestino,nitEmisor,nitReceptor,fecha,total,peso,volumen,diasTranscurridos,estado FROM Envio WHERE idSucursalOrigen = :idSucursal AND fecha BETWEEN :fecha1 AND :fecha2";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter("idSucursal", idSucursal);
+        query.setParameter("fecha1", fecha1);
+        query.setParameter("fecha2", fecha2);
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+
+        return results;
+    }
+
+    public List<Object[]> obtenerGastosFijosPorSucursal(String idSucursal){
+        String sqlQuery = "SELECT idGasto,idSucursal,descripcion,monto,tipo,Asamblea_idAsamblea FROM Gasto WHERE tipo  = 'FIJO' AND idSucursal = :idSucursal";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);        
+        query.setParameter("idSucursal", idSucursal);
+        
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+
+        return results;
+    }
+
+    public List<Object[]> obtenerAsambleaPorFecha(String fecha){
+        String sqlQuery = "SELECT idAsamblea,fechaRealizada,lugarRealizada FROM Asamblea WHERE fechaRealizada = :fecha";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);        
+        query.setParameter("fecha", fecha);
+        
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+
+        return results;
+    }
+
+    public List<Object[]> obtenerGastosEspeciales(String idSucursal,int idAsamblea){
+        String sqlQuery = "SELECT idGasto,idSucursal,descripcion,monto,tipo,Asamblea_idAsamblea FROM Gasto WHERE tipo  = 'ESPECIAL' AND idSucursal = :idSucursal AND Asamblea_idAsamblea = :idAsamblea";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);        
+        query.setParameter("idSucursal", idSucursal);
+        query.setParameter("idAsamblea", idAsamblea);
+        
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
 
         return results;
     }
