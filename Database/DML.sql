@@ -1491,9 +1491,12 @@ insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) va
 insert into Gasto (idSucursal, tipo, Asamblea_idAsamblea, monto, descripcion) values (59, 'ESPECIAL', 24, 1459, 'Beauty');
 
 
---Envios PreCargados 
---SM > GT
+-- Envios PreCargados
+-- SM > GT
 insert into Envio values (1,59,14,10001,10003,'2023-01-01',45,5,0,0,'enRuta');
---QT > (GT & TO)
+-- QT > (GT & TO)
 insert into Envio values (2,51,14,10001,10003,'2023-01-01',45,5,0,0,'enRuta');
 insert into Envio values (3,51,61,10001,10003,'2023-01-01',45,5,0,0,'enRuta');
+
+CREATE OR REPLACE VIEW cantidad_envio_por_sucursal as SELECT  UUID() as id,E.idSucursalOrigen, E.idSucursalDestino, COUNT(E.idEnvio) AS cantidadEnvios FROM Sucursal S JOIN Envio E ON S.idSucursal = E.idSucursalOrigen WHERE
+    E.estado = 'enRuta' GROUP BY E.idSucursalOrigen, E.idSucursalDestino;
