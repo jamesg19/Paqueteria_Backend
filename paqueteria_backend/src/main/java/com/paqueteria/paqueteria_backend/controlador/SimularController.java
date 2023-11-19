@@ -24,6 +24,7 @@ public class SimularController {
     public void getSucursalId(HttpServletRequest request, HttpServletResponse response)  {
         //logica de simular
         //1) OBTENER ENVIOS CON ESTADO EN RUTA
+        this.simularServicio.simular();
         //2) 
 
     }
