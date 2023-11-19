@@ -1,24 +1,26 @@
 package com.paqueteria.paqueteria_backend.entidad.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.paqueteria.paqueteria_backend.entidad.Vehiculo;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name="envio")
 @Getter
 @Setter
 
-public class EnvioSimple {
+public class EnvioConVehiculos {
     @Id
     @Column(name = "idEnvio")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name="idSucursalOrigen")
     private long idSucursalOrigen;
@@ -50,4 +52,11 @@ public class EnvioSimple {
 
     @Column(name = "estado")
     private String estado;
+
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "vehiculos")
+    private List<Vehiculo> vehiculos = new ArrayList<>();
+
+
+
+
 }

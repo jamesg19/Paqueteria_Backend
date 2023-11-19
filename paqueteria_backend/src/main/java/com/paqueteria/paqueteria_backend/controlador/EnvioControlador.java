@@ -1,6 +1,7 @@
 package com.paqueteria.paqueteria_backend.controlador;
 
 import com.paqueteria.paqueteria_backend.entidad.Envio;
+import com.paqueteria.paqueteria_backend.entidad.HistoricoSucursal;
 import com.paqueteria.paqueteria_backend.entidad.PasosEnvio;
 import com.paqueteria.paqueteria_backend.entidad.Sucursal;
 import com.paqueteria.paqueteria_backend.entidad.dto.EnvioSimple;
@@ -45,10 +46,14 @@ public class EnvioControlador {
     }
 
     @GetMapping("/get_pasos_envio")
-    public ResponseEntity<List<PasosEnvio>> getPasosEnvio(@RequestParam int id) throws  Error{
-        return ResponseEntity.ok(this.envioServicio.getPasosEnvio(id));
+    public ResponseEntity<List<PasosEnvio>> getPasosEnvio(@RequestParam int idEnvio) throws  Error{
+        return ResponseEntity.ok(this.envioServicio.getPasosEnvio(idEnvio));
     }
 
+    @DeleteMapping("/delete_pasos_envio")
+    public ResponseEntity deletePasosEnvio(@RequestParam int idEnvio) throws Error {
+        return ResponseEntity.ok(this.envioServicio.deletePasosEnvio(idEnvio));
+    }
     @PostMapping("/save_pasos_envio")
     public ResponseEntity<List<PasosEnvio>> savePasosEnvio(@RequestBody List<Sucursal> sucursales, @RequestParam int idEnvio) throws Error{
         List <PasosEnvio> retorno = new ArrayList<>();
@@ -59,5 +64,15 @@ public class EnvioControlador {
             retorno.add(envioServicio.savePasosEnvio(auxPasos));
         });
         return ResponseEntity.ok(retorno);
+    }
+
+    @GetMapping("/get_historico_sucursales")
+    public ResponseEntity<List<HistoricoSucursal>> getHistoricoSucursales(@RequestParam int idEnvio) throws  Error{
+        return ResponseEntity.ok(this.envioServicio.getHistorico(idEnvio));
+    }
+
+    @PostMapping("/save_historico_sucursales")
+    public  ResponseEntity<HistoricoSucursal> saveHistoricoSucursal(@RequestBody HistoricoSucursal historicoSucursal) throws Error{
+        return ResponseEntity.ok(this.envioServicio.saveHistoricoSucursal(historicoSucursal));
     }
  }
