@@ -57,15 +57,20 @@ public class ReportesControlador {
             List<Object[]> movimientosVehiculo = reportesServicio.obtenerMovimientosVehiculo(vehiculoForm);
             int cantidadMovimientos = movimientosVehiculo.size();
 
+
+            Double ocupacionTotal = 0.0;
             for (Object[]  movimiento : movimientosVehiculo) {
-                DatoReporteVechiculo datoReporteVechiculo1 = new DatoReporteVechiculo("2020-01-01",String.valueOf(movimiento[2]) , "10");           
+                Double ocupacionMov = (Double)movimiento[3];
+                ocupacionTotal += ocupacionMov;
+                DatoReporteVechiculo datoReporteVechiculo1 = new DatoReporteVechiculo(String.valueOf(movimiento[4]),String.valueOf(movimiento[2]) , String.valueOf(movimiento[3]));           
                 reporte.insertDatoTable(datoReporteVechiculo1);
             }
 
+            Double ocupacionPromedio = ocupacionTotal/cantidadMovimientos;
 
             
             DatoAnalisis dato1 = new DatoAnalisis("Movimientos realizados",String.valueOf(cantidadMovimientos));
-            DatoAnalisis dato2 = new DatoAnalisis("Envios entregados","20");
+            DatoAnalisis dato2 = new DatoAnalisis("Ocupacion promedio",String.valueOf(ocupacionPromedio));
 
             reporte.insertDato(dato1);
             reporte.insertDato(dato2);                       
@@ -146,7 +151,7 @@ public class ReportesControlador {
             double margenBeneficios = totalGanancias - totalGastos;
 
             //Calcular el porcentaje de ganancia
-            double porcejateGanancia = (totalGanancias/totalGastos) * 100;
+            double porcejateGanancia = (margenBeneficios/totalGastos) * 100;
 
             //Traer las 10 sucursales con mas ganancias
             List<Object[]> sucursalesMas = reportesServicio.obtenerSucursalesMasGananciasEntreFechas(primerDiaDelMes.toString(), fecha.toString());            
@@ -172,6 +177,8 @@ public class ReportesControlador {
             reporte.insertDatoGeneral(dato6);
 
             //Insertar a grafico gastos generales
+            DatoAnalisis datoGastoPersonal = new DatoAnalisis("Personal",String.valueOf(totalGastosPersonal));
+            reporte.insertDatoGastoGeneral(datoGastoPersonal);
             for (Object[]  gasto : gastosFijos) {                
                 DatoAnalisis datoG1 = new DatoAnalisis(String.valueOf(gasto[0]),String.valueOf(gasto[1]));
                 reporte.insertDatoGastoGeneral(datoG1);

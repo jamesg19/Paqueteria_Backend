@@ -13,4 +13,6 @@ public interface PersonaRepositorio extends JpaRepository<Persona,Long> {
     Persona findPersonaById(int id);
     Optional<Persona> findPersonaByNit(String nit);
     List<Persona> findAll();
+
+    Optional<Persona> findOnePersonaByIdAndPassword(int id,String password);
 }
