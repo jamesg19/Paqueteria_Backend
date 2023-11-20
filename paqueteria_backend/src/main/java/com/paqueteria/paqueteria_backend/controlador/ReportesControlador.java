@@ -172,6 +172,8 @@ public class ReportesControlador {
             reporte.insertDatoGeneral(dato6);
 
             //Insertar a grafico gastos generales
+            DatoAnalisis datoGastoPersonal = new DatoAnalisis("Personal",String.valueOf(totalGastosPersonal));
+            reporte.insertDatoGastoGeneral(datoGastoPersonal);
             for (Object[]  gasto : gastosFijos) {                
                 DatoAnalisis datoG1 = new DatoAnalisis(String.valueOf(gasto[0]),String.valueOf(gasto[1]));
                 reporte.insertDatoGastoGeneral(datoG1);
