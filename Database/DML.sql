@@ -510,28 +510,28 @@ INSERT INTO Sucursal VALUES (14,08,08001,"DIRECCION 1T","SUCURSAL TOTONICAPAN 1"
 -- INSERT INTO Envio VALUES (1,43,44,1,2,"2023-11-24",245);
 
 
-INSERT INTO Vehiculo (idVehiculo, marca,tipo, placa, tonelage, anio, noAsientos, capacidadVol, capacidadTon)
-VALUES (1,'TOYOTA','PICKUP', 'P123SDMN', '2', '2014', 2, 2, 1),
-       (2,'HONDA','PICKUP', 'P123SDM', '2', '2010', 2, 2, 1),
-       (3,'ISUZU','CAMION', 'C-987ABC', '2', '2010', 2, 2, 1),
-       (4,'MERCEDEZ BENZ','CAMION', 'C-543XYZ', '2', '2013', 2, 2, 1),
-       (5,'KIA','CAMION', 'P-654LMN', '2', '2001', 2, 2, 1),
-       (6,'KIA','FURGONETA', 'P-321DEF', '2', '2016', 2, 2, 1),
-       (7,'KIA','FURGONETA', 'P-789JKL', '2', '2016', 2, 2, 1),
-       (8,'KIA','FURGONETA', 'P-234MNO', '2', '2017', 2, 2, 1),
-       (9,'HINO','CAMION', 'C-876PQR', '2', '2021', 2, 2, 1),
-       (10,'FORD','CAMION', 'C-432STU', '2', '2024', 2, 2, 1),
-       (11,'FORD','CAMION', 'C-567VWX', '2', '2025', 2, 2, 1),
-       (12,'HINO','CAMION', 'C-109YZA', '2', '2026', 2, 2, 1),
-       (13,'NISSAN','CAMION', 'C-609JKL', '2', '2021', 2, 2, 1),
-       (14,'Mitsubishi Fuso','CAMION', 'C-185MNO', '2', '2024', 2, 2, 1),
-       (15,'Mitsubishi Fuso', 'CAMION','C-374PQR', '2', '2025', 2, 2, 1),
-       (16,'Mitsubishi Fuso','CAMION', 'C-527STU', '2', '2026', 2, 2, 1),
-       (17,'HINO','CAMION', 'C-725SQU', '2', '2026', 2, 2, 1),
-       (18,'Hino','CAMION', 'C-122ABU', '2', '2026', 2, 2, 1);
+INSERT INTO Vehiculo (idVehiculo, marca,tipo, placa, tonelage, anio, noAsientos, capacidadVol, capacidadTon,idSucursal)
+VALUES (1,'TOYOTA','PICKUP', 'P123SDMN', '2', '2014', 2, 2, 1,14),
+       (2,'HONDA','PICKUP', 'P123SDM', '2', '2010', 2, 2, 1,14),
+       (3,'ISUZU','CAMION', 'C-987ABC', '2', '2010', 2, 2, 1,14),
+       (4,'MERCEDEZ BENZ','CAMION', 'C-543XYZ', '2', '2013', 2, 2, 1,14),
+       (5,'KIA','CAMION', 'P-654LMN', '2', '2001', 2, 2, 1,14),
+       (6,'KIA','FURGONETA', 'P-321DEF', '2', '2016', 2, 2, 1,14),
+       (7,'KIA','FURGONETA', 'P-789JKL', '2', '2016', 2, 2, 1,14),
+       (8,'KIA','FURGONETA', 'P-234MNO', '2', '2017', 2, 2, 1,14),
+       (9,'HINO','CAMION', 'C-876PQR', '2', '2021', 2, 2, 1,14),
+       (10,'FORD','CAMION', 'C-432STU', '2', '2024', 2, 2, 1,14),
+       (11,'FORD','CAMION', 'C-567VWX', '2', '2025', 2, 2, 1,14),
+       (12,'HINO','CAMION', 'C-109YZA', '2', '2026', 2, 2, 1,14),
+       (13,'NISSAN','CAMION', 'C-609JKL', '2', '2021', 2, 2, 1,14),
+       (14,'MITSUBISHI FUSO','CAMION', 'C-185MNO', '2', '2024', 2, 2, 1,14),
+       (15,'MITSUBISHI FUSO', 'CAMION','C-374PQR', '2', '2025', 2, 2, 1,14),
+       (16,'MITSUBISHI FUSO','CAMION', 'C-527STU', '2', '2026', 2, 2, 1,14),
+       (17,'HINO','CAMION', 'C-725SQU', '2', '2026', 2, 2, 1,14),
+       (18,'HINO','CAMION', 'C-122ABU', '2', '2026', 2, 2, 1,14);
 
 
-
+/*
 INSERT INTO Vehiculo_Sucursal
     (idVehiculo, idSucursal, fechaCompra) VALUES
     (1, 1, '2023-10-20 12:33:18'),
@@ -552,7 +552,7 @@ INSERT INTO Vehiculo_Sucursal
     (16, 59, '2023-10-20 12:33:18'),
     (17, 60, '2023-10-20 12:33:18'),
     (18, 61, '2023-10-20 12:33:18');
-
+*/
 
 
 
