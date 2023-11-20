@@ -30,6 +30,7 @@ public class SimularServicio {
     }
     //LOGICA DE SIMULACION DE ENVIOS by James
     public void simular(){
+        int cantidadMinima=3;
         //OBTIENE LA LISTA DE ENVIO EN RUTA
         List<EnvioSimple> lista=this.getEnviosEnRuta();
 
