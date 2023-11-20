@@ -3,7 +3,9 @@ package com.paqueteria.paqueteria_backend.servicio;
 import com.paqueteria.paqueteria_backend.entidad.Municipio;
 import com.paqueteria.paqueteria_backend.entidad.Ruta;
 import com.paqueteria.paqueteria_backend.entidad.Sucursal;
+import com.paqueteria.paqueteria_backend.entidad.dto.RutaDto;
 import com.paqueteria.paqueteria_backend.repositorio.MunicipioRepositorio;
+import com.paqueteria.paqueteria_backend.repositorio.RutaDtoRepositorio;
 import com.paqueteria.paqueteria_backend.repositorio.RutaRepositorio;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +18,15 @@ import java.util.Optional;
 public class RutaServicio {
 
     private RutaRepositorio rutaRepositorio;
+    private RutaDtoRepositorio rutaDtoRepositorio;
 
     /**
      * Constructor
      * @param rutaRepositorio
      */
-    public RutaServicio(RutaRepositorio rutaRepositorio) {
+    public RutaServicio(RutaRepositorio rutaRepositorio,RutaDtoRepositorio rutaDtoRepositorio) {
         this.rutaRepositorio = rutaRepositorio;
+        this.rutaDtoRepositorio=rutaDtoRepositorio;
     }
 
     /**
@@ -64,6 +68,33 @@ public class RutaServicio {
 
         } catch(Exception e){
             System.out.println("Error al guardar: \n"+e);
+            return new ResponseEntity<>("", HttpStatus.CONFLICT);
+
+        }
+    }
+
+    public ResponseEntity<String> saveRutas(RutaDto ruta){
+        try {
+            int origen=ruta.getOrigen();
+            int destino=ruta.getDestino();
+            //verificar que no exista
+            var exist=this.rutaDtoRepositorio.findByOrigenAndDestino(origen,destino);
+            if(exist.isPresent()){
+                return new ResponseEntity<>("La ruta ya existe", HttpStatus.CONFLICT);
+            }
+            //Hace la consulta por medio del repositorio que accede a la base de datos
+
+            this.rutaDtoRepositorio.save(ruta);
+
+            ruta.setOrigen(destino);
+            ruta.setDestino(origen);
+            this.rutaDtoRepositorio.save(ruta);
+
+            System.out.println("Lo guarda RutaDto ruta...");
+            return new ResponseEntity<>("OK", HttpStatus.OK);
+
+        } catch(Exception e){
+            System.out.println("Error al guardar RutaDto ruta: \n"+e);
             return new ResponseEntity<>("", HttpStatus.CONFLICT);
 
         }
