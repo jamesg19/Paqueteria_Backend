@@ -87,6 +87,16 @@ public class AnalisisControlador {
             gananciaPorVehiculoMes = gananciasPromedioMes;
         }
 
+        //Calcular un porcentaje de aumento de ganancias
+        List<Object[]> porcentajesAumentoGanancias = analisisServicio.obtenerPorcentajeAumentoPorSucursal(sucursalForm);
+        int cantidadPorcentajes = 0;
+        double porcentaje = 0.0;
+        for (Object[]  porc : porcentajesAumentoGanancias) {
+            double porcVal = (double) porc[3]; 
+            gananciasTotalesEnvios += porcVal;
+            cantidadPorcentajes +=1;
+        }
+        porcentaje = (porcentaje / cantidadPorcentajes)/100;
 
         //Talvez tambien se podria predecir que no haya mas envios atrasados, o con menos atraso pero no se como se esta trabajando eso y ya es tarde, quiero dormir
 
@@ -100,7 +110,8 @@ public class AnalisisControlador {
          " ya que por ahora se ha trabajado durante 2 años se puede estimar la cantidad de envios que se llevaron al mes: " + cantidadEnviosMes + " Envios,"+ 
          " de esta forma se pueden obtener las ganancias promedio durante un mes: "+ gananciasPromedioMes + " Quetzales,"+
          " tambien podemos estimar las ganancias que cada vehiculo trae al mes en este caso: "+ gananciaPorVehiculoMes +"Quetzales"+
-         " dado esto podemos predecir si es o no rentable a un año el uso de los nuevos vehiculos";
+         " dado esto podemos predecir si es o no rentable a un año el uso de los nuevos vehiculos." + 
+         " Ademas de todo ello se calculo que el porcentaje de aumento de ganancias en la sucursal sobre los ultimos " + cantidadPorcentajes + " meses, ha sido de: " + porcentaje;
         AnalisisVehiculo analisisVehiculo = new AnalisisVehiculo();
         analisisVehiculo.setDescripcion(descripcion);
 
@@ -114,8 +125,8 @@ public class AnalisisControlador {
 
         //Calculos de ganancias
         double ganancias1 = gananciaPorVehiculoMes *Double.valueOf(cantidadVehiculos);
-        double ganancias2 = gananciaPorVehiculoMes *Double.valueOf(cantidadVehiculos) * 6;
-        double ganancias3 = gananciaPorVehiculoMes *Double.valueOf(cantidadVehiculos) * 12;
+        double ganancias2 = (gananciaPorVehiculoMes *Double.valueOf(cantidadVehiculos) * 6) * porcentaje + (gananciaPorVehiculoMes *Double.valueOf(cantidadVehiculos) * 6);
+        double ganancias3 = (gananciaPorVehiculoMes *Double.valueOf(cantidadVehiculos) * 12) * porcentaje + (gananciaPorVehiculoMes *Double.valueOf(cantidadVehiculos) *12);
 
 
         //Datos generales
