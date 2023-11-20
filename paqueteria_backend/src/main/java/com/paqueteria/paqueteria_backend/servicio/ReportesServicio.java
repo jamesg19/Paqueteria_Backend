@@ -121,7 +121,7 @@ public class ReportesServicio {
     }
 
     public List<Object[]> obtenerMovimientosVehiculo(String vehiculo){
-        String sqlQuery = "SELECT idHistorial_Sucursales_Vehiculo,idVehiculo,idSucursal FROM Historial_Sucursales_Vehiculo WHERE idVehiculo = :vehiculo";
+        String sqlQuery = "SELECT idHistorial_Sucursales_Vehiculo,idVehiculo,idSucursal,ocupacion,fecha FROM Historial_Sucursales_Vehiculo WHERE idVehiculo = :vehiculo";
 
         Query query = entityManager.createNativeQuery(sqlQuery);        
         query.setParameter("vehiculo", vehiculo);        
