@@ -45,7 +45,7 @@ public class EnvioSimple {
     @Column(name = "volumen")
     private double volumen;
 
-    
+
     @Column(name = "diasTranscurridos")
     private int diasTranscurridos;
 
