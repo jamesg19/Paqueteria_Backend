@@ -181,6 +181,7 @@ public class SimularServicio {
                     histSuc.setIdVehiculo(vehiculo.getId());
                     histSuc.setIdSucursal(enviosSave.getSucursalDestino().getIdSucursal());
                     histSuc.setIdEnvio(enviosSave.getId());
+                    this.envioServicio.saveEnvio(enviosSave);
                     envioServicio.saveHistoricoSucursal(histSuc);
                 }
             }else{
