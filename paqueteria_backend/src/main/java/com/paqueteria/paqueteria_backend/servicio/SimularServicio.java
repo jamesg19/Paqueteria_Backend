@@ -5,11 +5,13 @@ import com.paqueteria.paqueteria_backend.entidad.dto.EnvioSimple;
 import com.paqueteria.paqueteria_backend.entidad.dto.ResponseListEnvioSimple;
 import com.paqueteria.paqueteria_backend.entidad.dto.VehiculoDto;
 import com.paqueteria.paqueteria_backend.repositorio.CantidadEnvioPorSucursalRepositorio;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Service;
 import com.paqueteria.paqueteria_backend.djikstra.Djikstra;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -23,6 +25,8 @@ public class SimularServicio {
     private SucursalServicio sucursalService;
     @Autowired
     private VehiculoServicio vehiculoServio;
+    @Autowired
+    private VariablesMejoraServicio variablesServicio;
 
     public SimularServicio(EnvioServicio envioServicio) {
         this.envioServicio = envioServicio;
@@ -33,6 +37,7 @@ public class SimularServicio {
     Map<Vehiculo,List<Envio>> enviosPorVehiculo = new HashMap<>();
 
     public void simular(){
+        int capacidadMaxima = variablesServicio.getVariables(2).getValor();
         int cantidadMinima=3;
         //OBTIENE LA LISTA DE ENVIO EN RUTA
         List<EnvioSimple> lista=this.getEnviosEnRuta();
@@ -90,6 +95,15 @@ public class SimularServicio {
                     System.out.println("\t\t -"+idDestino+" tiene los siguientes envios total: "+cantidadPeso);
                     List<Vehiculo> vehiculoPropio = this.vehiculoServio.listarPorSucursalId(idOrigen).stream().sorted(Comparator.comparingDouble(Vehiculo::getId)).collect(Collectors.toList());
                     List<Vehiculo> vehiculoPrestado = this.vehiculoServio.listarPorSucursalId(idDestino).stream().filter(vehiculo->idOrigen==vehiculoServio.getVehiculoHistrorial(vehiculo.getId()).getIdSucursal()).toList().stream().sorted(Comparator.comparingDouble(Vehiculo::getCapacidadTon)).collect(Collectors.toList());
+                    //variable para ver si toma los vehiculos pequeños como prioridad o los grandes
+                    if(this.variablesServicio.getVariables(1).getValor()==1){
+                        Collections.reverse(vehiculoPropio);
+                        Collections.reverse(vehiculoPrestado);
+                    }
+                    //para usar los vehiculos de las otras sucursales si estos se encuentran en su sucursal
+                    if(this.variablesServicio.getVariables(1).getValor()==0){
+                        vehiculoPrestado.removeAll(vehiculoPrestado);
+                    }
                     int j = 0;
                     for (Vehiculo vehiculo : vehiculoPrestado) {
                         if(cantidadPeso<=vehiculo.getCapacidadTon()*1000 && !envios.isEmpty()){
@@ -141,11 +155,52 @@ public class SimularServicio {
                     }
                 });
             });
-            System.out.println("SSD");
+
+            //validar donde en que sucursal se encuentra e vehiculo de los vehiculos disponibles
         }
         System.out.println("Sa");
         //this.verificarMontoMinimoEnvio(lista,0);
-
+        this.enviosPorVehiculo.forEach((vehiculo,envios)->{
+            double ocupacionEnvio = envios.stream().mapToDouble(Envio::getPeso).sum()/(vehiculo.getCapacidadTon()*1000);
+            double minimoEnvio = (double) this.variablesServicio.getVariables(2).getValor()/100;
+            System.out.println(" idOrigen "+envios.get(0).getSucursalOrigen().getIdSucursal()+" Destino "+envios.get(0).getSucursalDestino().getIdSucursal());
+            if(ocupacionEnvio>=minimoEnvio){
+                //envia paquete
+                System.out.println("Vehiculo "+vehiculo.getId()+" hace viaje con oc "+ocupacionEnvio);
+                HistorialVehiculo auxVHistorial = vehiculoServio.getVehiculoHistrorial(vehiculo.getId());
+                HistorialVehiculo historiVe = new HistorialVehiculo();
+                historiVe.setIdVehiculo(vehiculo.getId());
+                historiVe.setFecha(auxVHistorial.getFecha().plusDays(1));
+                historiVe.setIdSucursal(envios.get(0).getSucursalDestino().getIdSucursal());
+                historiVe.setOcupacion(ocupacionEnvio);
+                vehiculoServio.save(historiVe);
+                for (Envio enviosSave : envios) {
+                    HistoricoSucursal auxSucHist = envioServicio.getHistorico(enviosSave.getId()).get(0);
+                    HistoricoSucursal histSuc = new HistoricoSucursal();
+                    histSuc.setFecha(auxSucHist.getFecha().plusDays(1));
+                    histSuc.setIdVehiculo(vehiculo.getId());
+                    histSuc.setIdSucursal(enviosSave.getSucursalDestino().getIdSucursal());
+                    histSuc.setIdEnvio(enviosSave.getId());
+                    envioServicio.saveHistoricoSucursal(histSuc);
+                }
+            }else{
+               //aumentar dias en espera en envio y en historico
+                for (Envio envio : envios) {
+                    //aumento de dias en envio
+                    envio.setDiasTranscurridos(envio.getDiasTranscurridos()+1);
+                    this.envioServicio.saveEnvio(envio);
+                    HistoricoSucursal auxSucHist = envioServicio.getHistorico(envio.getId()).get(0);
+                    HistoricoSucursal histSuc = new HistoricoSucursal();
+                    histSuc.setFecha(auxSucHist.getFecha().plusDays(1));
+                    histSuc.setIdVehiculo(vehiculo.getId());
+                    histSuc.setIdSucursal(envio.getSucursalDestino().getIdSucursal());
+                    histSuc.setIdEnvio(envio.getId());
+                    envioServicio.saveHistoricoSucursal(histSuc);
+                }
+                System.out.println("Vehiculo "+vehiculo.getId()+" no hace envio "+ocupacionEnvio);
+            }
+        });
+        System.out.println("Sardinas");
         //ITERAR CADA ENVIO SEGUN SU LISTA en PasosEnvio
 
     }

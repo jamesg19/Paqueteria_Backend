@@ -76,5 +76,8 @@ public class VehiculoServicio {
         return this.historicoVehiculo.findFirstByIdVehiculoOrderByFechaDesc(idVehiculo);
     }
 
+    public HistorialVehiculo save(HistorialVehiculo entrada) throws Error{
+        return  this.historicoVehiculo.save(entrada);
+    }
 
 }
