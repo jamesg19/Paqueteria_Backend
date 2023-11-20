@@ -27,4 +27,8 @@ public class PersonaServicio {
         return personaRepo.save(persona);
     }
     public Persona updatePersona(Persona persona){return this.personaRepo.save(persona);}
+
+    public Optional<Persona> login(int id,String password){
+        return this.personaRepo.findOnePersonaByIdAndPassword(id,password);
+    }
 }

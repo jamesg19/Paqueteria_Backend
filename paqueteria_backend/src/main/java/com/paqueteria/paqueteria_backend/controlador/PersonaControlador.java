@@ -57,6 +57,18 @@ public class PersonaControlador {
             return ResponseEntity.ok(created);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Optional<Persona>> login(@RequestBody Persona persona) throws Error{
+        System.out.println(persona.getId());
+        System.out.println(persona.getPassword());
+        var person=personaServicio.login(persona.getId(),persona.getPassword());
+        System.out.println(person.isPresent());
+        if(!person.isPresent())
+            throw new Error("Credenciales incorrectas",HttpStatus.CONFLICT);
+
+        return ResponseEntity.ok(person);
+    }
+
     @PutMapping("/editar_persona")
     public ResponseEntity<Persona> editarPersona(@RequestBody Persona persona) throws Error{
         var created = personaServicio.updatePersona(persona);
