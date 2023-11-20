@@ -83,9 +83,8 @@ public class SimularServicio {
                 System.out.println("Sucursal origen :"+idOrigen+" con envios a : ");
                 enviosDestino.forEach((idDestino,envios)->{
                     System.out.println("\t\t -"+idDestino+" tiene los siguientes envios");
-                    envios.forEach(idEnvio->{
-                        System.out.println("\t\t\t--"+idEnvio.getId());
-                    });
+                    double cantidadPeso = envios.stream().mapToDouble(Envio::getPeso).sum();
+                    Optional<Vehiculo>
                 });
             });
             System.out.println("SSD");

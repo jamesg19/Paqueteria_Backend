@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface HistoricoSucursalRepo extends JpaRepository<HistoricoSucursal,Long> {
-    List<HistoricoSucursal> findByIdEnvioOrderByFechaDesc(int id);
+    List<HistoricoSucursal> findByIdEnvioOrderByFechaDesc(int idVehiculo);
 }
