@@ -1,4 +1,5 @@
 package com.paqueteria.paqueteria_backend.controlador;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,8 +94,8 @@ public class AnalisisControlador {
         int cantidadPorcentajes = 0;
         double porcentaje = 0.0;
         for (Object[]  porc : porcentajesAumentoGanancias) {
-            double porcVal = (double) porc[3]; 
-            porcentaje += porcVal;
+            BigDecimal porcVal = (BigDecimal) porc[3]; 
+            porcentaje += porcVal.doubleValue();
             cantidadPorcentajes +=1;
         }
         porcentaje = (porcentaje / cantidadPorcentajes)/100;
@@ -209,7 +210,9 @@ public class AnalisisControlador {
 
             //Talvez tambien se podria predecir que no haya mas envios atrasados, o con menos atraso pero no se como se esta trabajando eso y ya es tarde, quiero dormir
 
+            //Traer las rutas que ya tiene la sucursal
 
+            //
 
             String descripcion = "Para analizar la usabilidad y efectividad de las rutas enviadas se realiza lo siguiente: " + 
                 " Primero se trae la sucursal origen y se analizan ";
@@ -307,12 +310,6 @@ public class AnalisisControlador {
             String idSucursal1 = String.valueOf(sucursalesMasCercanas.get(0)[0]);
             String idSucursal2 = String.valueOf(sucursalesMasCercanas.get(1)[0]);
             String idSucursal3 = String.valueOf(sucursalesMasCercanas.get(2)[0]);
-
-            System.out.println(idSucursal1);
-            System.out.println(idSucursal2);
-            System.out.println(idSucursal3);
-
-            // null
             
 
             //Se analizan cuales son sus ganancias y perdidas, asi como tambien su personal, sus vehiculos, y los envios que envian y reciben
@@ -334,9 +331,11 @@ public class AnalisisControlador {
             //traer todos los envios enviados de las 3 sucursales
             List<Object[]> enviosEnviados3Sucursales = analisisServicio.obtenerEnviosEnviados3Sucursales(idSucursal1, idSucursal2, idSucursal3);
 
+            int cantidadEnviosEnviadosPromedio = (enviosEnviados3Sucursales.size()/3);
+
             Double gananciasPorEnvios = 0.0;
             for (Object[]  envio : enviosEnviados3Sucursales) {
-                Double gananciaPorEnvio = (Double) envio[6]; 
+                int gananciaPorEnvio = (int) envio[6]; 
                 gananciasPorEnvios += gananciaPorEnvio;
             }
 
@@ -400,18 +399,18 @@ public class AnalisisControlador {
             int cantidadPorcentajes = 0;
             double porcentaje = 0.0;
             for (Object[]  porc : porcentajesAumentoGanancias) {
-                double porcVal = (double) porc[3]; 
-                porcentaje += porcVal;
+                BigDecimal porcVal = (BigDecimal) porc[3]; 
+                porcentaje += porcVal.doubleValue();
                 cantidadPorcentajes +=1;
             }
             for (Object[]  porc : porcentajesAumentoGanancias2) {
-                double porcVal = (double) porc[3]; 
-                porcentaje += porcVal;
+                BigDecimal porcVal = (BigDecimal) porc[3]; 
+                porcentaje += porcVal.doubleValue();
                 cantidadPorcentajes +=1;
             }
             for (Object[]  porc : porcentajesAumentoGanancias3) {
-                double porcVal = (double) porc[3]; 
-                porcentaje += porcVal;
+                BigDecimal porcVal = (BigDecimal) porc[3]; 
+                porcentaje += porcVal.doubleValue();
                 cantidadPorcentajes +=1;
             }
             porcentaje = (porcentaje / cantidadPorcentajes)/100;
@@ -439,6 +438,13 @@ public class AnalisisControlador {
             AnalisisVehiculo analisisVehiculo = new AnalisisVehiculo();
             analisisVehiculo.setDescripcion(descripcion);
 
+            if(cantidadPersonal == null){
+                cantidadPersonal = cantidadPersonalPromedio;
+            }
+            if(cantidadVehiculos == null){
+                cantidadVehiculos = vehiculos3Sucursales.size()/3;
+            }
+
             Double totalGastosMes = gastoFijo+(gastoPromedioPorPersonaMes * cantidadPersonal)+gastosEspecialesPromedioMes + (gastoGasolinaPromedioMes*cantidadVehiculos);
 
             //Calculos de perdidas
@@ -453,13 +459,20 @@ public class AnalisisControlador {
 
 
             //Datos generales
-            DatoAnalisis dato1 = new DatoAnalisis("Estimado de envios por cada vehiculo",String.valueOf(0));
-            DatoAnalisis dato2 = new DatoAnalisis("Estimado de gastos por gasolina",String.valueOf(perdidas3));
+            DatoAnalisis dato1 = new DatoAnalisis("Estimado de envios al mes (Enviados)",String.valueOf(cantidadEnviosEnviadosPromedio));
+            DatoAnalisis dato2 = new DatoAnalisis("Estimado de gastos totales",String.valueOf(perdidas3));
             DatoAnalisis dato3 = new DatoAnalisis("Estimado de ganancias",String.valueOf(ganancias3));
+            DatoAnalisis dato4 = new DatoAnalisis("Estimado de vehiculos",String.valueOf(cantidadVehiculos));
+            DatoAnalisis dato5 = new DatoAnalisis("Estimado de personal",String.valueOf(cantidadPersonal));
+            //DatoAnalisis dato6 = new DatoAnalisis("Estimado de rutas",String.valueOf(0));
+
 
             analisisVehiculo.insertDatoAnalisis(dato1);
             analisisVehiculo.insertDatoAnalisis(dato2);
             analisisVehiculo.insertDatoAnalisis(dato3);
+            analisisVehiculo.insertDatoAnalisis(dato4);
+            analisisVehiculo.insertDatoAnalisis(dato5);
+            //analisisVehiculo.insertDatoAnalisis(dato6);
 
             //Datos de perdidas
             DatoAnalisis datoP1 = new DatoAnalisis("0 meses",String.valueOf(perdidas1));
