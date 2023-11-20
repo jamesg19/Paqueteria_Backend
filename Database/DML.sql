@@ -596,7 +596,70 @@ VALUES
       (61,61,'TOYOTA','PICKUP', 'P12361SDMN', '2', '2014', 2, 2, 1),
       (62,62,'TOYOTA','PICKUP', 'P12362SDMN', '2', '2014', 2, 2, 1)       
     ;
-
+INSERT INTO Historial_Sucursales_Vehiculo VALUES 
+    (1,1,1),
+    (2,2,2),
+    (3,3,3),
+    (4,4,4),
+    (5,5,5),
+    (6,6,6),
+    (7,7,7),
+    (8,8,8),
+    (9,9,9),
+    (10,10,10),
+    (11,11,11),
+    (12,12,12),
+    (13,13,13),
+    (14,14,14),
+    (15,15,15),
+    (16,16,16),
+    (17,17,17),
+    (18,18,18),
+    (19,19,19),
+    (20,20,20),
+    (21,21,21),
+    (22,22,22),
+    (23,23,23),
+    (24,24,24),
+    (25,25,25),
+    (26,26,26),
+    (27,27,27),
+    (28,28,28),
+    (29,29,29),
+    (30,30,30),
+    (31,31,31),
+    (32,32,32),
+    (33,33,33),
+    (34,34,34),
+    (35,35,35),
+    (36,36,36),
+    (37,37,37),
+    (38,38,38),
+    (39,39,39),
+    (40,40,40),
+    (41,41,41),
+    (42,42,42),
+    (43,43,43),
+    (44,44,44),
+    (45,45,45),
+    (46,46,46),
+    (47,47,47),
+    (48,48,48),
+    (49,49,49),
+    (50,50,50),
+    (51,51,51),
+    (52,52,52),
+    (53,53,53),
+    (54,54,54),
+    (55,55,55),
+    (56,56,56),
+    (57,57,57),
+    (58,58,58),
+    (59,59,59),
+    (60,60,60),
+    (61,61,61),
+    (62,62,62)
+    ;
 
 /*
 INSERT INTO Vehiculo_Sucursal
@@ -2785,28 +2848,193 @@ insert into Honorario (idAsamblea, Personal_idPersonal, nombre, descripcion, mon
 insert into Honorario (idAsamblea, Personal_idPersonal, nombre, descripcion, monto) values (24, 49, 'pago', 'pago de sueldo por trabajo realizado', 3013);
 insert into Honorario (idAsamblea, Personal_idPersonal, nombre, descripcion, monto) values (24, 50, 'pago', 'pago de sueldo por trabajo realizado', 2974);
 
--- Envios PreCargados
--- SM > GT
-insert into Envio values (1,59,14,10001,10003,'2023-01-01',45,5,0,0,'enRuta');
--- QT > (GT & TO)
-insert into Envio values (2,51,14,10001,10003,'2023-01-01',45,5,0,0,'enRuta');
-insert into Envio values (3,51,61,10001,10003,'2023-01-01',45,5,0,0,'enRuta');
+--Envios PreCargados
+--SM > HUUE (70% de una tonelada 8, paquetes de .0875 o 87.5kg)
+insert into Envio (idSucursalOrigen,idSucursalDestino,nitEmisor,nitReceptor,fecha,total,peso,volumen,diasTranscurridos,estado) values 
+    (59,42,10001,10003,'2023-01-01',45,87.5,0,0,'enRuta'),
+    (59,42,10001,10005,'2023-01-01',45,87.5,0,0,'enRuta'),
+    (59,42,10001,100020,'2023-01-01',45,87.5,0,0,'enRuta'),
+    (59,42,10002,10003,'2023-01-01',45,87.5,0,0,'enRuta'),
+    (59,42,10004,10009,'2023-01-01',45,87.5,0,0,'enRuta'),
+    (59,42,10005,10003,'2023-01-01',45,87.5,0,0,'enRuta'),
+    (59,42,10001,10003,'2023-01-01',45,87.5,0,0,'enRuta'),
+    (59,42,10001,10009,'2023-01-01',45,87.5,0,0,'enRuta')
+;
+
+insert into Historico_Sucursales (idEnvio,idSucursal,idVehiculo,fecha) values
+    (1,59,0,'2023-01-01'),
+    (2,59,0,'2023-01-01'),
+    (3,59,0,'2023-01-01'),
+    (4,59,0,'2023-01-01'),
+    (5,59,0,'2023-01-01'),
+    (6,59,0,'2023-01-01'),
+    (7,59,0,'2023-01-01'),
+    (8,59,0,'2023-01-01')
+    ;
+insert into Pasos_Envio (idEnvio,idSucursal) VALUES 
+    (1,59),
+    (1,51),
+    (1,42),
+    (2,59),
+    (2,51),
+    (2,42),
+    (3,59),
+    (3,51),
+    (3,42),
+    (4,59),
+    (4,51),
+    (4,42),
+    (5,59),
+    (5,51),
+    (5,42),
+    (6,59),
+    (6,51),
+    (6,42),
+    (7,59),
+    (7,51),
+    (7,42),
+    (8,59),
+    (8,51),
+    (8,42)
+;
+
+--QT > GT (90% de una tonelada, 10 paquetes de .09ton o 90kg)
+insert into Envio (idSucursalOrigen,idSucursalDestino,nitEmisor,nitReceptor,fecha,total,peso,volumen,diasTranscurridos,estado) values 
+    (51,14,10001,10003,'2023-01-01',45,90,0,0,'enRuta'),
+    (51,14,10001,10005,'2023-01-01',45,90,0,0,'enRuta'),
+    (51,14,10001,100020,'2023-01-01',45,90,0,0,'enRuta'),
+    (51,14,10002,10003,'2023-01-01',45,90,0,0,'enRuta'),
+    (51,14,10004,10009,'2023-01-01',45,90,0,0,'enRuta'),
+    (51,14,10005,10003,'2023-01-01',45,90,0,0,'enRuta'),
+    (51,14,10001,10003,'2023-01-01',45,90,0,0,'enRuta'),
+    (51,14,10001,10009,'2023-01-01',45,90,0,0,'enRuta'),
+    (51,14,10001,10009,'2023-01-01',45,90,0,0,'enRuta'),
+    (51,14,10001,10009,'2023-01-01',45,90,0,0,'enRuta')
+    ;
+
+insert into Historico_Sucursales (idEnvio,idSucursal,idVehiculo,fecha) values
+    (9,51,0,'2023-01-01'),
+    (10,51,0,'2023-01-01'),
+    (11,51,0,'2023-01-01'),
+    (12,51,0,'2023-01-01'),
+    (13,51,0,'2023-01-01'),
+    (14,51,0,'2023-01-01'),
+    (15,51,0,'2023-01-01'),
+    (16,51,0,'2023-01-01'),
+    (17,51,0,'2023-01-01'),
+    (18,51,0,'2023-01-01')
+    ;
+
+insert into Pasos_Envio (idEnvio,idSucursal) VALUES 
+    (9,51),
+    (9,14),
+    (10,51),
+    (10,14),
+    (11,51),
+    (11,14),
+    (12,51),
+    (12,14),
+    (13,51),
+    (13,14),
+    (14,51),
+    (14,14),
+    (15,51),
+    (15,14),
+    (16,51),
+    (16,14),
+    (17,51),
+    (17,14),
+    (18,51),
+    (18,14)
+    ;
+
+--SM > TOTO (150% de una tonelada, 15 paquetes de 125kg o 1.875 ton)
+insert into Envio (idSucursalOrigen,idSucursalDestino,nitEmisor,nitReceptor,fecha,total,peso,volumen,diasTranscurridos,estado) values 
+    (59,61,10001,10003,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10001,10005,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10001,100020,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10002,10003,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10004,10009,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10005,10003,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10001,10003,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10001,10009,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10001,10009,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10001,10009,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10001,10009,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10001,10009,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10001,10009,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10001,10009,'2023-01-01',45,125,0,0,'enRuta'),
+    (59,61,10001,10009,'2023-01-01',45,125,0,0,'enRuta')
+    ;
+
+insert into Historico_Sucursales (idEnvio,idSucursal,idVehiculo,fecha) values
+    (19,59,0,'2023-01-01'),
+    (20,59,0,'2023-01-01'),
+    (21,59,0,'2023-01-01'),
+    (22,59,0,'2023-01-01'),
+    (23,59,0,'2023-01-01'),
+    (24,59,0,'2023-01-01'),
+    (25,59,0,'2023-01-01'),
+    (26,59,0,'2023-01-01'),
+    (27,59,0,'2023-01-01'),
+    (28,59,0,'2023-01-01'),
+    (29,59,0,'2023-01-01'),
+    (30,59,0,'2023-01-01'),
+    (31,59,0,'2023-01-01'),
+    (32,59,0,'2023-01-01'),
+    (33,59,0,'2023-01-01')
+    ;
+
+insert into Pasos_Envio (idEnvio,idSucursal) VALUES 
+    (19,59),
+    (19,51),
+    (19,61),
+    (20,59),
+    (20,51),
+    (20,61),
+    (21,59),
+    (21,51),
+    (21,61),
+    (22,59),
+    (22,51),
+    (22,61),
+    (23,59),
+    (23,51),
+    (23,61),
+    (24,59),
+    (24,51),
+    (24,61),
+    (25,59),
+    (25,51),
+    (25,61),
+    (26,59),
+    (26,51),
+    (26,61),
+    (27,59),
+    (27,51),
+    (27,61),
+    (28,59),
+    (28,51),
+    (28,61),
+    (29,59),
+    (29,51),
+    (29,61),
+    (30,59),
+    (30,51),
+    (30,61),
+    (31,59),
+    (31,51),
+    (31,61),
+    (32,59),
+    (32,51),
+    (32,61),
+    (33,59),
+    (33,51),
+    (33,61)
+    ;
+
 
 CREATE OR REPLACE VIEW cantidad_envio_por_sucursal as SELECT  UUID() as id,E.idSucursalOrigen, E.idSucursalDestino, COUNT(E.idEnvio) AS cantidadEnvios FROM Sucursal S JOIN Envio E ON S.idSucursal = E.idSucursalOrigen WHERE
     E.estado = 'enRuta' GROUP BY E.idSucursalOrigen, E.idSucursalDestino;
-insert into Pasos_Envio values(1,1,59);
-insert into Pasos_Envio values(2,1,51);
-insert into Pasos_Envio values(3,1,14);
 
-insert into Pasos_Envio values(4,2,51);
-insert into Pasos_Envio values(5,2,14);
 
-insert into Pasos_Envio values(6,3,51);
-insert into Pasos_Envio values(7,3,61);
-
-insert into Historico_Sucursales values (1,1,59,0,'2023-01-01');
-insert into Historico_Sucursales values (2,1,51,0,'2023-01-04');
-insert into Historico_Sucursales values (3,1,14,0,'2023-01-06');
-
-insert into Historico_Sucursales values (4,2,51,0,'2023-01-01');
-insert into Historico_Sucursales values (5,3,51,0,'2023-01-01');

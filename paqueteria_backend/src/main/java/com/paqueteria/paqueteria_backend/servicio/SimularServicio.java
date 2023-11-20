@@ -12,6 +12,7 @@ import com.paqueteria.paqueteria_backend.djikstra.Djikstra;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Service
@@ -22,9 +23,9 @@ public class SimularServicio {
     @Autowired
     private SucursalServicio sucursalService;
 
-    public SimularServicio(EnvioServicio envioServicio,CantidadEnvioPorSucursalRepositorio cantidadEnvioPorSucursal) {
+    public SimularServicio(EnvioServicio envioServicio) {
         this.envioServicio = envioServicio;
-        this.cantidadEnvioPorSucursal=cantidadEnvioPorSucursal;
+        //this.cantidadEnvioPorSucursal=cantidadEnvioPorSucursal;
 
     }
     //LOGICA DE SIMULACION DE ENVIOS by James
@@ -32,15 +33,15 @@ public class SimularServicio {
         //OBTIENE LA LISTA DE ENVIO EN RUTA
         List<EnvioSimple> lista=this.getEnviosEnRuta();
 
-        List<EnvioSimple> enviosDisponibles= new ArrayList<>();
-        List<EnvioSimple> enviosStandBy= new ArrayList<>();
-        ResponseListEnvioSimple response = new ResponseListEnvioSimple();
+        //List<EnvioSimple> enviosDisponibles= new ArrayList<>();
+        //List<EnvioSimple> enviosStandBy= new ArrayList<>();
+        //ResponseListEnvioSimple response = new ResponseListEnvioSimple();
         /**
          * VERIFICAR SI LOS ENVIOS PROCEDEN (SEGUN EL MONTO MINIMO) SI NO CUMPLEN CON EL MONTO MINIMO DESCARTA LOS ENVIOS ES DECIR NO HARA EL ENVIO
          */
-        response=this.verificarMontoMinimoEnvio(lista,3);
-        enviosDisponibles=response.getDisponibles();
-        enviosStandBy=response.getStandBy();
+        //response=this.verificarMontoMinimoEnvio(lista,3);
+        //enviosDisponibles=response.getDisponibles();
+        //enviosStandBy=response.getStandBy();
         /*
         * Itera sobre el listado filtrado por enRuta, luego se recorre ese listado si en el historico se encuentra que esta
         * en la misma sucural de destino se cambia el estado del envio a etregado
@@ -70,7 +71,26 @@ public class SimularServicio {
                 }
             }
         });
-        this.verificarMontoMinimoEnvio(lista,0);
+        if(posiblesMovimientos.size()>0){
+            var colector = posiblesMovimientos.stream().collect(
+                    Collectors.groupingBy(
+                            envio->envio.getSucursalOrigen().getIdSucursal(),
+                            Collectors.groupingBy(envio -> envio.getSucursalDestino().getIdSucursal())
+                    )
+            );
+
+            colector.forEach((idOrigen,enviosDestino)->{
+                System.out.println("Sucursal origen :"+idOrigen+" con envios a : ");
+                enviosDestino.forEach((idDestino,envios)->{
+                    System.out.println("\t\t -"+idDestino+" tiene los siguientes envios");
+                    envios.forEach(idEnvio->{
+                        System.out.println("\t\t\t--"+idEnvio.getId());
+                    });
+                });
+            });
+            System.out.println("SSD");
+        }
+        //this.verificarMontoMinimoEnvio(lista,0);
 
         //ITERAR CADA ENVIO SEGUN SU LISTA en PasosEnvio
 
