@@ -1,5 +1,6 @@
 package com.paqueteria.paqueteria_backend.entidad;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,4 +32,8 @@ public class Persona {
 
     @Column(name="password")
     private String password;
+    
+    @Nullable
+    @Column(name="rol")
+    private String rol;
 }
