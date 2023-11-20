@@ -32,7 +32,7 @@ public class EnvioControlador {
 
     @PostMapping("/save_envio")
     public ResponseEntity<EnvioSimple> save(@RequestBody EnvioSimple envioEntrada)throws Error {
-        return ResponseEntity.ok(this.envioServicio.saveEnvio(envioEntrada));
+        return ResponseEntity.ok(this.envioServicio.saveEnvioSimple(envioEntrada));
     }
 
     @GetMapping("/get_sucursal_id")

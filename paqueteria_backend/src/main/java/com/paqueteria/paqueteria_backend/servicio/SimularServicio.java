@@ -50,19 +50,23 @@ public class SimularServicio {
         lista.stream().forEach(data->{
             Envio envioAux = this.envioServicio.obtenerEnvioId(data.getId());
             HistoricoSucursal auxHistorico = this.envioServicio.getHistorico(envioAux.getId()).get(0);
-            if(envioAux.getSucursalOrigen().getIdSucursal() == auxHistorico.getIdSucursal())envioAux.setEstado("entregado");
+            if(envioAux.getSucursalDestino().getIdSucursal() == auxHistorico.getIdSucursal()){
+                envioAux.setEstado("entregado");
+                this.envioServicio.saveEnvio(envioAux);
+            }
             else{
                 List<PasosEnvio> pasosEnvioList = this.envioServicio.getPasosEnvio(envioAux.getId());
-                int indice= IntStream.range(0,pasosEnvioList.size()).filter(i->pasosEnvioList.get(i).equals(auxHistorico.getId())).findFirst().orElse(-1);
+                int indice= IntStream.range(0,pasosEnvioList.size()).filter(i->pasosEnvioList.get(i).getIdSucursal()==(auxHistorico.getIdSucursal())).findFirst().orElse(-1);
                 int nextSucursal = indice!=-1 && indice < pasosEnvioList.size() - 1 ? indice + 1:-1;
                 Optional<Sucursal> sucursalNext = sucursalService.obtenerSucursalId(nextSucursal);
                 if(sucursalNext.isPresent()){
                     if(sucursalNext.get().isEstado())posiblesMovimientos.add(envioAux);
                     else {
-                        EnvioAtrasado envioAtrasado = new EnvioAtrasado();
-                        envioAtrasado.setIdEnvio(envioAux.getId());
-                        envioAtrasado.setIdSucursal(auxHistorico.getIdSucursal());
-                        this.envioServicio.saveEnvioAtrasado(envioAtrasado);
+                        EnvioAtrasado envR = EnvioAtrasado.builder().idEnvio(envioAux.getId()).idSucursal(auxHistorico.getIdSucursal()).build();
+                        this.envioServicio.saveEnvioAtrasado(envR);
+                        envioAux.setDiasTranscurridos(envioAux.getDiasTranscurridos()+1);
+                        this.envioServicio.saveEnvio(envioAux);
+                        //Aumentar diasTranscurrido a paquete y al historicoEnvio sobre la sucursal que no se mueve
                     }
                 }
             }

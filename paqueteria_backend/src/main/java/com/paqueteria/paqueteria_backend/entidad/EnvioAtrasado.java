@@ -1,13 +1,15 @@
 package com.paqueteria.paqueteria_backend.entidad;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
-@Table(name = "Envio_Atrasadp")
+@Table(name = "Envio_Atrasado")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class EnvioAtrasado {
     @Id
     @Column(name="idEnvio_Atrasado")
@@ -19,4 +21,6 @@ public class EnvioAtrasado {
 
     @Column(name = "idSucursal")
     private int idSucursal;
+
+
 }

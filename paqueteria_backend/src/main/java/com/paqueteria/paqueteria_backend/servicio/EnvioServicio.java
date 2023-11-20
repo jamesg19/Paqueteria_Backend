@@ -30,10 +30,13 @@ public class EnvioServicio {
     public Envio obtenerEnvioId(int id){
         return this.envioRepo.findEnvioById(id);
     }
+    public Envio saveEnvio (Envio envioEntrada){
+        return this.envioRepo.save(envioEntrada);
+    }
     public List<Envio> obtenerEnvios(){
         return this.envioRepo.findAll();
     }
-    public EnvioSimple saveEnvio(EnvioSimple envio){
+    public EnvioSimple saveEnvioSimple(EnvioSimple envio){
         return this.envioSimpleRepo.save(envio);
     }
 
