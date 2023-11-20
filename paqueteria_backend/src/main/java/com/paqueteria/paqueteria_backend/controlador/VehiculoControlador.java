@@ -55,12 +55,15 @@ public class VehiculoControlador {
         }
     }
 
-    @PostMapping("/editar_sucursal")
-    public ResponseEntity<String> editarSucursal(HttpServletRequest request, HttpServletResponse response, @RequestBody SucursalDto sucursal)  {
+
+
+    @PostMapping("/editar_vehiculo")
+    public ResponseEntity<String> editarvehiculo(HttpServletRequest request, HttpServletResponse response, @RequestBody VehiculoDto vehiculo)  {
 
         try {
+            System.out.println("Entra...");
             //System.out.println(sucursal.getDepartamento().getId());
-            return this.sucursalServicio.editarSucursal(sucursal);
+            return this.vehiculoServicio.editarVehiculo(vehiculo);
         }
         catch( Exception e){
             System.out.println("Error: "+e);

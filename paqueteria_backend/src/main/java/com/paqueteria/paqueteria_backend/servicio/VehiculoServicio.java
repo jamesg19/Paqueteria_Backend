@@ -53,6 +53,23 @@ public class VehiculoServicio {
     }
 
 
+    public ResponseEntity<String> editarVehiculo(VehiculoDto vehiculo){
+        try{
+            this.vehiculoDtoRepositorio.save(vehiculo);
+
+            return new ResponseEntity<>("", HttpStatus.OK);
+
+        } catch(Exception e){
+            System.out.println(e);
+            return new ResponseEntity<>("Error al editar vehiculo: "+e, HttpStatus.CONFLICT);
+        }
+
+    }
+
+
+
+
+
 
 
 
