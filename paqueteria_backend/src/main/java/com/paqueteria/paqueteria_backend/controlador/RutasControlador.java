@@ -4,6 +4,7 @@ package com.paqueteria.paqueteria_backend.controlador;
 import com.paqueteria.paqueteria_backend.entidad.Municipio;
 import com.paqueteria.paqueteria_backend.entidad.Ruta;
 import com.paqueteria.paqueteria_backend.entidad.Sucursal;
+import com.paqueteria.paqueteria_backend.entidad.dto.RutaDto;
 import com.paqueteria.paqueteria_backend.servicio.MunicipioServicio;
 import com.paqueteria.paqueteria_backend.servicio.RutaServicio;
 import jakarta.servlet.http.HttpServletRequest;
@@ -114,6 +115,23 @@ public class RutasControlador {
 
     }
 
+
+
+
+
+    @PostMapping("/save_rutas")
+    public ResponseEntity<String> saveRutas(HttpServletRequest request, HttpServletResponse response, @RequestBody RutaDto ruta)  {
+        try {
+            return this.rutaServicio.saveRutas(ruta);
+
+
+        }
+        catch( Exception e){
+            System.out.println("Error: "+e);
+            return new ResponseEntity<>("La ruta ya existe", HttpStatus.CONFLICT);
+        }
+
+    }
     @GetMapping("/get_ruta_id")
     public Optional<Ruta> getRutaId(HttpServletRequest request, HttpServletResponse response, @RequestParam int id)  {
         try {
