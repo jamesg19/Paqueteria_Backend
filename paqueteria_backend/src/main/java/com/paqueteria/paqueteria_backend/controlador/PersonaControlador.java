@@ -63,6 +63,7 @@ public class PersonaControlador {
         System.out.println(persona.getPassword());
         var person=personaServicio.login(persona.getId(),persona.getPassword());
         System.out.println(person.isPresent());
+        person.get().setPassword("");
         if(!person.isPresent())
             throw new Error("Credenciales incorrectas",HttpStatus.CONFLICT);
 
