@@ -53,6 +53,7 @@ public class EnvioConVehiculos {
     @Column(name = "estado")
     private String estado;
 
+
     //@OneToMany(cascade = CascadeType.MERGE, mappedBy = "vehiculos")
     //private List<Vehiculo> vehiculos = new ArrayList<>();
 
