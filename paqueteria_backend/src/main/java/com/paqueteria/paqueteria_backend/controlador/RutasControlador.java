@@ -115,6 +115,10 @@ public class RutasControlador {
 
     }
 
+
+
+
+
     @PostMapping("/save_rutas")
     public ResponseEntity<String> saveRutas(HttpServletRequest request, HttpServletResponse response, @RequestBody RutaDto ruta)  {
         try {
@@ -128,7 +132,6 @@ public class RutasControlador {
         }
 
     }
-
     @GetMapping("/get_ruta_id")
     public Optional<Ruta> getRutaId(HttpServletRequest request, HttpServletResponse response, @RequestParam int id)  {
         try {
