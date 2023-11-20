@@ -54,23 +54,25 @@ public class ReportesControlador {
     @PostMapping("/movvehiculo")
     public ReporteVehiculo getReporteMovVehiculo(
         @RequestBody String vehiculoForm){
-        try {                        
+        try {            
+            
             ReporteVehiculo reporte = new ReporteVehiculo();
-            DatoAnalisis dato1 = new DatoAnalisis("Movimientos realizados","3");
-            DatoAnalisis dato2 = new DatoAnalisis("Envios entregados","20");            
+            //Se obtienen los movimientos de vehiculo y en base a ello se realiza el reporte
+            List<Object[]> movimientosVehiculo = reportesServicio.obtenerMovimientosVehiculo(vehiculoForm);
+            int cantidadMovimientos = movimientosVehiculo.size();
+
+            for (Object[]  movimiento : movimientosVehiculo) {
+                DatoReporteVechiculo datoReporteVechiculo1 = new DatoReporteVechiculo("2020-01-01",String.valueOf(movimiento[2]) , "10");           
+                reporte.insertDatoTable(datoReporteVechiculo1);
+            }
+
+
+            
+            DatoAnalisis dato1 = new DatoAnalisis("Movimientos realizados",String.valueOf(cantidadMovimientos));
+            DatoAnalisis dato2 = new DatoAnalisis("Envios entregados","20");
 
             reporte.insertDato(dato1);
-            reporte.insertDato(dato2);
-            
-            DatoReporteVechiculo datoReporteVechiculo1 = new DatoReporteVechiculo("2020-01-01", "5", "10");
-            DatoReporteVechiculo datoReporteVechiculo2 = new DatoReporteVechiculo("2020-01-03", "2", "50");
-            DatoReporteVechiculo datoReporteVechiculo3 = new DatoReporteVechiculo("2020-01-04", "5", "12");
-
-            reporte.insertDatoTable(datoReporteVechiculo1);
-            reporte.insertDatoTable(datoReporteVechiculo2);
-            reporte.insertDatoTable(datoReporteVechiculo3);
-            
-            System.out.println(vehiculoForm);            
+            reporte.insertDato(dato2);                       
             return reporte;
         }
         catch( Exception e){
@@ -82,7 +84,7 @@ public class ReportesControlador {
     @PostMapping("/dashboard")
     public ReporteDashboard getReporteDashboard(
         @RequestBody String fechaAnalizar){
-        try {                        
+        try {
             ReporteDashboard reporte = new ReporteDashboard();
             DatoAnalisis dato1 = new DatoAnalisis("Envios en ruta","3");
             DatoAnalisis dato2 = new DatoAnalisis("Envios completados","20");
