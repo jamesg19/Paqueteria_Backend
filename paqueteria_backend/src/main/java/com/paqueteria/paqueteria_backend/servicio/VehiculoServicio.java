@@ -64,7 +64,10 @@ public class VehiculoServicio {
             System.out.println(e);
             return new ResponseEntity<>("Error al editar vehiculo: "+e, HttpStatus.CONFLICT);
         }
+    }
 
+    public List<HistorialVehiculo> getAllHistorico(){
+        return historicoVehiculo.findAll();
     }
 
 

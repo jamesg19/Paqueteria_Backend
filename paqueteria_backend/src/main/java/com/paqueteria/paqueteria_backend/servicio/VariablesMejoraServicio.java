@@ -5,6 +5,8 @@ import com.paqueteria.paqueteria_backend.repositorio.VariablesMejoraRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class VariablesMejoraServicio {
     @Autowired
@@ -15,5 +17,9 @@ public class VariablesMejoraServicio {
     }
 
     public Variables getVariables(int idVariables){return this.variablesRepo.getVariablesById(idVariables);}
+
+    public List<Variables> getAll(){
+        return this.variablesRepo.findAll();
+    }
 
 }

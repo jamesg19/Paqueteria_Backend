@@ -62,10 +62,22 @@ public class EnvioServicio {
         return this.historicoSucursalRepo.save(historico);
     }
 
+    public List<HistoricoSucursal> getAllHistoricoSucural(){
+        return this.historicoSucursalRepo.findAll();
+    }
+
     public EnvioAtrasado getEnvioAtrasado(int idEnvioAtrasado){return this.envioAtrasadoRepositorio.getEnvioAtrasadoById(idEnvioAtrasado);}
 
     public EnvioAtrasado saveEnvioAtrasado(EnvioAtrasado envioAtrasado){return this.envioAtrasadoRepositorio.save(envioAtrasado);}
 
     @Transactional
     public int deleteEnvioAtrasado(int idEnvio){return this.envioAtrasadoRepositorio.deleteByIdEnvio(idEnvio);}
+
+    public List<Envio> getAllEnvio(){
+        return this.envioRepo.findAll();
+    }
+
+    public List<EnvioAtrasado> getAllEnvioAtrasado(){
+        return this.envioAtrasadoRepositorio.findAll();
+    }
 }
