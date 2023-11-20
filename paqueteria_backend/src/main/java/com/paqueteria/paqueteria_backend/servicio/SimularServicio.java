@@ -3,15 +3,14 @@ package com.paqueteria.paqueteria_backend.servicio;
 import com.paqueteria.paqueteria_backend.entidad.*;
 import com.paqueteria.paqueteria_backend.entidad.dto.EnvioSimple;
 import com.paqueteria.paqueteria_backend.entidad.dto.ResponseListEnvioSimple;
+import com.paqueteria.paqueteria_backend.entidad.dto.VehiculoDto;
 import com.paqueteria.paqueteria_backend.repositorio.CantidadEnvioPorSucursalRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Service;
 import com.paqueteria.paqueteria_backend.djikstra.Djikstra;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -22,6 +21,8 @@ public class SimularServicio {
     private Djikstra dijstraAlgoritmo;
     @Autowired
     private SucursalServicio sucursalService;
+    @Autowired
+    private VehiculoServicio vehiculoServio;
 
     public SimularServicio(EnvioServicio envioServicio) {
         this.envioServicio = envioServicio;
@@ -29,6 +30,8 @@ public class SimularServicio {
 
     }
     //LOGICA DE SIMULACION DE ENVIOS by James
+    Map<Vehiculo,List<Envio>> enviosPorVehiculo = new HashMap<>();
+
     public void simular(){
         int cantidadMinima=3;
         //OBTIENE LA LISTA DE ENVIO EN RUTA
@@ -72,24 +75,75 @@ public class SimularServicio {
                 }
             }
         });
-        if(posiblesMovimientos.size()>0){
+        if(!posiblesMovimientos.isEmpty()){
             var colector = posiblesMovimientos.stream().collect(
                     Collectors.groupingBy(
                             envio->envio.getSucursalOrigen().getIdSucursal(),
                             Collectors.groupingBy(envio -> envio.getSucursalDestino().getIdSucursal())
                     )
             );
-
             colector.forEach((idOrigen,enviosDestino)->{
                 System.out.println("Sucursal origen :"+idOrigen+" con envios a : ");
                 enviosDestino.forEach((idDestino,envios)->{
-                    System.out.println("\t\t -"+idDestino+" tiene los siguientes envios");
+
                     double cantidadPeso = envios.stream().mapToDouble(Envio::getPeso).sum();
-                    Optional<Vehiculo>
+                    System.out.println("\t\t -"+idDestino+" tiene los siguientes envios total: "+cantidadPeso);
+                    List<Vehiculo> vehiculoPropio = this.vehiculoServio.listarPorSucursalId(idOrigen).stream().sorted(Comparator.comparingDouble(Vehiculo::getId)).collect(Collectors.toList());
+                    List<Vehiculo> vehiculoPrestado = this.vehiculoServio.listarPorSucursalId(idDestino).stream().filter(vehiculo->idOrigen==vehiculoServio.getVehiculoHistrorial(vehiculo.getId()).getIdSucursal()).toList().stream().sorted(Comparator.comparingDouble(Vehiculo::getCapacidadTon)).collect(Collectors.toList());
+                    int j = 0;
+                    for (Vehiculo vehiculo : vehiculoPrestado) {
+                        if(cantidadPeso<=vehiculo.getCapacidadTon()*1000 && !envios.isEmpty()){
+                            enviosPorVehiculo.put(vehiculo,List.copyOf(envios));
+                            envios.removeAll(envios);
+                            break;
+                        }else{
+                            List<Envio> envioAux = new ArrayList<>();
+                            double peso = 0;
+                            for (int i = j;i<envios.size();i++) {
+                                if(peso+ envios.get(i).getPeso()<=vehiculo.getCapacidadTon()*1000){
+                                    peso+= envios.get(i).getPeso();
+                                    envioAux.add(envios.get(i));
+                                }else{
+                                    enviosPorVehiculo.put(vehiculo,List.copyOf(envioAux));
+                                    peso = 0;
+                                    envios.removeAll(envioAux);
+                                    envioAux.clear();
+                                    break;
+                                }
+                                j=i;
+                                cantidadPeso-=envios.get(i).getPeso();
+                            }
+                        }
+                    }
+                    for (Vehiculo vehiculo : vehiculoPropio) {
+                        if(cantidadPeso<=vehiculo.getCapacidadTon()*1000 && !envios.isEmpty()){
+                            enviosPorVehiculo.put(vehiculo,List.copyOf(envios));
+                            envios.removeAll(envios);
+                            break;
+                        }else{
+                            List<Envio> envioAux = new ArrayList<>();
+                            double peso = 0;
+                            for (int i = j;i<envios.size();i++) {
+                                if(peso+envios.get(i).getPeso()<=vehiculo.getCapacidadTon()*1000){
+                                    peso+= envios.get(i).getPeso();
+                                    envioAux.add(envios.get(i));
+                                }else{
+                                    enviosPorVehiculo.put(vehiculo,List.copyOf(envioAux));
+                                    peso = 0;
+                                    envios.removeAll(envioAux);
+                                    envioAux.clear();
+                                    break;
+                                }
+                                j=i;
+                                cantidadPeso-=envios.get(i).getPeso();
+                            }
+                        }
+                    }
                 });
             });
             System.out.println("SSD");
         }
+        System.out.println("Sa");
         //this.verificarMontoMinimoEnvio(lista,0);
 
         //ITERAR CADA ENVIO SEGUN SU LISTA en PasosEnvio

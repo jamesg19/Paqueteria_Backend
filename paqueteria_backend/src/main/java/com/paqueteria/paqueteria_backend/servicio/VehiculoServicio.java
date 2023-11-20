@@ -1,16 +1,15 @@
 package com.paqueteria.paqueteria_backend.servicio;
 
+import com.paqueteria.paqueteria_backend.entidad.HistorialVehiculo;
 import com.paqueteria.paqueteria_backend.entidad.Sucursal;
 import com.paqueteria.paqueteria_backend.entidad.Vehiculo;
 import com.paqueteria.paqueteria_backend.entidad.dto.SucursalDepto;
 import com.paqueteria.paqueteria_backend.entidad.dto.SucursalDto;
 import com.paqueteria.paqueteria_backend.entidad.dto.VehiculoDto;
-import com.paqueteria.paqueteria_backend.repositorio.SucursalDtoRepositorio;
-import com.paqueteria.paqueteria_backend.repositorio.SucursalRepositorio;
-import com.paqueteria.paqueteria_backend.repositorio.VehiculoDtoRepositorio;
-import com.paqueteria.paqueteria_backend.repositorio.VehiculoRepositorio;
+import com.paqueteria.paqueteria_backend.repositorio.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -26,6 +25,8 @@ public class VehiculoServicio {
 
     private VehiculoRepositorio vehiculoRepositorio;
     private VehiculoDtoRepositorio vehiculoDtoRepositorio;
+    @Autowired
+    private HistorialVehiculoRepositorio historicoVehiculo;
     public VehiculoServicio(VehiculoRepositorio vehiculoRepositorio,VehiculoDtoRepositorio vehiculoDtoRepositorio) {
         this.vehiculoRepositorio=vehiculoRepositorio;
         this.vehiculoDtoRepositorio=vehiculoDtoRepositorio;
@@ -52,7 +53,9 @@ public class VehiculoServicio {
 
     }
 
-
+    public HistorialVehiculo getVehiculoHistrorial(int idVehiculo) throws Error{
+        return this.historicoVehiculo.findFirstByIdVehiculoOrderByFechaDesc(idVehiculo);
+    }
 
 
 
