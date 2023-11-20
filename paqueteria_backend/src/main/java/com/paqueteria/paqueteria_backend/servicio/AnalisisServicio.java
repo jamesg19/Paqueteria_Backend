@@ -55,6 +55,20 @@ public class AnalisisServicio {
         return results;
     }
 
+    public List<Object[]> obtenerPorcentajeAumentoPorSucursal(String idSucursal){
+        String sqlQuery = "SELECT DATE_FORMAT(fecha, '%Y-%m') AS Mes, SUM(total) AS TotalDelMes, COALESCE(LAG(SUM(total)) OVER (ORDER BY DATE_FORMAT(fecha, '%Y-%m')), 0) AS TotalDelMesAnterior, CASE WHEN COALESCE(LAG(SUM(total)) OVER (ORDER BY DATE_FORMAT(fecha, '%Y-%m')), 0) = 0 THEN 0 ELSE ((SUM(total) - LAG(SUM(total)) OVER (ORDER BY DATE_FORMAT(fecha, '%Y-%m'))) / LAG(SUM(total)) OVER (ORDER BY DATE_FORMAT(fecha, '%Y-%m'))) * 100 END AS PorcentajeDeAumento FROM Envio WHERE idSucursalOrigen = :idSucursal GROUP BY DATE_FORMAT(fecha, '%Y-%m') ORDER BY DATE_FORMAT(fecha, '%Y-%m');";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter("idSucursal", idSucursal);
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();
+
+        return results;
+    }
+
+    
+
     
     
 }
