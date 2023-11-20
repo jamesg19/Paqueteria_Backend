@@ -239,4 +239,19 @@ public class ReportesServicio {
         return results;
     }
 
+    public List<Object[]> obtenerFlujoEnviosEntreFechas(String idSucursal,String fecha1, String fecha2 ){
+        String sqlQuery = "SELECT idHistorico,idEnvio,idSucursal,idVehiculo,fecha FROM Historico_Sucursales WHERE idSucursal = :idSucursal AND fecha BETWEEN :fecha1 AND :fecha2";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);        
+        query.setParameter("idSucursal", idSucursal);        
+        query.setParameter("fecha1", fecha1);        
+        query.setParameter("fecha2", fecha2);        
+        
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+
+        return results;
+    }
+
 }

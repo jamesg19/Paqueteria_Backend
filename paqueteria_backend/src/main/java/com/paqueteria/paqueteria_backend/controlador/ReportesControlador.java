@@ -233,6 +233,7 @@ public class ReportesControlador {
             String cantidadDeEnviosEnviados = String.valueOf(enviosEnviados.size());
 
             //Traer envios que estan de paso de la sucursal entre el 1 del mes a la fecha limite
+            List<Object[]> enviosDePaso = reportesServicio.obtenerFlujoEnviosEntreFechas(recibidoReporteSucursal.getSucursalForm(), primerDiaDelMes.toString(),fecha.toString());
 
             //Traer cantidad de personal trabajando en la sucursal
             String cantPersonal = this.reportesServicio.obtenerCantidadPersonalTrabajanSucursal(recibidoReporteSucursal.getSucursalForm());
@@ -292,6 +293,10 @@ public class ReportesControlador {
             for (Object[] envioEnviado : enviosEnviados) {
                 DatoReporteSucursal datoRS1 = new DatoReporteSucursal(String.valueOf(envioEnviado[0]), String.valueOf(envioEnviado[5]), String.valueOf(envioEnviado[10])); 
                 reporte.insertEnviado(datoRS1);                
+            }
+            for (Object[] envioEnviado : enviosDePaso) {
+                DatoReporteSucursal datoRS1 = new DatoReporteSucursal(String.valueOf(envioEnviado[1]), String.valueOf(envioEnviado[4]), "Paso"); 
+                reporte.insertPaso(datoRS1);                
             }
 
             
