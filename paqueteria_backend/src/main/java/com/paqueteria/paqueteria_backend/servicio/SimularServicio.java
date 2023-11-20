@@ -85,7 +85,7 @@ public class SimularServicio {
                 enviosDestino.forEach((idDestino,envios)->{
                     System.out.println("\t\t -"+idDestino+" tiene los siguientes envios");
                     double cantidadPeso = envios.stream().mapToDouble(Envio::getPeso).sum();
-                    Optional<Vehiculo>
+                    //Optional<Vehiculo>
                 });
             });
             System.out.println("SSD");
