@@ -1093,18 +1093,18 @@ insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (9, '20
 insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (10, '2021-10-01 00:00:00', 'Candon');
 insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (11, '2021-11-01 00:00:00', 'Kristianstad');
 insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (12, '2021-12-01 00:00:00', 'Arroyo Salado');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (13, '2021-01-01 00:00:00', 'Zhaozhen');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (14, '2021-02-01 00:00:00', 'Agdangan');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (15, '2021-03-01 00:00:00', 'Gedaliang');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (16, '2021-04-01 00:00:00', 'Saño');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (17, '2021-05-01 00:00:00', 'Cimişlia');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (18, '2021-06-01 00:00:00', 'Ferme-Neuve');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (19, '2021-07-01 00:00:00', 'Castrovirreyna');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (20, '2021-08-01 00:00:00', 'Poste du Lac');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (21, '2021-09-01 00:00:00', 'Chenārān');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (22, '2021-10-01 00:00:00', 'Listvyanskiy');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (23, '2021-11-01 00:00:00', 'Sitrah');
-insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (24, '2021-12-01 00:00:00', 'Gandu');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (13, '2022-01-01 00:00:00', 'Zhaozhen');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (14, '2022-02-01 00:00:00', 'Agdangan');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (15, '2022-03-01 00:00:00', 'Gedaliang');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (16, '2022-04-01 00:00:00', 'Saño');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (17, '2022-05-01 00:00:00', 'Cimişlia');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (18, '2022-06-01 00:00:00', 'Ferme-Neuve');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (19, '2022-07-01 00:00:00', 'Castrovirreyna');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (20, '2022-08-01 00:00:00', 'Poste du Lac');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (21, '2022-09-01 00:00:00', 'Chenārān');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (22, '2022-10-01 00:00:00', 'Listvyanskiy');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (23, '2022-11-01 00:00:00', 'Sitrah');
+insert into Asamblea (idAsamblea, fechaRealizada, lugarRealizada) values (24, '2022-12-01 00:00:00', 'Gandu');
 
 
 --Gastos

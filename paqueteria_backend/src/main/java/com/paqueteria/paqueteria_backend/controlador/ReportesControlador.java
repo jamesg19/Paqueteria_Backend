@@ -2,6 +2,8 @@ package com.paqueteria.paqueteria_backend.controlador;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,23 +54,25 @@ public class ReportesControlador {
     @PostMapping("/movvehiculo")
     public ReporteVehiculo getReporteMovVehiculo(
         @RequestBody String vehiculoForm){
-        try {                        
+        try {            
+            
             ReporteVehiculo reporte = new ReporteVehiculo();
-            DatoAnalisis dato1 = new DatoAnalisis("Movimientos realizados","3");
-            DatoAnalisis dato2 = new DatoAnalisis("Envios entregados","20");            
+            //Se obtienen los movimientos de vehiculo y en base a ello se realiza el reporte
+            List<Object[]> movimientosVehiculo = reportesServicio.obtenerMovimientosVehiculo(vehiculoForm);
+            int cantidadMovimientos = movimientosVehiculo.size();
+
+            for (Object[]  movimiento : movimientosVehiculo) {
+                DatoReporteVechiculo datoReporteVechiculo1 = new DatoReporteVechiculo("2020-01-01",String.valueOf(movimiento[2]) , "10");           
+                reporte.insertDatoTable(datoReporteVechiculo1);
+            }
+
+
+            
+            DatoAnalisis dato1 = new DatoAnalisis("Movimientos realizados",String.valueOf(cantidadMovimientos));
+            DatoAnalisis dato2 = new DatoAnalisis("Envios entregados","20");
 
             reporte.insertDato(dato1);
-            reporte.insertDato(dato2);
-            
-            DatoReporteVechiculo datoReporteVechiculo1 = new DatoReporteVechiculo("2020-01-01", "5", "10");
-            DatoReporteVechiculo datoReporteVechiculo2 = new DatoReporteVechiculo("2020-01-03", "2", "50");
-            DatoReporteVechiculo datoReporteVechiculo3 = new DatoReporteVechiculo("2020-01-04", "5", "12");
-
-            reporte.insertDatoTable(datoReporteVechiculo1);
-            reporte.insertDatoTable(datoReporteVechiculo2);
-            reporte.insertDatoTable(datoReporteVechiculo3);
-            
-            System.out.println(vehiculoForm);            
+            reporte.insertDato(dato2);                       
             return reporte;
         }
         catch( Exception e){
@@ -80,7 +84,7 @@ public class ReportesControlador {
     @PostMapping("/dashboard")
     public ReporteDashboard getReporteDashboard(
         @RequestBody String fechaAnalizar){
-        try {                        
+        try {
             ReporteDashboard reporte = new ReporteDashboard();
             DatoAnalisis dato1 = new DatoAnalisis("Envios en ruta","3");
             DatoAnalisis dato2 = new DatoAnalisis("Envios completados","20");
@@ -118,49 +122,101 @@ public class ReportesControlador {
 
     @PostMapping("/movsucursal")
     public ReporteSucursal getReporteMovSucursal(@RequestBody RecibidoReporteSucursal recibidoReporteSucursal){
-        try {                        
-            ReporteSucursal reporte = new ReporteSucursal();            
-            DatoAnalisis dato1 = new DatoAnalisis("Envios Realizados","14");
-            DatoAnalisis dato2 = new DatoAnalisis("Envios Recibidos","14");
-            DatoAnalisis dato3 = new DatoAnalisis("Personal Trabajando","14");
-            DatoAnalisis dato4 = new DatoAnalisis("Gastos","14");
-            DatoAnalisis dato5 = new DatoAnalisis("Ganancias","14");
+        try {      
+            //Calcular primer dia del mes y anio que enviaron
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate fecha = LocalDate.parse(recibidoReporteSucursal.getFechaAnalizar(), formatter);
+
+            // Obtener el primer día del mes
+            LocalDate primerDiaDelMes = fecha.withDayOfMonth(1);        
+            
+            //Obtener primer dia del siguiente mes
+            LocalDate primerDiaSiguienteMes = primerDiaDelMes.plusMonths(1).withDayOfMonth(1);
+            
+            //Traer envios recibidos de la sucursal entre el 1 del mes a la fecha limite
+            List<Object[]> enviosRecibidos = reportesServicio.obtenerCantidadEnviosRecibidosEntreFechas(recibidoReporteSucursal.getSucursalForm(), primerDiaDelMes.toString(),fecha.toString());
+            String cantidadDeEnviosRecibidos = String.valueOf(enviosRecibidos.size());
+
+            //Traer envio enviados de la sucursal entre el 1 del mes a la fecha limite
+            List<Object[]> enviosEnviados = reportesServicio.obtenerCantidadEnviosEnviadosEntreFechas(recibidoReporteSucursal.getSucursalForm(), primerDiaDelMes.toString(),fecha.toString());
+            String cantidadDeEnviosEnviados = String.valueOf(enviosEnviados.size());
+
+            //Traer envios que estan de paso de la sucursal entre el 1 del mes a la fecha limite
+
+            //Traer cantidad de personal trabajando en la sucursal
+            String cantPersonal = this.reportesServicio.obtenerCantidadPersonalTrabajanSucursal(recibidoReporteSucursal.getSucursalForm());
+
+            //Calcular los gastos de una sucursal
+                //Suma de gastos especiales y gastos fijos, mas pago de personal en el mes
+                    //Gastos fijos
+            List<Object[]> gastosFijos = this.reportesServicio.obtenerGastosFijosPorSucursal(recibidoReporteSucursal.getSucursalForm());
+
+            Double totalGastosFijos = 0.0;
+            for (Object[]  gasto : gastosFijos) {
+                Double totalEnvio = (Double) gasto[3]; 
+                totalGastosFijos += totalEnvio;
+            }
+                    //Gastos especiales
+                    //Encontrar la asamblea a la que pertenece
+            List<Object[]> asambleas = this.reportesServicio.obtenerAsambleaPorFecha(primerDiaSiguienteMes.toString());
+            int idAsamblea = 0;
+            for (Object[]  asamblea : asambleas) {
+                idAsamblea = (int) asamblea[0];                
+            }
+                    //Encontrar los gastos
+            List<Object[]> gastosEspeciales = this.reportesServicio.obtenerGastosEspeciales(recibidoReporteSucursal.getSucursalForm(),idAsamblea);   
+
+            Double totalGastosEspeciales = 0.0;
+            for (Object[]  gasto : gastosEspeciales) {
+                Double totalGastosEspecial = (Double) gasto[3]; 
+                totalGastosEspeciales += totalGastosEspecial;
+            }      
+            
+            Double totalGastos = totalGastosFijos + totalGastosEspeciales;
+
+            //Calcular las ganancias de una sucursal
+                //Suma de todos los envios enviados en ese mes
+            int ganancias = 0;
+            for (Object[] envioEnviado : enviosEnviados) {
+                int totalEnvio = (int) envioEnviado[6]; 
+                ganancias += totalEnvio;
+            }
+
+            //Crear los datos de las tablas
+            ReporteSucursal reporte = new ReporteSucursal();    
+
+            //Datos de los envios recibidos
+            for (Object[] envioRecibido : enviosRecibidos) {                
+                DatoReporteSucursal datoRS1 = new DatoReporteSucursal(String.valueOf(envioRecibido[0]), String.valueOf(envioRecibido[5]), String.valueOf(envioRecibido[10])); 
+                reporte.insertRecibido(datoRS1);
+            }
+            for (Object[] envioEnviado : enviosEnviados) {
+                DatoReporteSucursal datoRS1 = new DatoReporteSucursal(String.valueOf(envioEnviado[0]), String.valueOf(envioEnviado[5]), String.valueOf(envioEnviado[10])); 
+                reporte.insertEnviado(datoRS1);                
+            }
+
+            
+            
+
+
+                    
+            DatoAnalisis dato1 = new DatoAnalisis("Envios Realizados",cantidadDeEnviosEnviados);
+            DatoAnalisis dato2 = new DatoAnalisis("Envios Recibidos",cantidadDeEnviosRecibidos);
+            DatoAnalisis dato3 = new DatoAnalisis("Personal Trabajando",cantPersonal);
+            DatoAnalisis dato4 = new DatoAnalisis("Gastos",String.valueOf(totalGastos));
+            DatoAnalisis dato5 = new DatoAnalisis("Ganancias",String.valueOf(ganancias));
 
             reporte.insertDato(dato1);
             reporte.insertDato(dato2);
             reporte.insertDato(dato3);
             reporte.insertDato(dato4);
-            reporte.insertDato(dato5);
+            reporte.insertDato(dato5);       
 
-            DatoReporteSucursal datoRS1 = new DatoReporteSucursal("1", "2020-01-01", "Entregado");
-            DatoReporteSucursal datoRS2 = new DatoReporteSucursal("3", "2020-01-02", "Entregado");
-            DatoReporteSucursal datoRS3 = new DatoReporteSucursal("7", "2020-01-03", "Entregado");
-
-            reporte.insertEnviado(datoRS1);
-            reporte.insertEnviado(datoRS2);
-            reporte.insertEnviado(datoRS3);
-
-
-            reporte.insertRecibido(datoRS3);
-
-            reporte.insertPaso(datoRS1);
+            //reporte.insertPaso(datoRS1);
             
             //yyyy-mm-dd
-            System.out.println(recibidoReporteSucursal.getFechaAnalizar());
-            System.out.println(recibidoReporteSucursal.getSucursalForm());       
-            
-            //Traer envios recibidos de la sucursal entre el 1 del mes a la fecha limite
-
-            //Traer envio enviados de la sucursal entre el 1 del mes a la fecha limite
-
-            //Traer envios que estan de paso de la sucursal entre el 1 del mes a la fecha limite
-
-            //Traer cantidad de personal trabajando en la sucursal
-            
-
-            //Calcular los gastos de una sucursal
-
-            //Calcular las ganancias de una sucursal
+            //System.out.println(recibidoReporteSucursal.getFechaAnalizar());
+            //System.out.println(recibidoReporteSucursal.getSucursalForm());       
 
             
             return reporte;
