@@ -133,5 +133,110 @@ public class ReportesServicio {
         return results;
     }
 
+    public List<Object[]> obtenerGastoPersonalPorSucursalYAsamblea(String idSucursal,int idAsamblea){
+        String sqlQuery = "SELECT h.idHonorario, h.nombre, h.descripcion, h.monto, h.idAsamblea FROM paqueteria.Personal p JOIN paqueteria.Honorario h ON p.idPersonal = h.Personal_idPersonal WHERE p.idSucursal = :idSucursal AND h.idAsamblea = :idAsamblea";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);        
+        query.setParameter("idSucursal", idSucursal);
+        query.setParameter("idAsamblea", idAsamblea);
+        
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+        
+        return results;
+    }
+
+
+    public List<Object[]> obtenerEnviosPorEstadoEntreFechas(String estado, String fecha1, String fecha2){
+        String sqlQuery = "SELECT idEnvio,idSucursalOrigen,idSucursalDestino,nitEmisor,nitReceptor,fecha,total,peso,volumen,diasTranscurridos,estado FROM Envio WHERE estado = :estado AND fecha BETWEEN :fecha1 AND :fecha2";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);        
+        query.setParameter("estado", estado);
+        query.setParameter("fecha1", fecha1);
+        query.setParameter("fecha2", fecha2);
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+
+        return results;
+    }
+
+    public List<Object[]> obtenerTodosEnviosEntreFechas(String fecha1, String fecha2){
+        String sqlQuery = "SELECT idEnvio,idSucursalOrigen,idSucursalDestino,nitEmisor,nitReceptor,fecha,total,peso,volumen,diasTranscurridos,estado FROM Envio WHERE fecha BETWEEN :fecha1 AND :fecha2";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);                
+        query.setParameter("fecha1", fecha1);
+        query.setParameter("fecha2", fecha2);
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+
+        return results;
+    }
+
+    public List<Object[]> obtenerTodosGastosFijosAgrupadosPorNombre(){
+        String sqlQuery = "SELECT descripcion, SUM(monto) AS total_monto FROM Gasto WHERE tipo = 'FIJO' GROUP BY descripcion";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);                
+        
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+
+        return results;
+    }
+
+    public List<Object[]> obtenerTodosGastosEspecialesPorAsambleaAgrupados(int idAsamblea){
+        String sqlQuery = "SELECT descripcion, SUM(monto) FROM Gasto WHERE tipo  = 'ESPECIAL' AND Asamblea_idAsamblea = :idAsamblea GROUP BY descripcion";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);                
+        query.setParameter("idAsamblea", idAsamblea);
+        
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+
+        return results;
+    }
+
+    public List<Object[]> obtenerTodosGastoPersonalPorAsamblea(int idAsamblea){
+        String sqlQuery = "SELECT h.idHonorario, h.nombre, h.descripcion, h.monto, h.idAsamblea FROM paqueteria.Personal p JOIN paqueteria.Honorario h ON p.idPersonal = h.Personal_idPersonal WHERE h.idAsamblea = :idAsamblea";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);                
+        query.setParameter("idAsamblea", idAsamblea);
+        
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+        
+        return results;
+    }
+
+    public List<Object[]> obtenerSucursalesMasGananciasEntreFechas(String fecha1, String fecha2){
+        String sqlQuery = "SELECT s.idSucursal, s.nombre, SUM(e.total) AS ganancias_totales FROM paqueteria.Sucursal s JOIN paqueteria.Envio e ON s.idSucursal = e.idSucursalOrigen WHERE e.fecha BETWEEN :fecha1 AND :fecha2 GROUP BY s.idSucursal ORDER BY ganancias_totales DESC LIMIT 10";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);                
+        query.setParameter("fecha1", fecha1);
+        query.setParameter("fecha2", fecha2);
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+
+        return results;
+    }
+
+    public List<Object[]> obtenerSucursalesMenosGananciasEntreFechas(String fecha1, String fecha2){
+        String sqlQuery = "SELECT s.idSucursal, s.nombre, IFNULL(SUM(e.total), 0) AS ganancias_totales FROM paqueteria.Sucursal s LEFT JOIN paqueteria.Envio e ON s.idSucursal = e.idSucursalOrigen AND e.fecha BETWEEN :fecha1 AND :fecha2 GROUP BY s.idSucursal ORDER BY ganancias_totales ASC LIMIT 10;";
+
+        Query query = entityManager.createNativeQuery(sqlQuery);                
+        query.setParameter("fecha1", fecha1);
+        query.setParameter("fecha2", fecha2);
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> results = query.getResultList();        
+
+        return results;
+    }
 
 }
