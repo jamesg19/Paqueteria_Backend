@@ -196,8 +196,9 @@ public class SimularServicio {
                     reporte.setVehiculo(vehiculo.getId());
                     reporte.setNumeroEnviados(envios.size());
                     reporte.setOcupacion((int)ocupacionEnvio);
-                    reporteServicio.save(reporte);
+
                 }
+                boolean bandera = true;
                 for (Envio enviosSave : envios) {
                     if(enviosSave.getId()==27){
                         System.out.println("sss");
@@ -213,11 +214,15 @@ public class SimularServicio {
                     if(nextSucursal==-1)continue;
                     System.out.println(enviosSave.getId());
                     enviosSave.setDiasTranscurridos(enviosSave.getDiasTranscurridos()+1);
-                    this.envioServicio.saveEnvio(enviosSave);
-                    if(nextSucursal==-1){
-                        System.out.println("");
-                    }
                     histSuc.setIdSucursal(pasosEnvioAux.get(nextSucursal).getIdSucursal());
+                    this.envioServicio.saveEnvio(enviosSave);
+                    if(this.reporteServicio!=null && bandera){
+                        reporte.setOrigen(auxSucHist.getIdSucursal());
+                        reporte.setDestino(histSuc.getIdSucursal());
+                        reporteServicio.save(reporte);
+                        bandera = false;
+                    }
+
                     //
                     histSuc.setIdEnvio(enviosSave.getId());
                     envioServicio.saveHistoricoSucursal(histSuc);
