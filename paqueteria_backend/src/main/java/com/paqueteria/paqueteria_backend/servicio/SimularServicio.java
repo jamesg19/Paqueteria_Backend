@@ -69,6 +69,7 @@ public class SimularServicio {
             HistoricoSucursal auxHistorico = this.envioServicio.getHistorico(envioAux.getId()).get(0);
             if(envioAux.getSucursalDestino().getIdSucursal() == auxHistorico.getIdSucursal()){
                 envioAux.setEstado("entregado");
+                envioAux.setDiasTranscurridos(envioAux.getDiasTranscurridos()+1);
                 this.envioServicio.saveEnvio(envioAux);
                 data.setEstado("entregado");
             }

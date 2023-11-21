@@ -944,8 +944,8 @@ INSERT INTO Ruta VALUES (118,50,45,142,0,0);
 INSERT INTO Ruta VALUES (119,51,59,50,0,0);
     -- >Reu
 INSERT INTO Ruta VALUES (120,51,58,75,0,0);
-    -- >Guatemala
-INSERT INTO Ruta VALUES (121,51,14,213,0,0);
+    -- >Chimaltenango
+INSERT INTO Ruta VALUES (121,51,9,148,0,0);
     -- >Totonicapan
 INSERT INTO Ruta VALUES (122,51,61,27,0,0);
     -- Huehuetenango
@@ -3057,7 +3057,7 @@ insert into Pasos_Envio (idEnvio,idSucursal) VALUES
 
 insert into Variables_Mejora (idVariables_Mejora,descripcion,valor) values 
     (1,"Vehiculo mas grande 1 mas pequeño 0",1),
-    (2,"Capacidad minima por viaje %",50),
+    (2,"Capacidad minima por viaje %",25),
     (3,"Prestar transporte vecino 1 si 0 no",1)
 ;
 
