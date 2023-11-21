@@ -5,6 +5,7 @@ import com.paqueteria.paqueteria_backend.entidad.dto.EnvioSimple;
 import com.paqueteria.paqueteria_backend.entidad.dto.ResponseListEnvioSimple;
 import com.paqueteria.paqueteria_backend.entidad.dto.VehiculoDto;
 import com.paqueteria.paqueteria_backend.repositorio.CantidadEnvioPorSucursalRepositorio;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.GsonBuilderUtils;
@@ -27,6 +28,8 @@ public class SimularServicio {
     private VehiculoServicio vehiculoServio;
     @Autowired
     private VariablesMejoraServicio variablesServicio;
+    @Autowired
+    private ReporteSimulacionServicio reporteServicio;
 
     public SimularServicio(EnvioServicio envioServicio) {
         this.envioServicio = envioServicio;
@@ -67,7 +70,7 @@ public class SimularServicio {
                 List<PasosEnvio> pasosEnvioList = this.envioServicio.getPasosEnvio(envioAux.getId());
                 int indice= IntStream.range(0,pasosEnvioList.size()).filter(i->pasosEnvioList.get(i).getIdSucursal()==(auxHistorico.getIdSucursal())).findFirst().orElse(-1);
                 int nextSucursal = indice!=-1 && indice < pasosEnvioList.size() - 1 ? indice + 1:-1;
-                Optional<Sucursal> sucursalNext = sucursalService.obtenerSucursalId(nextSucursal);
+                Optional<Sucursal> sucursalNext = sucursalService.obtenerSucursalId(pasosEnvioList.get(nextSucursal).getIdSucursal());
                 if(sucursalNext.isPresent()){
                     if(sucursalNext.get().isEstado())posiblesMovimientos.add(envioAux);
                     else {
@@ -160,6 +163,8 @@ public class SimularServicio {
         }
         System.out.println("Sa");
         //this.verificarMontoMinimoEnvio(lista,0);
+        ReporteSimulacion reporte = new ReporteSimulacion();
+        List<Integer[]> movimientos = new ArrayList<>();
         this.enviosPorVehiculo.forEach((vehiculo,envios)->{
             double ocupacionEnvio = envios.stream().mapToDouble(Envio::getPeso).sum()/(vehiculo.getCapacidadTon()*1000);
             double minimoEnvio = (double) this.variablesServicio.getVariables(2).getValor()/100;
@@ -174,6 +179,14 @@ public class SimularServicio {
                 historiVe.setIdSucursal(envios.get(0).getSucursalDestino().getIdSucursal());
                 historiVe.setOcupacion(ocupacionEnvio);
                 vehiculoServio.save(historiVe);
+                if(envios.size()>0){
+                    reporte.setOrigen(envios.get(0).getSucursalOrigen().getIdSucursal());
+                    reporte.setDestino(envios.get(0).getSucursalDestino().getIdSucursal());
+                    reporte.setVehiculo(vehiculo.getId());
+                    reporte.setNumeroEnviados(envios.size());
+                    reporte.setOcupacion((int)ocupacionEnvio);
+                    reporteServicio.save(reporte);
+                }
                 for (Envio enviosSave : envios) {
                     HistoricoSucursal auxSucHist = envioServicio.getHistorico(enviosSave.getId()).get(0);
                     HistoricoSucursal histSuc = new HistoricoSucursal();
@@ -186,6 +199,7 @@ public class SimularServicio {
                 }
             }else{
                //aumentar dias en espera en envio y en historico
+
                 for (Envio envio : envios) {
                     //aumento de dias en envio
                     envio.setDiasTranscurridos(envio.getDiasTranscurridos()+1);
