@@ -38,6 +38,7 @@ public class SimularServicio {
     }
     //LOGICA DE SIMULACION DE ENVIOS by James
     Map<Vehiculo,List<Envio>> enviosPorVehiculo = new HashMap<>();
+    Map<Vehiculo,Integer> procimoDestino = new HashMap<>();
 
     public void simular(){
         int capacidadMaxima = variablesServicio.getVariables(2).getValor();
@@ -60,27 +61,37 @@ public class SimularServicio {
         * */
         List<Envio> posiblesMovimientos = new ArrayList<>();
         lista.stream().forEach(data->{
+            if(data.getId()==27){
+                System.out.println("tronitos");
+            }
+
             Envio envioAux = this.envioServicio.obtenerEnvioId(data.getId());
             HistoricoSucursal auxHistorico = this.envioServicio.getHistorico(envioAux.getId()).get(0);
             if(envioAux.getSucursalDestino().getIdSucursal() == auxHistorico.getIdSucursal()){
                 envioAux.setEstado("entregado");
                 this.envioServicio.saveEnvio(envioAux);
+                data.setEstado("entregado");
             }
             else{
+                if(envioAux.getId()==9){
+                    System.out.println("ee");
+                }
                 List<PasosEnvio> pasosEnvioList = this.envioServicio.getPasosEnvio(envioAux.getId());
                 int indice= IntStream.range(0,pasosEnvioList.size()).filter(i->pasosEnvioList.get(i).getIdSucursal()==(auxHistorico.getIdSucursal())).findFirst().orElse(-1);
                 int nextSucursal = indice!=-1 && indice < pasosEnvioList.size() - 1 ? indice + 1:-1;
-                Optional<Sucursal> sucursalNext = sucursalService.obtenerSucursalId(pasosEnvioList.get(nextSucursal).getIdSucursal());
-                if(sucursalNext.isPresent()){
-                    if(sucursalNext.get().isEstado())posiblesMovimientos.add(envioAux);
-                    else {
-                        EnvioAtrasado envR = EnvioAtrasado.builder().idEnvio(envioAux.getId()).idSucursal(auxHistorico.getIdSucursal()).build();
-                        this.envioServicio.saveEnvioAtrasado(envR);
-                        envioAux.setDiasTranscurridos(envioAux.getDiasTranscurridos()+1);
-                        this.envioServicio.saveEnvio(envioAux);
-                        //Aumentar diasTranscurrido a paquete y al historicoEnvio sobre la sucursal que no se mueve
+                System.out.println(envioAux.getId());
+                    Optional<Sucursal> sucursalNext = sucursalService.obtenerSucursalId(pasosEnvioList.get(nextSucursal).getIdSucursal());
+                    if(sucursalNext.isPresent()){
+                        if(sucursalNext.get().isEstado())posiblesMovimientos.add(envioAux);
+                        else {
+                            EnvioAtrasado envR = EnvioAtrasado.builder().idEnvio(envioAux.getId()).idSucursal(auxHistorico.getIdSucursal()).build();
+                            this.envioServicio.saveEnvioAtrasado(envR);
+                            envioAux.setDiasTranscurridos(envioAux.getDiasTranscurridos()+1);
+                            this.envioServicio.saveEnvio(envioAux);
+                            //Aumentar diasTranscurrido a paquete y al historicoEnvio sobre la sucursal que no se mueve
+                        }
                     }
-                }
+
             }
         });
         if(!posiblesMovimientos.isEmpty()){
@@ -188,13 +199,27 @@ public class SimularServicio {
                     reporteServicio.save(reporte);
                 }
                 for (Envio enviosSave : envios) {
+                    if(enviosSave.getId()==27){
+                        System.out.println("sss");
+                    }
                     HistoricoSucursal auxSucHist = envioServicio.getHistorico(enviosSave.getId()).get(0);
                     HistoricoSucursal histSuc = new HistoricoSucursal();
                     histSuc.setFecha(auxSucHist.getFecha().plusDays(1));
                     histSuc.setIdVehiculo(vehiculo.getId());
-                    histSuc.setIdSucursal(enviosSave.getSucursalDestino().getIdSucursal());
-                    histSuc.setIdEnvio(enviosSave.getId());
+                    //modi11
+                    List<PasosEnvio> pasosEnvioAux = this.envioServicio.getPasosEnvio(enviosSave.getId());
+                    int indice= IntStream.range(0,pasosEnvioAux.size()).filter(i->pasosEnvioAux.get(i).getIdSucursal()==(auxSucHist.getIdSucursal())).findFirst().orElse(-1);
+                    int nextSucursal = indice!=-1 && indice < pasosEnvioAux.size() - 1 ? indice + 1:-1;
+                    if(nextSucursal==-1)continue;
+                    System.out.println(enviosSave.getId());
+                    enviosSave.setDiasTranscurridos(enviosSave.getDiasTranscurridos()+1);
                     this.envioServicio.saveEnvio(enviosSave);
+                    if(nextSucursal==-1){
+                        System.out.println("");
+                    }
+                    histSuc.setIdSucursal(pasosEnvioAux.get(nextSucursal).getIdSucursal());
+                    //
+                    histSuc.setIdEnvio(enviosSave.getId());
                     envioServicio.saveHistoricoSucursal(histSuc);
                 }
             }else{
@@ -208,7 +233,8 @@ public class SimularServicio {
                     HistoricoSucursal histSuc = new HistoricoSucursal();
                     histSuc.setFecha(auxSucHist.getFecha().plusDays(1));
                     histSuc.setIdVehiculo(vehiculo.getId());
-                    histSuc.setIdSucursal(envio.getSucursalDestino().getIdSucursal());
+                    //dddddd
+                    histSuc.setIdSucursal(auxSucHist.getIdSucursal());
                     histSuc.setIdEnvio(envio.getId());
                     envioServicio.saveHistoricoSucursal(histSuc);
                 }

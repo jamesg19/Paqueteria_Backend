@@ -3057,7 +3057,7 @@ insert into Pasos_Envio (idEnvio,idSucursal) VALUES
 
 insert into Variables_Mejora (idVariables_Mejora,descripcion,valor) values 
     (1,"Vehiculo mas grande 1 mas pequeño 0",1),
-    (2,"Capacidad minima por viaje %",75),
+    (2,"Capacidad minima por viaje %",50),
     (3,"Prestar transporte vecino 1 si 0 no",1)
 ;
 

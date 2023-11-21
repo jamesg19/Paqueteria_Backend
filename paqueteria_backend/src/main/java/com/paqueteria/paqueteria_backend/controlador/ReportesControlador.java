@@ -101,7 +101,7 @@ public class ReportesControlador {
             int cantidadEnviosEnRuta = enviosEnRuta.size();
 
             //Traer todos los envios completados
-            List<Object[]> enviosCompletados = reportesServicio.obtenerEnviosPorEstadoEntreFechas("completo", primerDiaDelMes.toString(), fecha.toString());
+            List<Object[]> enviosCompletados = reportesServicio.obtenerEnviosPorEstadoEntreFechas("entregado", primerDiaDelMes.toString(), fecha.toString());
             int cantidadEnviosCompletos = enviosCompletados.size();
 
             //Traer todas las ganancias de todos los envios
